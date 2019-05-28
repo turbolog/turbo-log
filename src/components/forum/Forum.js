@@ -27,6 +27,7 @@ import Favorite from '@material-ui/icons/Favorite'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import "./Forum.css"
 import { FormGroup } from '@material-ui/core';
+import NavBar from '../reusable/NavBar';
 
 const useStyles = makeStyles(theme => ({
     // card: {
@@ -87,6 +88,7 @@ const Forum =() => {
     }
     return (
     <Grid>
+      <NavBar/>
          <Card style={{margin:"20px",border:"2px black solid"}} >
       <CardHeader
        avatar={
