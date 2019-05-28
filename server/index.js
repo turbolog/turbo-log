@@ -4,7 +4,8 @@ const session = require("express-session")
 const massive = require("massive");
 
 //Controller File Imports
-const { register,login } = require("./controller/authCtrl")
+const { register,login,logout,getSession } = require("./controller/authCtrl")
+const { getUserGarage } = require("./controller/vehicleCtrl")
 
 const app = express()
 app.use(express.json())
@@ -24,6 +25,11 @@ app.use(session({
 //Authentication Endpoints
 app.post("/auth/register", register)
 app.post("/auth/login", login)
+app.get("/auth/logout", logout)
+app.get("/auth/user", getSession)
+
+//Garage Endpoints 
+app.get("/api/garage", getUserGarage)
 
 
 
