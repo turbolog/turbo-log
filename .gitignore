@@ -5,10 +5,6 @@
 /.pnp
 .pnp.js
 .env
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 # testing
 /coverage
 
