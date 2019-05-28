@@ -41,7 +41,14 @@ const NavBar = () => {
                 TurboLog
               </Link>
             </Typography>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit">
+              <Link
+                to="/login"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                Login
+              </Link>
+            </Button>
           </Toolbar>
         </AppBar>
       </div>

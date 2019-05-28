@@ -1,7 +1,12 @@
 import React from "react";
+import NavBar from "../reusable/NavBar";
 
 const Forum = () => {
-  return <div>Forum</div>;
+  return (
+    <div>
+      <NavBar />
+    </div>
+  );
 };
 
 export default Forum;
