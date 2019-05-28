@@ -24,9 +24,18 @@ const deleteVehicle = async (request, response) => {
 
     response.json(results)
 }
+const addVehicle = async (request, response) => {
+    const db = request.app.get("db")
+    const { year,make,model,trim,color,miles,vin,image } = request.body
+    const { user_id } = request.session.user 
+    const garage = await db.add_vehicle([user_id,year,make,model,trim,color,miles,vin,image])
+    
+    response.json(garage)
+}
 
 module.exports = {
     getUserGarage,
     updateMiles,
-    deleteVehicle
+    deleteVehicle,
+    addVehicle
 }
