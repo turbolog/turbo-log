@@ -21,11 +21,20 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Container from '@material-ui/core/Container';
 import AddComment from '@material-ui/icons/AddComment';
 import TextField from '@material-ui/core/TextField';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import Checkbox from '@material-ui/core/Checkbox';
+import Favorite from '@material-ui/icons/Favorite'
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import "./Forum.css"
+import { FormGroup } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
     // card: {
     //   maxWidth: 400,
     // },
+    hart:{
+      color:red
+    },
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
@@ -57,12 +66,13 @@ const useStyles = makeStyles(theme => ({
       }
   }));
   
-const Fourm =() => {
+const Forum =() => {
     const [comment, setComment] = React.useState("");
+
     const handleComment = event => {
         
-        setComment({[comment]: event.target.value });
-            console.log(comment);
+        setComment(event.target.value);
+            
       };
 
     const classes = useStyles();
@@ -71,9 +81,13 @@ const Fourm =() => {
     const handleExpandClick =() =>{
       setExpanded(!expanded);
     }
+    const [hart, setHart] = React.useState(false);
+    const handleHartClick =() =>{
+      setHart(!hart);
+    }
     return (
-    <Grid spacing={3}>
-         <Card >
+    <Grid>
+         <Card style={{margin:"20px",border:"2px black solid"}} >
       <CardHeader
        avatar={
         <Avatar >
@@ -90,18 +104,18 @@ const Fourm =() => {
       }
       >
         
-     
+       
       </CardHeader>
         
        <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+        <Typography variant="h5" color="textSecondary" component="p">
+          how do change blinker fluid onmy 04 acura tl?
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="Add to favorites">
+        <IconButton aria-label="Add to favorites" >
           <FavoriteIcon />
+          
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
@@ -117,22 +131,18 @@ const Fourm =() => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-            and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-            pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
+        <hr style={{border:"1px black dotted", width:"70%"}} ></hr>
+        <Card style={{margin:"20px",border:".1px black solid", paddingLeft:"20px"}}>
+            <Typography variant="h6" color="textprimary" component="p">
+            commenter name 
+            </Typography>
+            <Typography paragraph>
+            wait change what? i have never heard of blinker fluid
+            </Typography>
+        </Card>
          
           <Typography>
-       
+       {comment}
           </Typography>
           <TextField
         id="standard-dense"
@@ -145,7 +155,7 @@ const Fourm =() => {
       </Collapse>
       </Card>
 
-      <Card >
+      <Card style={{margin:"20px",border:"2px black solid"}}>
       <CardHeader
        avatar={
         <Avatar >
@@ -220,4 +230,4 @@ const Fourm =() => {
     )
 }
 
-export default Fourm;
+export default Forum ;
