@@ -33,17 +33,25 @@ const login = async (request,response) => {
           response.status(401).json("Incorrect username or password") 
         } else {
             request.session.user = {
-                id: user[0].user_id,
+                user_id: user[0].user_id,
                 username: username
             }
             response.json(request.session.user)
         }
     }
-
+}
+const logout = (request,response) => {
+    request.session.destroy()
+    response.json(request.session)
+}
+const getSession = (request,response) => {
+    response.json(request.session.user)
 }
 
 
 module.exports = {
     register,
-    login
+    login,
+    logout,
+    getSession
 }
