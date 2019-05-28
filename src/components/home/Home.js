@@ -1,5 +1,7 @@
 import React from "react";
 import NavBar from "../reusable/NavBar";
+import { Link } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 
@@ -51,7 +53,12 @@ const Home = () => {
           aria-label="Add"
           className={classes.button}
         >
-          Register Today
+          <Link
+            to="/register"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            Register Today
+          </Link>
         </Fab>
       </div>
       <div />
