@@ -5,7 +5,7 @@ const massive = require("massive");
 
 //Controller File Imports
 const { register,login,logout,getSession } = require("./controller/authCtrl")
-const { getUserGarage } = require("./controller/vehicleCtrl")
+const { getUserGarage, updateMiles, deleteVehicle } = require("./controller/vehicleCtrl")
 
 const app = express()
 app.use(express.json())
@@ -30,7 +30,8 @@ app.get("/auth/user", getSession)
 
 //Garage Endpoints 
 app.get("/api/garage", getUserGarage)
-
+app.put("/api/vehicles/:vehicle_id", updateMiles)
+app.delete("/api/vehicles/:vehicle_id", deleteVehicle)
 
 
 
