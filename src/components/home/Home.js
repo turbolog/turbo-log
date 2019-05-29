@@ -1,7 +1,6 @@
 import React from "react";
-import NavBar from "../reusable/NavBar";
+import NavBar from "../navbar/NavBar";
 import { Link } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 
@@ -14,6 +13,7 @@ const useStyles = makeStyles(theme => ({
 const Home = () => {
   const classes = useStyles();
   return (
+    
     <div
       style={{
         background: `url("https://images.unsplash.com/photo-1457332253637-21d324d25df9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80") no-repeat center center`,
@@ -63,6 +63,7 @@ const Home = () => {
       </div>
       <div />
     </div>
+   
   );
 };
 

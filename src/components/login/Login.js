@@ -1,5 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { update, login } from "../../ducks/reducer";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -44,9 +46,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Login() {
+const Login = props => {
+  const [redirect, setRedirect] = useState(false);
   const classes = useStyles();
 
+  const handleInputChange = e => {
+    props.update(e.target.name, e.target.value);
+  };
+
+  const handleLogin = () => {
+    props.login(props.username, props.password);
+    setRedirect(true);
+  };
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -65,11 +79,12 @@ export default function Login() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
+              onChange={handleInputChange}
             />
             <TextField
               variant="outlined"
@@ -81,6 +96,7 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handleInputChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -92,6 +108,7 @@ export default function Login() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={handleLogin}
             >
               Sign In
             </Button>
@@ -113,4 +130,11 @@ export default function Login() {
       </Grid>
     </Grid>
   );
-}
+};
+
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  { update, login }
+)(Login);

@@ -1,0 +1,26 @@
+.account{
+    
+text-decoration: none;
+text-decoration-line: none;
+}
+
+
+
+
+.acc-left-col{
+    height: 20vh;
+    width: 100vw;
+    border: 1px red solid;
+    
+
+
+}
+.user-pic{
+    max-height:90%; 
+    margin: 0 auto;
+}
+.account-bottom-col{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
