@@ -19,12 +19,22 @@ const updateRecord = async (request, response) => {
     const { shop,shop_name,date,miles,summary} = request.body
     const { report_id } = request.params
     const { user_id } = request.session.user 
+    
     const records = await db.edit_record([report_id,shop,shop_name,date,miles,summary,user_id])
-    console.log("hit")
+
+    response.json(records)
+}
+const  deleteRecord = async (request, response) => {
+    const db = request.app.get("db") 
+    const { report_id } = request.params
+
+    const records = await db.delete_record(report_id)
+
     response.json(records)
 }
 module.exports = {
     getRecords,
     addRecord,
-    updateRecord
+    updateRecord,
+    deleteRecord
 }
