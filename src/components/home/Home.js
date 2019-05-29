@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../reusable/NavBar";
+import NavBar from "../navbar/NavBar";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";

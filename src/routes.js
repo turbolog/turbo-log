@@ -12,6 +12,6 @@ export default (
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/forum" component={Forum} />
-    <Route path="/" component={Home} />
+    <Route exact path="/" component={Home} />
   </Switch>
 );
