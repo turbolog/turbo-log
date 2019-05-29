@@ -6,7 +6,8 @@ const massive = require("massive");
 //Controller File Imports
 const { register,login,logout,getSession } = require("./controller/authCtrl")
 const { getUserGarage, updateMiles, deleteVehicle, addVehicle } = require("./controller/vehicleCtrl")
-
+const { getRecords, addRecord, updateRecord } = require("./controller/recordCtrl")
+ 
 const app = express()
 app.use(express.json())
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
@@ -33,6 +34,11 @@ app.get("/api/vehicles", getUserGarage)
 app.put("/api/vehicles/:vehicle_id", updateMiles)
 app.post("/api/vehicles", addVehicle)
 app.delete("/api/vehicles/:vehicle_id", deleteVehicle)
+
+//Vehicle Endpoints
+app.get("/api/records", getRecords)
+app.post("/api/records", addRecord)
+app.put("/api/records/:report_id", updateRecord)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
