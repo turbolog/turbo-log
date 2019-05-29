@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card"
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import NavBar from '../reusable/NavBar';
+import NavBar from '../navbar/NavBar';
 import {Link} from "react-router-dom"
 import "./Account.css"
 
