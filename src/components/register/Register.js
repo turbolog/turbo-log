@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { update, register } from "../../ducks/reducer";
+import { Link, Redirect } from "react-router-dom";
+
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-
-import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -37,8 +39,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Register = () => {
+const Register = props => {
+  const [redirect, setRedirect] = useState(false);
   const classes = useStyles();
+
+  const handleInputChange = e => {
+    props.update(e.target.name, e.target.value);
+  };
+
+  const handleRegister = () => {
+    props.register(
+      props.firstName,
+      props.lastName,
+      props.username,
+      props.email,
+      props.password
+    );
+    setRedirect(true);
+  };
+
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -62,6 +84,7 @@ const Register = () => {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -73,6 +96,7 @@ const Register = () => {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -84,6 +108,19 @@ const Register = () => {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleInputChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="username"
+                label="Username"
+                id="username"
+                autoComplete="username"
+                onChange={handleInputChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -96,6 +133,7 @@ const Register = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleInputChange}
               />
             </Grid>
           </Grid>
@@ -105,6 +143,7 @@ const Register = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleRegister}
           >
             Sign Up
           </Button>
@@ -122,4 +161,9 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapStateToProps = state => state;
+
+export default connect(
+  mapStateToProps,
+  { update, register }
+)(Register);
