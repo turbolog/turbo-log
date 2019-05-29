@@ -5,7 +5,7 @@ const massive = require("massive");
 
 //Controller File Imports
 const { register,login,logout,getSession } = require("./controller/authCtrl")
-const { getUserGarage } = require("./controller/vehicleCtrl")
+const { getUserGarage, updateMiles, deleteVehicle, addVehicle } = require("./controller/vehicleCtrl")
 
 const app = express()
 app.use(express.json())
@@ -29,9 +29,10 @@ app.get("/auth/logout", logout)
 app.get("/auth/user", getSession)
 
 //Garage Endpoints 
-app.get("/api/garage", getUserGarage)
-
-
+app.get("/api/vehicles", getUserGarage)
+app.put("/api/vehicles/:vehicle_id", updateMiles)
+app.post("/api/vehicles", addVehicle)
+app.delete("/api/vehicles/:vehicle_id", deleteVehicle)
 
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
