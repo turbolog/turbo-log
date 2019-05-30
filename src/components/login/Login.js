@@ -59,7 +59,7 @@ const Login = props => {
     setRedirect(true);
   };
   if (redirect) {
-    return <Redirect to="/" />;
+    return <Redirect to="/garage/multi" />;
   }
   return (
     <Grid container component="main" className={classes.root}>

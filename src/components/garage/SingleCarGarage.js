@@ -48,7 +48,6 @@ const styles = theme => ({
 });
 
 function SingleCarGarage(props) {
-  const [deleteCar, setDeleteCar] = useState(false);
   const [open, setOpen] = useState(false);
   const { classes } = props;
 
