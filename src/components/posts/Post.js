@@ -87,8 +87,8 @@ const [expanded, setExpanded] = React.useState(false);
               <img src="https://popingservers.com/images/1.png" />
             </Avatar>
           }
-          title={props.username}
-          subheader={props.date}
+          title={props.post.username}
+          subheader={props.post.date}
           action={
             <IconButton>
               <MoreVertIcon />
@@ -97,8 +97,11 @@ const [expanded, setExpanded] = React.useState(false);
         />
 
         <CardContent>
+        <Typography variant="h5" color="textSecondary" component="p">
+            {props.post.title}
+          </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.post}
+            {props.post.post}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
