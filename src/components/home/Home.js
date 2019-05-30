@@ -1,8 +1,9 @@
 import React from "react";
 import NavBar from "../navbar/NavBar";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
+import { connect } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -10,10 +11,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Home = () => {
+const Home = props => {
   const classes = useStyles();
+
+  if (props.user_id) {
+    return <Redirect to="/garage" />;
+  }
   return (
-    
     <div
       style={{
         background: `url("https://images.unsplash.com/photo-1457332253637-21d324d25df9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80") no-repeat center center`,
@@ -63,8 +67,13 @@ const Home = () => {
       </div>
       <div />
     </div>
-   
   );
 };
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    user_id: state.auth.user_id
+  };
+};
+
+export default connect(mapStateToProps)(Home);
