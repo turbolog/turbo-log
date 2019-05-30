@@ -46,5 +46,8 @@ app.delete("/api/records/:report_id", deleteRecord)
 app.get("/api/posts", getPosts)
 app.post("/api/posts", addPost)
 app.delete("/api/posts/:post_id", deletePost)
+app.put("/api/favorite")
+app.post("/api/comments")
+app.put("/api/")
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))
