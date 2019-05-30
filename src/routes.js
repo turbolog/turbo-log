@@ -5,9 +5,11 @@ import Forum from "./components/forum/Forum";
 import Register from "./components/register/Register";
 import Login from "./components/login/Login";
 import Account from "./components/account/Account";
+import Log from "./components/log/Log"
 
 export default (
   <Switch>
+    <Route path="/log" component={Log} />
     <Route path="/account" component={Account} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
