@@ -19,19 +19,20 @@ export function update(name, value) {
   }
 export function getPosts () {
     return {
-        action:GET_POSTS,
-        payload: axios.get("/api/post")
+        type:GET_POSTS,
+        payload: axios.get("/api/posts")
     }
 }
 export function addPost (title, post) {
     return {
-        action: ADD_POST,
-        payload: axios.post("/api/post", {title, post})
+        type: ADD_POST,
+        payload: axios.post("/api/posts", {title, post})
     }
 }
 
 function reducer(state = initialState, action) {
     const {type,payload} = action
+    
     switch(type) {
         case UPDATE:
                 return {
@@ -41,12 +42,12 @@ function reducer(state = initialState, action) {
         case `${GET_POSTS}_FULFILLED`: 
             return {
                 ...state,
-                post: payload.data
+                posts: payload.data
             }
         case `${ADD_POST}_FULFILLED`: 
             return {
                 ...state,
-                post: payload.data
+                posts: payload.data
             }
         default: return state
     }

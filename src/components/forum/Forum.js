@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -12,6 +12,9 @@ import NavBar from "../navbar/NavBar";
 import Post from "../posts/Post";
 import Modal from '@material-ui/core/Modal';
 import {Link} from "react-router-dom"
+import { connect } from "react-redux";
+import {addPost,getPosts} from "../../ducks/forumReduce"
+import Card from "@material-ui/core/Card"
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -40,6 +43,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Forum = (props) => {
+  useEffect(() => {
+    // Update the document title using the browser API
+    props.getPosts()
+  },[]);
+
   const [open, setOpen] = React.useState(false);
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -55,9 +63,18 @@ const Forum = (props) => {
     setOpen(false);
   };
   const classes = useStyles();
-
-
+  
+  // const posts = props.posts.map(post) => {
+  //   return <Post post={post} /> 
+  // } 
+   const posts = props.posts.map(post =>{
+    console.log(post);
+     return <Post post ={post}/>
+     
+   })
+   
   return (
+    
     <Grid>
       
       <Modal
@@ -66,29 +83,47 @@ const Forum = (props) => {
         open={open}
         onClose={handleClose}
       >
-        
-        <div style={modalStyle} className={classes.paper}>
+        <Card style={modalStyle} className={classes.paper} item xs={12}>
+          
+        <div >
           <Typography variant="h6" id="modal-title">
             Ask a Qustion
           </Typography>
 
            <Typography variant="subtitle1" id="simple-modal-description">
-           <TextField 
-          
-          label="Search field"
-          type="search"
-          variant="outlined"
-         
-          onChange={handleSeaech}
-        />
+
+           <TextField
+              style={{ width:"100%"}}
+              id="outlined-multiline-static"
+              label="Multiline"
+              multiline
+              rows="1"
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+            />
+           
+            <TextField
+              style={{ width:"100%"}}
+              id="outlined-multiline-static"
+              label="Multiline"
+              multiline
+              rows="4"
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+            />
+     
+        
+          </Typography> 
+           
+        </div>
         <Link to="/forum">
           <Button variant="contained" color="primary" >
           submit
          </Button>
         </Link>
-          </Typography> 
-           
-        </div>
+        </Card>
       </Modal>
       <NavBar />
       <Grid style={{marginTop:"20px", textAlign:"center"}}>
@@ -111,10 +146,17 @@ const Forum = (props) => {
       </Grid>
     
     
-     <Post />
-     <Post />
+     {posts}
     </Grid>
   );
 };
 
-export default Forum;
+const mapStateToProps = state => {
+  return {
+    posts: state.forum.posts,
+    
+  }
+};
+
+
+export default connect(mapStateToProps, {addPost,getPosts})(Forum);
