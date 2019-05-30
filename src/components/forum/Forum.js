@@ -11,6 +11,7 @@ import "./Forum.css";
 import NavBar from "../navbar/NavBar";
 import Post from "../posts/Post";
 import Modal from '@material-ui/core/Modal';
+import {Link} from "react-router-dom"
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -65,43 +66,51 @@ const Forum = (props) => {
         open={open}
         onClose={handleClose}
       >
+        
         <div style={modalStyle} className={classes.paper}>
           <Typography variant="h6" id="modal-title">
             Ask a Qustion
           </Typography>
-         
+
            <Typography variant="subtitle1" id="simple-modal-description">
            <TextField 
-          id="outlined-search"
+          
           label="Search field"
           type="search"
           variant="outlined"
-          className="search-bar"
+         
           onChange={handleSeaech}
         />
-        <Button variant="contained" color="primary" >
-        submit
-        </Button>
+        <Link to="/forum">
+          <Button variant="contained" color="primary" >
+          submit
+         </Button>
+        </Link>
           </Typography> 
            
         </div>
       </Modal>
       <NavBar />
-      <Paper style={{ margin: "20px",textAlign:"center" }}>
-        <TextField 
+      <Grid style={{marginTop:"20px", textAlign:"center"}}>
+
+       <Fab color="secondary" aria-label="Add" style={{margin:" 0px 5px 5px 5px"}}>
+          <AddIcon onClick={handleOpen} />
+         </Fab>
+      
+         <TextField 
           id="outlined-search"
           label="Search field"
           type="search"
           variant="outlined"
           className="search-bar"
-        />
-        <Button variant="contained" color="primary" >
-        Search
-        </Button>
-     </Paper>
-     <Fab color="secondary" aria-label="Add">
-          <AddIcon onClick={handleOpen} />
-        </Fab>
+         />
+      
+         <Button variant="contained" color="primary" style={{ margin: "10px",}} >
+          Search
+          </Button>
+      </Grid>
+    
+    
      <Post />
      <Post />
     </Grid>
