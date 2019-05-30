@@ -1,10 +1,19 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import promiseMiddleware from "redux-promise-middleware";
-import authReducer from "./reducer";
+import auth from "./authReducer";
+import vehicle from "./vehicleReducer"
+import forum from "./forumReduce"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+    auth,
+    vehicle,
+    forum
+})
+
 const store = createStore(
-  authReducer,
+  rootReducer,
   composeEnhancers(applyMiddleware(promiseMiddleware))
 );
 

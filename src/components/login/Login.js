@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { update, login } from "../../ducks/reducer";
+import { update, login } from "../../ducks/authReducer";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -61,6 +61,7 @@ const Login = props => {
   if (redirect) {
     return <Redirect to="/" />;
   }
+  console.log(props)
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -132,7 +133,12 @@ const Login = props => {
   );
 };
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => {
+  return {
+    username: state.auth.username,
+    password: state.auth.password,
+  }
+};
 
 export default connect(
   mapStateToProps,
