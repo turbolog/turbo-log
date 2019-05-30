@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { update, register } from "../../ducks/reducer";
+import { update, register } from "../../ducks/authReducer";
 import { Link, Redirect } from "react-router-dom";
 
 import Avatar from "@material-ui/core/Avatar";
@@ -61,7 +61,7 @@ const Register = props => {
   if (redirect) {
     return <Redirect to="/" />;
   }
-
+console.log(props)
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -161,7 +161,15 @@ const Register = props => {
   );
 };
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => {
+  return {
+    firstName: state.auth.firstName,
+    lastName: state.auth.lastName,
+    email: state.auth.email,
+    username: state.auth.username,
+    password: state.auth.password
+  }
+};
 
 export default connect(
   mapStateToProps,

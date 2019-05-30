@@ -7,13 +7,15 @@ const initialState = {
   email: "",
   password: "",
   user: "",
-  user_id: null
+  user_id: null,
+  sessionUser: {}
 };
 
 //action types
 const UPDATE = "UPDATE";
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
+const GET_USER_SESSION = "GET_USER_SESSION";
 //action creators
 export function update(name, value) {
   return {
@@ -41,6 +43,13 @@ export function register(firstName, lastName, username, email, password) {
     })
   };
 }
+
+export function getUserSession() {
+  return {
+    type: GET_USER_SESSION,
+    payload: axios.get("/auth/user")
+  };
+}
 //reducer
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
@@ -66,6 +75,11 @@ export default function authReducer(state = initialState, action) {
         username: "",
         email: "",
         password: ""
+      };
+    case `${GET_USER_SESSION}_FULFILLED`:
+      return {
+        ...state,
+        sessionUser: action.payload.data
       };
     default:
       return state;

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getUserSession } from "../../ducks/authReducer";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -21,8 +23,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const NavBar = () => {
+const NavBar = props => {
   const classes = useStyles();
+
+  useEffect(() => {
+    props.getUserSession();
+  }, []);
+
   return (
     <div>
       <div className={classes.root}>
@@ -56,4 +63,9 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+const mapStateToProps = reduxState => reduxState;
+
+export default connect(
+  mapStateToProps,
+  { getUserSession }
+)(NavBar);

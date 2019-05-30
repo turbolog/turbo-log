@@ -10,8 +10,8 @@ import Account from "./components/account/Account";
 
 export default (
   <Switch>
-    <Route path="/garage/multi" component={MultiCarGarage} />
-    <Route path="/garage/single" component={SingleCarGarage} />
+    <Route path="/garage/:vehicle_id" component={SingleCarGarage} />
+    <Route path="/garage/" component={MultiCarGarage} />
     <Route path="/account" component={Account} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />

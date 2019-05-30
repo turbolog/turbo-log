@@ -1,24 +1,67 @@
-.account{
-    
-text-decoration: none;
-text-decoration-line: none;
+.car-log {
+    background-image:
+      url("http://www.xappsoftware.com/wordpress/wp-content/uploads/2018/02/twitter-list.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+}
+.my-garage{
+        background-image:
+          url("https://u.realgeeks.media/makeyourmovematter/tidbits/garage-storage-solution-fea.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+}
+.find-shop{
+        background-image:
+          url("https://mondrian.mashable.com/uploads%252Fstory%252Fthumbnail%252F80045%252F20c815b8-6ada-45a2-91a6-0f62598d9923.png%252F950x534.png?signature=6hqOtjmXYhp5dDxV5Jj5HrDwNfQ=&source=https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+}
+.forum-pic{
+    background-image:
+    url("https://www.livehope.org/wp-content/uploads/2014/11/Forum-Marketing-e1416937956255.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
+.sos{
+    background-image:
+    url("https://d2ekdq2ws22nn1.cloudfront.net/wp-content/uploads/2018/03/Help.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+  
 
 
 
-.acc-left-col{
+.acc-top-col{
     height: 20vh;
     width: 100vw;
-    border: 1px red solid;
+    background: black;
     
 
 
 }
 .user-pic{
     max-height:90%; 
-    margin: 0 auto;
+    margin: auto auto;
+   
 }
+.both-btn{
+  display: flex;
+  justify-content: center;
+  
+}
+.button-upload {
+ font-size: 20px;
+ margin-left: 20px;
+
+}
+
 .account-bottom-col{
     display: flex;
     justify-content: space-evenly;
