@@ -1,3 +1,7 @@
+DELETE FROM report
+WHERE vehicle_id = $1;
+
+
 DELETE FROM vehicle 
 WHERE vehicle_id = $1;
 

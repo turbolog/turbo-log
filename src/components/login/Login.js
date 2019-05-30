@@ -61,6 +61,7 @@ const Login = props => {
   if (redirect) {
     return <Redirect to="/" />;
   }
+  console.log(props)
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -135,7 +136,7 @@ const Login = props => {
 const mapStateToProps = state => {
   return {
     username: state.auth.username,
-    password: state.auth.password
+    password: state.auth.password,
   }
 };
 
