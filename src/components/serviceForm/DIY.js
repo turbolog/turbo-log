@@ -40,15 +40,10 @@ const styles = makeStyles(theme => ({
 
 function ServiceForm(props) {
   const classes = styles();
-  const [selectedValue, setSelectedValue] = useState("");
   // const [count, setCount] = useState(0);
 
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
-  };
-
-  const handleRadioButton = e => {
-    setSelectedValue(e.target.value);
   };
 
   // const increment = e => {
@@ -61,43 +56,10 @@ function ServiceForm(props) {
 
   return (
     <div>
-      <NavBar />
-      <Typography
-        variant="h3"
-        style={{ textAlign: "center", marginTop: "5vh" }}
-      >
-        Add Service Record
-      </Typography>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "2vh"
-        }}
-      >
-        <Typography>DIY</Typography>
-        <Radio
-          checked={selectedValue === "a"}
-          onChange={handleRadioButton}
-          value="a"
-          name="radio-button-demo"
-          aria-label="A"
-          style={{ color: "teal" }}
-        />
-        <Typography>Shop</Typography>
-        <Radio
-          checked={selectedValue === "b"}
-          onChange={handleRadioButton}
-          value="b"
-          name="radio-button-demo"
-          aria-label="A"
-          style={{ color: "teal" }}
-        />
-      </div>
       <DatePicker />
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
+          name="description"
           id="outlined-name"
           label="Service Description"
           className={classes.textField}
@@ -106,6 +68,7 @@ function ServiceForm(props) {
           variant="outlined"
         />
         <TextField
+          name="miles"
           id="outlined-name"
           label="Current Mileage"
           className={classes.textField}
@@ -115,6 +78,7 @@ function ServiceForm(props) {
         />
         <PartsForm />
         <TextField
+          name="summary"
           id="outlined-multiline-flexible"
           label="Summary"
           rowsMax="4"

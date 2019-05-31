@@ -32,9 +32,18 @@ const  deleteRecord = async (request, response) => {
 
     response.json(records)
 }
+const getVehicleRecord = async (request, response) => {
+    const db = request.app.get("db")
+    const { vehicle_id } = request.params
+    console.log("hit")
+    const records = await db.get_vehicle_log(vehicle_id)
+    
+    response.json(records)
+}
 module.exports = {
     getRecords,
     addRecord,
     updateRecord,
-    deleteRecord
+    deleteRecord,
+    getVehicleRecord,
 }

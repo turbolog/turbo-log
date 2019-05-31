@@ -51,6 +51,7 @@ function PartsForm(props) {
         id="outlined-name"
         label="Part Number"
         className={classes.textField}
+        name=""
         onChange={handleChange}
         margin="normal"
         variant="outlined"
@@ -65,7 +66,7 @@ function PartsForm(props) {
         variant="outlined"
         style={{ width: "30vw" }}
       />
-      <Input type="file" style={{ marginRight: "50px" }} />
+      <Input type="file" variant="outlined" style={{ marginRight: "50px" }} />
       <Fab
         size="small"
         color="secondary"

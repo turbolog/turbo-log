@@ -29,19 +29,19 @@ const Account =() => {
                     </Grid> 
                     <div className="account-bottom-col">
                       <Link style={{textDecoration:"none"}} to="/log">
-                        <Card className="car-log" style={{height:"200px", width:"200px",marginTop:"10px", }}>
+                        <Card className="car-log" style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
                     
                             <CardHeader title="Car Logs"/>
                         
                             <CardContent>
-                            <Typography variant="h5" color="textSecondary" component="p">
+                            <Typography style={{color:"#009688"}} variant="h5" color="textSecondary" component="p">
                                     Find history of you car Maintenance 
                             </Typography>
                             </CardContent>
                         </Card> 
                       </Link>
                     <Link style={{textDecoration:"none"}} >
-                    <Card className="my-garage" style={{height:"200px", width:"200px",marginTop:"10px"}}>
+                    <Card className="my-garage" style={{height:"200px", width:"200px",marginTop:"30px"}}>
                         <CardHeader title="My Garage"/>
                         <CardContent>
                             <Typography variant="h5" color="textSecondary" component="p">
@@ -52,7 +52,7 @@ const Account =() => {
                     </Card>
                     </Link> 
                     <Link style={{textDecoration:"none"}} >
-                    <Card className="find-shop" style={{height:"200px", width:"200px",marginTop:"10px"}}>
+                    <Card className="find-shop" style={{height:"200px", width:"200px",marginTop:"30px"}}>
                         <CardHeader title="Find Shop"/>
                         <CardContent>
                             <Typography variant="h5" color="textSecondary" component="p">
@@ -62,7 +62,7 @@ const Account =() => {
                     </Card>
                     </Link>
                     <Link to="/forum" style={{textDecoration:"none"}} >
-                    <Card className="forum-pic" style={{height:"200px", width:"200px",marginTop:"10px"}}>
+                    <Card className="forum-pic" style={{height:"200px", width:"200px",marginTop:"30px"}}>
                         <CardHeader title="Forum"/>
                         <CardContent>
                             <Typography variant="h5" color="textSecondary" component="p">
@@ -72,7 +72,7 @@ const Account =() => {
                     </Card>
                     </Link>
                     <Link style={{textDecoration:"none"}} >
-                    <Card className="sos" style={{height:"200px", width:"200px",marginTop:"10px"}}>
+                    <Card className="sos" style={{height:"200px", width:"200px",marginTop:"30px"}}>
                         <CardHeader title="SOS"/>
                         <CardContent>
                             <Typography variant="h5" color="textSecondary" component="p">

@@ -6,17 +6,17 @@ const initialState = {
     post: "",
 }
 
-const UPDATE = "UPDATE";
+const UPDATE_FORUM = "UPDATE_FORUM";
 const GET_POSTS = "GET_POSTS";
 const ADD_POST = "ADD_POST";
 
 
 export function update(name, value) {
     return {
-      type: UPDATE,
-      payload: { name, value }
+        type: UPDATE_FORUM,
+        payload: { name, value }
     };
-  }
+}
 export function getPosts () {
     return {
         type:GET_POSTS,
@@ -32,9 +32,10 @@ export function addPost (title, post) {
 
 function reducer(state = initialState, action) {
     const {type,payload} = action
+    console.log(action)
     
     switch(type) {
-        case UPDATE:
+        case UPDATE_FORUM:
                 return {
                   ...state,
                   [payload.name]: payload.value
