@@ -16,9 +16,9 @@ import { connect } from "react-redux";
 import {addPost,getPosts,update} from "../../ducks/forumReduce"
 import Card from "@material-ui/core/Card"
 
-function srarchingfor(term) {
+function searching(term) {
   return function (x) {
-    return x.post.toLowerCase().includes(term.toLowerCase()) || !term
+    return x.title.toLowerCase().includes(term.toLowerCase()) || x.post.toLowerCase().includes(term.toLowerCase()) || !term
     
   }
   
@@ -70,10 +70,8 @@ const Forum = (props) => {
   };
   const classes = useStyles();
   
-  // const posts = props.posts.map(post) => {
-  //   return <Post post={post} /> 
-  // } 
-   const posts = props.posts.filter(srarchingfor(term)).map(post =>{
+  
+   const posts = props.posts.filter(searching(term)).map(post =>{
      return <Post post ={post}/>
      
    })
@@ -133,13 +131,13 @@ const Forum = (props) => {
             />
      
         
-          </Typography> 
+           </Typography> 
            
-        </div>
+          </div>
         
-          <Button onClick={handleSubmit} variant="contained" color="primary" >
-          submit
-         </Button>
+           <Button onClick={handleSubmit} variant="contained" color="primary" >
+            submit
+           </Button>
         
         </Card>
       </Modal>
@@ -166,7 +164,7 @@ const Forum = (props) => {
       </Grid>
     
     
-     {posts}
+       {posts}
     </Grid>
   );
 };
