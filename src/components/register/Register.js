@@ -61,7 +61,7 @@ const Register = props => {
   if (redirect) {
     return <Redirect to="/" />;
   }
-console.log(props)
+  console.log(props);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -72,7 +72,7 @@ console.log(props)
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate autoComplete="off">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -168,7 +168,7 @@ const mapStateToProps = state => {
     email: state.auth.email,
     username: state.auth.username,
     password: state.auth.password
-  }
+  };
 };
 
 export default connect(
