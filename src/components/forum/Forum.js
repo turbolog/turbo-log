@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
-import Paper from "@material-ui/core/Paper"
+import clsx from 'clsx';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import "./Forum.css";
@@ -13,9 +13,16 @@ import Post from "../posts/Post";
 import Modal from '@material-ui/core/Modal';
 import {Link} from "react-router-dom"
 import { connect } from "react-redux";
-import {addPost,getPosts} from "../../ducks/forumReduce"
+import {addPost,getPosts,update} from "../../ducks/forumReduce"
 import Card from "@material-ui/core/Card"
 
+function srarchingfor(term) {
+  return function (x) {
+    return x.post.toLowerCase().includes(term.toLowerCase()) || !term
+    
+  }
+  
+}
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -51,10 +58,9 @@ const Forum = (props) => {
   const [open, setOpen] = React.useState(false);
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
-  const [search, setSearch] = React.useState("");
-  const handleSeaech = (e) =>{
-    
-  } 
+  const [term, setTerm] = React.useState("");
+  
+  
   const handleOpen = () => {
     setOpen(true);
   };
@@ -67,11 +73,21 @@ const Forum = (props) => {
   // const posts = props.posts.map(post) => {
   //   return <Post post={post} /> 
   // } 
-   const posts = props.posts.map(post =>{
-    console.log(post);
+   const posts = props.posts.filter(srarchingfor(term)).map(post =>{
      return <Post post ={post}/>
      
    })
+   const handleInput = e => {
+    props.update(e.target.name, e.target.value)
+  }
+   const handleSubmit = () =>{
+     if(!props.title || !props.post){
+       return
+      }
+      props.addPost(props.title, props.post)
+      handleClose()
+   }
+
    
   return (
     
@@ -91,53 +107,57 @@ const Forum = (props) => {
           </Typography>
 
            <Typography variant="subtitle1" id="simple-modal-description">
-
            <TextField
-              style={{ width:"100%"}}
-              id="outlined-multiline-static"
-              label="Multiline"
-              multiline
-              rows="1"
-              className={classes.textField}
-              margin="normal"
-              variant="outlined"
+            name="title"
+            id="outlined-dense"
+            style={{ width:"100%"}}
+            label="Title"
+            className={clsx(classes.textField, classes.dense)}
+            margin="dense"
+            variant="outlined"
+            onChange={handleInput}
             />
+           
            
             <TextField
               style={{ width:"100%"}}
+              name="post"
               id="outlined-multiline-static"
-              label="Multiline"
+              label="Detals"
               multiline
               rows="4"
               className={classes.textField}
               margin="normal"
               variant="outlined"
+              onChange={handleInput}
             />
      
         
           </Typography> 
            
         </div>
-        <Link to="/forum">
-          <Button variant="contained" color="primary" >
+        
+          <Button onClick={handleSubmit} variant="contained" color="primary" >
           submit
          </Button>
-        </Link>
+        
         </Card>
       </Modal>
       <NavBar />
       <Grid style={{marginTop:"20px", textAlign:"center"}}>
 
-       <Fab color="secondary" aria-label="Add" style={{margin:" 0px 5px 5px 5px"}}>
-          <AddIcon onClick={handleOpen} />
+       <Fab onClick={handleOpen} color="secondary" aria-label="Add" style={{margin:" 0px 5px 5px 5px"}}>
+          <AddIcon  />
          </Fab>
       
          <TextField 
           id="outlined-search"
-          label="Search field"
+          label="Search...."
           type="search"
           variant="outlined"
           className="search-bar"
+          value={term}
+          onChange={(e) =>{setTerm(e.target.value)}}
          />
       
          <Button variant="contained" color="primary" style={{ margin: "10px",}} >
@@ -154,9 +174,11 @@ const Forum = (props) => {
 const mapStateToProps = state => {
   return {
     posts: state.forum.posts,
+    title: state.forum.title,
+    post: state.forum.post
     
   }
 };
 
 
-export default connect(mapStateToProps, {addPost,getPosts})(Forum);
+export default connect(mapStateToProps, {addPost,getPosts,update})(Forum);
