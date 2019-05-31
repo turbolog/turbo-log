@@ -82,18 +82,15 @@ const [expanded, setExpanded] = React.useState(false);
     return (
         <Card style={{ margin: "20px", border: "2px black solid" }}>
         <CardHeader
+        
           avatar={
             <Avatar>
-              <img src="https://popingservers.com/images/1.png" />
+              <img className="post-pic" src="https://popingservers.com/images/1.png" />
             </Avatar>
           }
           title={props.post.username}
           subheader={props.post.date}
-          action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
-          }
+          
         />
 
         <CardContent>
@@ -119,13 +116,30 @@ const [expanded, setExpanded] = React.useState(false);
             aria-label="Show more"
           >
             <AddComment />
-            {/* <ExpandMoreIcon /> */}
+            
           </IconButton>
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Commrnt 1</Typography>
-            <Typography paragraph>Commrnt 2</Typography>
+            
+            <Card style={{marginLeft:"150px"}}>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="Recipe">
+                  <img src="https://popingservers.com/images/1.png" />
+                </Avatar>
+                    }
+              
+             title="Commenter"
+            subheader="September 14, 2016"
+           />
+          <CardContent>
+           <Typography variant="body2" color="textSecondary" component="p">
+              this a none offancive comment 
+            </Typography>
+          </CardContent>
+            </Card>
+            
             
             
 

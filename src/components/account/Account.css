@@ -41,7 +41,7 @@
 .acc-top-col{
     height: 20vh;
     width: 100vw;
-    background: black;
+    background:#303030;
     
 
 
@@ -57,8 +57,11 @@
   
 }
 .button-upload {
- font-size: 20px;
+ font-size: 18px;
  margin-left: 20px;
+ color: white;
+ background:#009688; 
+ border-radius: 10px;
 
 }
 
