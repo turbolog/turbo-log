@@ -17,6 +17,8 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Link } from "react-router-dom";
+import VehicleCard from "./VehicleCard";
+import { connect } from "react-redux";
 
 const styles = theme => ({
   root: {
@@ -48,7 +50,6 @@ const styles = theme => ({
 });
 
 function SingleCarGarage(props) {
-  const [deleteCar, setDeleteCar] = useState(false);
   const [open, setOpen] = useState(false);
   const { classes } = props;
 
@@ -60,6 +61,11 @@ function SingleCarGarage(props) {
     setOpen(false);
   };
 
+  let singleCar = props.garage.find(vehicle => {
+    if (vehicle.vehicle_id === +props.match.params.vehicle_id) {
+      return vehicle;
+    }
+  });
   return (
     <div className={classes.root}>
       <NavBar />
@@ -71,91 +77,7 @@ function SingleCarGarage(props) {
       >
         My Garage
       </Typography>
-      <Paper className={classes.paper}>
-        <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase className={classes.image}>
-              <img
-                className={classes.img}
-                alt="vehicles"
-                src="https://cdn.jdpower.com/Models/400x200/2007-Dodge-Dakota.jpg"
-              />
-            </ButtonBase>
-          </Grid>
-          <Grid item xs={12} sm container>
-            <Grid item xs container direction="column" spacing={2}>
-              <Grid item xs className={classes.vehicleInfo}>
-                <Typography gutterBottom variant="h5">
-                  {"2007 Dodge Dakota"}
-                </Typography>
-                <Typography variant="body2" gutterBottom>
-                  VIN: {"3VWML7AJ3CM452600"}
-                </Typography>
-                <Typography variant="body2" color="textSecondary">
-                  Mileage: {"108,065"}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="body2"
-                  size="small"
-                  style={{ cursor: "pointer" }}
-                >
-                  <Link
-                    to="/addRecordForm"
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    Add Record
-                  </Link>
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  variant="body2"
-                  size="small"
-                  style={{ cursor: "pointer" }}
-                  onClick={handleCarDelete}
-                >
-                  Delete
-                </Button>
-                <Dialog
-                  open={open}
-                  onClose={closeDeleteAlert}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                >
-                  <DialogTitle id="alert-dialog-title">
-                    {"Delete Vehicle"}
-                  </DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                      Are you sure you want to delete your vehicle? This can not
-                      be undone!
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={closeDeleteAlert} color="primary">
-                      Go back
-                    </Button>
-                    <Button
-                      onClick={closeDeleteAlert}
-                      color="primary"
-                      autoFocus
-                    >
-                      Delete Vehicle
-                    </Button>
-                  </DialogActions>
-                </Dialog>
-              </Grid>
-            </Grid>
-            {/* <Grid item style={{ border: "solid 1px green" }}>
-              <Typography variant="subtitle1">
-                Current Value: {"$5,000"}
-              </Typography>
-            </Grid> */}
-          </Grid>
-        </Grid>
-      </Paper>
+      <VehicleCard car={singleCar} />
       <Typography
         className={classes.header}
         gutterBottom
@@ -248,4 +170,19 @@ SingleCarGarage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SingleCarGarage);
+const mapStateToProps = state => {
+  const { year, make, model, trim, color, miles, vin, image } = state.vehicle;
+  return {
+    year,
+    make,
+    model,
+    trim,
+    color,
+    miles,
+    vin,
+    image,
+    garage: state.vehicle.garage
+  };
+};
+
+export default connect(mapStateToProps)(withStyles(styles)(SingleCarGarage));

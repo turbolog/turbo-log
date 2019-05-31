@@ -6,13 +6,26 @@ import * as serviceWorker from "./serviceWorker";
 import { HashRouter } from "react-router-dom";
 import store from "./ducks/store";
 import { Provider } from "react-redux";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { CssBaseline } from "@material-ui/core";
+import teal from "@material-ui/core/colors/teal";
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark",
+    primary: teal
+  }
+});
 
 ReactDOM.render(
-  <Provider store={store}>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </Provider>,
+  <MuiThemeProvider theme={theme}>
+    <CssBaseline />
+    <Provider store={store}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Provider>
+  </MuiThemeProvider>,
 
   document.getElementById("root")
 );
