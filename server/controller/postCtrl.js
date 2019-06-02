@@ -31,7 +31,7 @@ const  deletePost = async (request, response) => {
 }
 const getComments = async (request, response) => {
     const db = request.app.get("db")
-    const { post_id } = request.params
+    const { post_id } = request.body
 
     const comments = await db.get_comments(post_id)
 
@@ -51,7 +51,7 @@ const addComment = async (request, response) => {
     const { post_id, comment } = request.body
 
     const comments = await db.add_comment([user_id, post_id, comment])
-
+    
     response.json(comments)
 }
 module.exports = {

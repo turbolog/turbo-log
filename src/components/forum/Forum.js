@@ -15,6 +15,7 @@ import {Link} from "react-router-dom"
 import { connect } from "react-redux";
 import {addPost,getPosts,update} from "../../ducks/forumReduce"
 import Card from "@material-ui/core/Card"
+import Axios from "axios";
 
 function searching(term) {
   return function (x) {
@@ -53,6 +54,7 @@ const Forum = (props) => {
   useEffect(() => {
     // Update the document title using the browser API
     props.getPosts()
+    
   },[]);
 
   const [open, setOpen] = React.useState(false);

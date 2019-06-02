@@ -30,7 +30,7 @@ const Account =() => {
                     <div className="account-bottom-col">
                       <Link style={{textDecoration:"none"}} to="/log">
                         <Card className="car-log" style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
-                    
+                            
                             <CardHeader title="Car Logs"/>
                         
                             <CardContent>

@@ -7,11 +7,13 @@ import Login from "./components/login/Login";
 import SingleCarGarage from "./components/garage/SingleCarGarage";
 import MultiCarGarage from "./components/garage/MultiCarGarage";
 import Account from "./components/account/Account";
+import NearMe from "./components/near-me/Near-me"
 
 export default (
   <Switch>
     <Route path="/garage/:vehicle_id" component={SingleCarGarage} />
     <Route path="/garage/" component={MultiCarGarage} />
+    <Route path="/near-me" component={NearMe} />
     <Route path="/account" component={Account} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
