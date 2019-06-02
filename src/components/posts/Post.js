@@ -73,15 +73,15 @@ function Post(props) {
   const [responseComments2, setResponseComments2] = React.useState([]);
   const [expanded, setExpanded] = React.useState(false);
   
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   const {post_id} = props.post
-  // axios.post("/api/comments", {post_id}).then(result => {
-  //   console.log('result: ', result);
-  //   setResponseComments2(result.data.comment)
-  // })
+    const {post_id} = props.post
+  axios.post("/api/comments", {post_id}).then(result => {
+    console.log('result: ', result);
+    setResponseComments2(result.data.comment)
+  })
     
-  // },[]);
+  },[]);
 
   const handleComment = event => {
     setComment(event.target.value);
@@ -198,53 +198,13 @@ const displayComments = responseComments.map(comment => {
           <CardContent>
            <Typography variant="body2" color="textSecondary" component="p">
              A none offincive comment 
-           {/* {displayComments} */}
+           {displayComments}
             </Typography>
           </CardContent>
             </Card>
 
 
 
-            <Card style={{margin:" 20px 400px 0 400px" , border:"1px white solid"}}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label="Recipe">
-                  <img src="https://popingservers.com/images/1.png" />
-                </Avatar>
-                    }
-              
-             title="Commenter"
-            subheader="September 14, 2016"
-           />
-          <CardContent>
-           <Typography variant="body2" color="textSecondary" component="p">
-             A none offincive comment 
-           {/* {displayComments} */}
-            </Typography>
-          </CardContent>
-            </Card>
-
-
-
-
-            <Card style={{margin:" 20px 400px 0 400px" , border:"1px white solid"}}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label="Recipe">
-                  <img src="https://popingservers.com/images/1.png" />
-                </Avatar>
-                    }
-              
-             title="Commenter"
-            subheader="September 14, 2016"
-           />
-          <CardContent>
-           <Typography variant="body2" color="textSecondary" component="p">
-             A none offincive comment 
-           {/* {displayComments} */}
-            </Typography>
-          </CardContent>
-            </Card>
             
             
             

@@ -108,6 +108,7 @@ const Forum = (props) => {
 
            <Typography variant="subtitle1" id="simple-modal-description">
            <TextField
+            required
             name="title"
             id="outlined-dense"
             style={{ width:"100%"}}
@@ -120,6 +121,7 @@ const Forum = (props) => {
            
            
             <TextField
+             required
               style={{ width:"100%"}}
               name="post"
               id="outlined-multiline-static"
