@@ -12,7 +12,7 @@ const initialState = {
   image: ""
 };
 
-const UPDATE = "UPDATE";
+const UPDATE_VEHICLE = "UPDATE_VEHICLE";
 const ADD_CAR = "ADD_CAR";
 const DELETE_CAR = "DELETE_CAR";
 const UPDATE_MILES = "UPDATE_MILES";
@@ -20,7 +20,7 @@ const GET_CARS = "GET_CARS";
 
 export function update(name, value) {
   return {
-    type: UPDATE,
+    type: UPDATE_VEHICLE,
     payload: { name, value }
   };
 }
@@ -62,7 +62,7 @@ export function updateMiles(miles, vehicle_id) {
 function reducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case UPDATE:
+    case UPDATE_VEHICLE:
       return {
         ...state,
         [payload.name]: payload.value
