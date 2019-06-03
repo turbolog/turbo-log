@@ -102,7 +102,7 @@ app.get("/api/users/posts", getUserPosts)
 app.post("/api/posts", addPost)
 app.delete("/api/posts/:post_id", deletePost)
 app.get("/api/favorites", getFavorites)
-app.get("/api/comments", getComments)
+app.get("/api/comments/:post_id", getComments)
 app.post("/api/comments", addComment)
 
 app.listen(SERVER_PORT, () => console.log(`Listening on ${SERVER_PORT}`))

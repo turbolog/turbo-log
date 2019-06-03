@@ -31,10 +31,8 @@ const  deletePost = async (request, response) => {
 }
 const getComments = async (request, response) => {
     const db = request.app.get("db")
-    const { post_id } = request.body
-
+    const { post_id } = request.params
     const comments = await db.get_comments(post_id)
-
     response.json(comments)
 }
 const getFavorites = async (request, response) => {
