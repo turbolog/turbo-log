@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -23,6 +23,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import "../forum/Forum.css";
 import NavBar from "../navbar/NavBar";
+import axios from "axios"
 
 const useStyles = makeStyles(theme => ({
     // card: {
@@ -65,10 +66,22 @@ const useStyles = makeStyles(theme => ({
 
 
 function Post(props) {
-const classes = useStyles();
-
-const [comment, setComment] = React.useState("");
-const [expanded, setExpanded] = React.useState(false);
+  const classes = useStyles();
+  
+  const [comment, setComment] = React.useState("");
+  const [responseComments, setResponseComments] = React.useState([]);
+  const [responseComments2, setResponseComments2] = React.useState([]);
+  const [expanded, setExpanded] = React.useState(false);
+  
+  useEffect(() => {
+    
+    const {post_id} = props.post
+  axios.post("/api/comments", {post_id}).then(result => {
+    console.log('result: ', result);
+    setResponseComments2(result.data)
+  })
+    
+  },[]);
 
   const handleComment = event => {
     setComment(event.target.value);
@@ -78,7 +91,56 @@ const [expanded, setExpanded] = React.useState(false);
     setExpanded(!expanded);
   };
 
+const addComment = () => {
+  const {post_id} = props.post
+  axios.post("/api/comments", {post_id,comment}).then(result => {
+    setResponseComments(result.data)
+  })
+}
 
+
+const displayComments = responseComments.map(comment => {
+  return   (
+  <Card style={{marginLeft:"150px"}}>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="Recipe">
+                  <img src="https://popingservers.com/images/1.png" />
+                </Avatar>
+                    }
+              
+            title="Commenter"
+            subheader="September 14, 2016"
+          />
+          <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+              {comment.comment} 
+            </Typography>
+          </CardContent>
+            </Card>
+  ) 
+})
+//    const displayComments2 = responseComments2.map(comment => {
+//         return   (
+//       <Card style={{marginLeft:"150px"}}>
+//             <CardHeader
+//               avatar={
+//                 <Avatar aria-label="Recipe">
+//                   <img src="https://popingservers.com/images/1.png" />
+//                 </Avatar>
+//                     }
+              
+//             title="Commenter"
+//             subheader="September 14, 2016"
+//           />
+//           <CardContent>
+//           <Typography variant="body2" color="textSecondary" component="p">
+//               {comment.comment} 
+//             </Typography>
+//           </CardContent>
+//             </Card>
+//   ) 
+// })
     return (
         <Card style={{ margin: "20px", border: "2px black solid" }}>
         <CardHeader
@@ -122,7 +184,7 @@ const [expanded, setExpanded] = React.useState(false);
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             
-            <Card style={{marginLeft:"150px"}}>
+            <Card style={{margin:" 20px 400px 0 400px" , border:"1px white solid"}}>
             <CardHeader
               avatar={
                 <Avatar aria-label="Recipe">
@@ -135,10 +197,17 @@ const [expanded, setExpanded] = React.useState(false);
            />
           <CardContent>
            <Typography variant="body2" color="textSecondary" component="p">
-              this a none offancive comment 
+             A none offincive comment 
+           {displayComments}
+           {/* {displayComments2} */}
+           
             </Typography>
           </CardContent>
             </Card>
+
+
+
+            
             
             
             
@@ -151,6 +220,10 @@ const [expanded, setExpanded] = React.useState(false);
               margin="dense"
               onChange={handleComment}
             />
+            
+             <Button  onClick={addComment} variant="contained" color="primary" className={classes.button}>
+                Add
+             </Button>
           </CardContent>
         </Collapse>
       </Card>
