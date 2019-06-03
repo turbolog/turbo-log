@@ -26,9 +26,7 @@ const useStyles = makeStyles(theme => ({
 const NavBar = props => {
   const classes = useStyles();
 
-  useEffect(() => {
-    props.getUserSession();
-  }, []);
+  
 
   return (
     <div>
