@@ -21,7 +21,9 @@ const styles = theme => ({
     padding: theme.spacing(2),
     margin: "auto",
     maxWidth: 800,
-    background: "#99b1d8"
+    background: "#202226",
+    border: "solid 1px black",
+    marginBottom: "20px"
   },
   image: {
     width: 400,
@@ -88,7 +90,7 @@ function VehicleCard(props) {
                 style={{ cursor: "pointer" }}
               >
                 <Link
-                  to="/addRecordForm"
+                  to={`/addRecordForm/${props.car.vehicle_id}`}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   Add Record

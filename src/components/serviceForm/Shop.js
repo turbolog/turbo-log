@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { updateForm, submitDIYRecord, getID } from "../../ducks/formReducer";
+import { updateForm } from "../../ducks/formReducer";
 import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
 import DIY from "./DIY";
 import Shop from "./Shop";
 
+import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { Typography, Radio, Button } from "@material-ui/core";
+import Input from "@material-ui/core/Input";
+import {
+  Typography,
+  Radio,
+  Fab,
+  MenuItem,
+  Select,
+  OutlinedInput,
+  Button
+} from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
 import PartsForm from "./PartsForm";
 
 const styles = makeStyles(theme => ({
@@ -26,28 +37,20 @@ const styles = makeStyles(theme => ({
   },
   menu: {
     width: 200
+  },
+  file: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(4)
   }
 }));
 
 function ServiceForm(props) {
   const classes = styles();
   const [selectedValue, setSelectedValue] = useState("");
-
-  
+  // const [count, setCount] = useState(0);
 
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
-  };
-
-  const handleSubmit = () => {
-    // console.log(props);
-    props.submitDIYRecord(
-      props.vehicle_id,
-      props.shop,
-      props.date,
-      props.miles,
-      props.summary
-    );
   };
 
   if (selectedValue === "b") {
@@ -55,6 +58,13 @@ function ServiceForm(props) {
   } else if (selectedValue === "a") {
     return <DIY />;
   }
+  // const increment = e => {
+  //   setCount([...parts, <PartsForm />]);
+  // };
+
+  // const decrement = e => {
+  //   setCount(countMinus);
+  // };
 
   return (
     <div>
@@ -63,7 +73,7 @@ function ServiceForm(props) {
         variant="h3"
         style={{ textAlign: "center", marginTop: "5vh" }}
       >
-        DIY Log
+        Shop Log
       </Typography>
       <div
         style={{
@@ -112,7 +122,15 @@ function ServiceForm(props) {
           margin="normal"
           variant="outlined"
         />
-        <PartsForm />
+        <TextField
+          name="shop_name"
+          id="outlined-name"
+          label="Shop Name"
+          className={classes.textField}
+          onChange={handleChange}
+          margin="normal"
+          variant="outlined"
+        />
         <TextField
           name="summary"
           id="outlined-multiline-flexible"
@@ -123,15 +141,19 @@ function ServiceForm(props) {
           margin="normal"
           variant="outlined"
         />
+
+        <Input
+          type="file"
+          className={classes.file}
+          style={{ marginRight: "50px" }}
+        />
       </form>
-      <Button onClick={handleSubmit}>Submit</Button>
     </div>
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
-    vehicle_id: ownProps.vehicle_id,
     shop: state.form.shop,
     date: state.form.date,
     miles: state.form.miles,
@@ -142,5 +164,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { updateForm, submitDIYRecord, getID }
+  { updateForm }
 )(ServiceForm);

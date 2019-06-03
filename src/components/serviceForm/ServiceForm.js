@@ -1,24 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { updateForm } from "../../ducks/formReducer";
+import { updateForm, getID } from "../../ducks/formReducer";
 import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
+import DIY from "./DIY";
 
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
-import {
-  Typography,
-  Radio,
-  Fab,
-  MenuItem,
-  Select,
-  OutlinedInput,
-  Button
-} from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Typography, Radio } from "@material-ui/core";
 import PartsForm from "./PartsForm";
+import Shop from "./Shop";
 
 const styles = makeStyles(theme => ({
   container: {
@@ -40,24 +31,29 @@ const styles = makeStyles(theme => ({
 
 function ServiceForm(props) {
   const classes = styles();
-  const [selectedValue, setSelectedValue] = useState("");
-  // const [count, setCount] = useState(0);
-
+  const [selectedValue, setSelectedValue] = useState("a");
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
   };
+
+  useEffect(() => {
+    props.getID(+props.match.params.vehicle_id);
+  }, []);
 
   const handleRadioButton = e => {
     setSelectedValue(e.target.value);
   };
 
-  // const increment = e => {
-  //   setCount([...parts, <PartsForm />]);
-  // };
-
-  // const decrement = e => {
-  //   setCount(countMinus);
-  // };
+  if (selectedValue === "b") {
+    return <Shop handleRadioButton={handleRadioButton} />;
+  } else if (selectedValue === "a") {
+    return (
+      <DIY
+        handleRadioButton={handleRadioButton}
+        id={+props.match.params.vehicle_id}
+      />
+    );
+  }
 
   return (
     <div>
@@ -128,8 +124,9 @@ function ServiceForm(props) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
+    vehicle_id: +ownProps.match.params.vehicle_id,
     shop: state.form.shop,
     date: state.form.date,
     miles: state.form.miles,
@@ -140,5 +137,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { updateForm }
+  { updateForm, getID }
 )(ServiceForm);

@@ -3,15 +3,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import {
-  Typography,
-  Radio,
-  Fab,
-  MenuItem,
-  Select,
-  OutlinedInput,
-  Button
-} from "@material-ui/core";
+import { Typography, Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
 const styles = makeStyles(theme => ({
@@ -34,7 +26,6 @@ const styles = makeStyles(theme => ({
 
 function PartsForm(props) {
   const classes = styles();
-  const [selectedValue, setSelectedValue] = useState("");
 
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
@@ -66,7 +57,10 @@ function PartsForm(props) {
         variant="outlined"
         style={{ width: "30vw" }}
       />
-      <Input type="file" variant="outlined" style={{ marginRight: "50px" }} />
+      <Typography variant="h5" style={{ marginRight: "20px" }}>
+        Add Parts Invoice:
+      </Typography>
+      <Input type="file" style={{ marginRight: "50px" }} />
       <Fab
         size="small"
         color="secondary"

@@ -11,7 +11,8 @@ import ServiceForm from "./components/serviceForm/ServiceForm";
 
 export default (
   <Switch>
-    <Route path="/addRecordForm" component={ServiceForm} />
+    <Route path="/addRecordForm/:vehicle_id" component={ServiceForm} />
+    {/* <Route path="/addRecordForm" component={ServiceForm} /> */}
     <Route path="/garage/:vehicle_id" component={SingleCarGarage} />
     <Route path="/garage/" component={MultiCarGarage} />
     <Route path="/account" component={Account} />

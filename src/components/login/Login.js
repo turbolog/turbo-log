@@ -61,7 +61,6 @@ const Login = props => {
   if (redirect) {
     return <Redirect to="/" />;
   }
-  console.log(props);
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
