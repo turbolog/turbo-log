@@ -68,7 +68,6 @@ const Forum = (props) => {
   //   return <Post post={post} /> 
   // } 
    const posts = props.posts.map(post =>{
-    console.log(post);
      return <Post post ={post}/>
      
    })
