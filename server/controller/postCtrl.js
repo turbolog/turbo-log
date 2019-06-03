@@ -4,6 +4,14 @@ const getPosts = async (request, response) => {
     
     response.json(posts)
 }
+const getUserPosts = async (request, response) => {
+    const db = request.app.get("db")
+    const { user_id } = request.session.user
+
+    const posts = await db.get_user_post(user_id)
+    
+    response.json(posts)
+}
 const addPost = async (request, response) => {
     const db = request.app.get("db")
     const { title, post } = request.body
@@ -21,8 +29,37 @@ const  deletePost = async (request, response) => {
 
     response.json(post)
 }
+const getComments = async (request, response) => {
+    const db = request.app.get("db")
+    const { post_id } = request.body
+
+    const comments = await db.get_comments(post_id)
+
+    response.json(comments)
+}
+const getFavorites = async (request, response) => {
+    const db = request.app.get("db")
+    const { user_id } = request.session.user
+
+    const posts = await db.get_favorites(user_id)
+
+    response.json(posts)
+}
+const addComment = async (request, response) => {
+    const db = request.app.get("db")
+    const { user_id } = request.session.user
+    const { post_id, comment } = request.body
+
+    const comments = await db.add_comment([user_id, post_id, comment])
+    
+    response.json(comments)
+}
 module.exports = {
     getPosts,
     addPost,
-    deletePost
+    getUserPosts,
+    deletePost,
+    getComments,
+    addComment,
+    getFavorites,
 }

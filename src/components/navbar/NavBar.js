@@ -43,9 +43,7 @@ const NavBar = props => {
       setOpen(!open)
   }
 
-  useEffect(() => {
-    props.getUserSession();
-  }, []);
+  
 
   return (
     <div>
