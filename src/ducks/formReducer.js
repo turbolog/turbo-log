@@ -11,8 +11,8 @@ const initialState = {
 //action types
 const UPDATE_FORM = "UPDATE_FORM";
 const SUBMIT_DIY_RECORD = "SUBMIT_DIY_RECORD";
-const GET_ID = "GET_ID";
 const SUBMIT_SHOP_RECORD = "SUBMIT_SHOP_RECORD";
+const GET_ID = "GET_ID";
 const TOGGLE_SHOP = "TOGGLE_SHOP";
 //action creators
 export function updateForm(name, value) {
