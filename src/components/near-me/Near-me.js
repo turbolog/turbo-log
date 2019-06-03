@@ -4,28 +4,20 @@ import "./Near-me.css"
 
 import axios from 'axios'
 
+
+
 class NearMe extends Component {
 
-      
+  
     state = {
         venues: [],
-        latitude:"",
-        longitude:""
-    
+       
       }
-      componentWillMount(){
-        
-    
-      }
+      
       componentDidMount() {
+        
         this.getVenues()
-          window.navigator.geolocation.getCurrentPosition(position =>{
-            this.setState({
-              latitude:position.coords.latitude,
-              longitude:position.coords.longitude
-            })
-           
-          })
+          
       }
     
       renderMap = () => {
@@ -39,7 +31,12 @@ class NearMe extends Component {
           client_id: "PMHC2WA1VCBHVYOPPSJ0QSBYTLRF4PNJ04OWVWV0PZJ0QFIR",
           client_secret: "CULSZZ44YAEBOWBFGPB4BF5ISRXXSNYR0EE3JV3CNE2ZWHV0",
           query: "auto repair",
-          near: "Dallas, TX",
+          // lat:32.776665,
+          // lng:-96.796989,
+          // radius:"1000",
+          // limit:"30",
+          // near: "dallas, TX",
+          near:`${this.props.match.params.city},${this.props.match.params.state}`,
           v: "20182507"
         }
     
@@ -61,7 +58,7 @@ class NearMe extends Component {
         
         var map = new window.google.maps.Map(document.getElementById('map'), {
           center: {lat: 32.776665, lng: -96.796989},
-          zoom: 10
+          zoom: 5
         })
     
         // Create An InfoWindow
@@ -100,6 +97,8 @@ class NearMe extends Component {
       }
     
       render() {
+        console.log(this.props.match.params.city);
+        console.log(this.props.match.params.state);
         return (
           <main>
             <div id="map"></div>

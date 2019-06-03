@@ -78,7 +78,7 @@ function Post(props) {
     const {post_id} = props.post
   axios.post("/api/comments", {post_id}).then(result => {
     console.log('result: ', result);
-    setResponseComments2(result.data.comment)
+    setResponseComments2(result.data)
   })
     
   },[]);
@@ -199,6 +199,8 @@ const displayComments = responseComments.map(comment => {
            <Typography variant="body2" color="textSecondary" component="p">
              A none offincive comment 
            {displayComments}
+           {/* {displayComments2} */}
+           
             </Typography>
           </CardContent>
             </Card>

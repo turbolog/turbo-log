@@ -80,7 +80,7 @@ const Account =() => {
                          </Card> 
                       </Link> 
 
-                      <Link style={{textDecoration:"none"}} to="/log">
+                      <Link style={{textDecoration:"none"}} to="/getting-location">
                         <Card style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
                            <CardMedia
                                 className={classes.media}
