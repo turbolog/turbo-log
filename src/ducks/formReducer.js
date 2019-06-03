@@ -19,7 +19,6 @@ export function updateForm(name, value) {
     payload: { name, value }
   };
 }
-
 export function submitDIYRecord(
   vehicle_id,
   shop,

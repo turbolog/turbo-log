@@ -40,22 +40,20 @@ function ServiceForm(props) {
   };
 
   const handleSubmit = () => {
-    // console.log(props);
     props.submitDIYRecord(
       props.vehicle_id,
       props.shop,
       props.date,
       props.miles,
       props.summary
-    );
-  };
-
-  if (selectedValue === "b") {
-    return <Shop />;
-  } else if (selectedValue === "a") {
-    return <DIY />;
-  }
-
+      );
+    };
+    
+    if (selectedValue === "b") {
+      return <Shop />;
+    } else if (selectedValue === "a") {
+      return <DIY />;
+    }
   return (
     <div>
       <NavBar />
