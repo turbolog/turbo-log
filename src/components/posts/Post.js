@@ -64,44 +64,42 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-
-function Post(props) {
-  const classes = useStyles();
-  
-  const [comment, setComment] = React.useState("");
-  const [responseComments, setResponseComments] = React.useState([]);
-  const [responseComments2, setResponseComments2] = React.useState([]);
-  const [expanded, setExpanded] = React.useState(false);
-  
-  useEffect(() => {
+  function Post(props) {
+    const classes = useStyles();
     
-    const {post_id} = props.post
-  axios.post("/api/comments", {post_id}).then(result => {
-    console.log('result: ', result);
-    setResponseComments2(result.data)
-  })
+    const [comment, setComment] = React.useState("");
+    const [responseComments, setResponseComments] = React.useState([]);
+    const [expanded, setExpanded] = React.useState(false);
     
-  },[]);
-
-  const handleComment = event => {
-    setComment(event.target.value);
-  };
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
-const addComment = () => {
-  const {post_id} = props.post
-  axios.post("/api/comments", {post_id,comment}).then(result => {
-    setResponseComments(result.data)
-  })
-}
-
-
-const displayComments = responseComments.map(comment => {
-  return   (
-  <Card style={{marginLeft:"150px"}}>
+    useEffect(() => {
+      
+      const {post_id} = props.post
+      axios.get(`/api/comments/${post_id}`).then(result => {
+        setResponseComments(result.data)
+      })
+      
+    },[]);
+    
+    const handleComment = event => {
+      setComment(event.target.value);
+    };
+    
+    const handleExpandClick = () => {
+      setExpanded(!expanded);
+    };
+    
+    const addComment = () => {
+      const {post_id} = props.post
+      axios.post("/api/comments", {post_id,comment}).then(result => {
+        setResponseComments(result.data)
+      })
+    }
+    
+    
+    console.log(responseComments)
+    const displayComments = responseComments.map(comment => {
+      return   (
+        <Card style={{margin:" 20px 200px 10px 200px" , border:"1px white solid"}}>
             <CardHeader
               avatar={
                 <Avatar aria-label="Recipe">
@@ -120,7 +118,6 @@ const displayComments = responseComments.map(comment => {
             </Card>
   ) 
 })
-
     return (
         <Card style={{ margin: "20px", border: "2px black solid" }}>
         <CardHeader
@@ -163,35 +160,7 @@ const displayComments = responseComments.map(comment => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            
-            <Card style={{margin:" 20px 400px 0 400px" , border:"1px white solid"}}>
-            <CardHeader
-              avatar={
-                <Avatar aria-label="Recipe">
-                  <img src="https://popingservers.com/images/1.png" />
-                </Avatar>
-                    }
-              
-             title="Commenter"
-            subheader="September 14, 2016"
-           />
-          <CardContent>
-           <Typography variant="body2" color="textSecondary" component="p">
-             A none offincive comment 
            {displayComments}
-           {/* {displayComments2} */}
-           
-            </Typography>
-          </CardContent>
-            </Card>
-
-
-
-            
-            
-            
-            
-
             <Typography />
             <TextField
               id="standard-dense"
