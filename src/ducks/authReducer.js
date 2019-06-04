@@ -8,7 +8,6 @@ const initialState = {
   password: "",
   user: "",
   user_id: null,
-  sessionUser: {}
 };
 
 //action types
@@ -24,10 +23,11 @@ export function update(name, value) {
     payload: { name, value }
   };
 }
-export function logout(id) {
+export function logout() {
+  console.log("hit")
   return {
     type: LOGOUT,
-    payload: axios.get(`/auth/logout/${id}`)
+    payload: axios.get(`/auth/logout`)
   };
 }
 
@@ -86,12 +86,12 @@ export default function authReducer(state = initialState, action) {
     case `${GET_USER_SESSION}_FULFILLED`:
       return {
         ...state,
-        sessionUser: action.payload.data
+        user_id: action.payload.data.user_id,
+        username: action.payload.data.username
       };
     case `${LOGOUT}_FULFILLED`:
       return {
         ...state,
-        sessionUser: {},
         user_id: null,
         username: ""
       };
