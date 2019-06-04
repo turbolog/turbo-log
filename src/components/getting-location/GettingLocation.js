@@ -60,9 +60,9 @@ function GettingLocation() {
         variant="filled"
         onChange={handleState}
       />
-      <Link to={`/near-me/${city}/${state}`}>
+      <Link style={{textDecoration:"none"}} to={`/near-me/${city}/${state}`}>
 
-      <Button color="secondary">
+      <Button color="primary" variant="contained" >
         Primary
       </Button>
       </Link>

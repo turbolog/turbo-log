@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card"
+import axios from "axios"
 import "./Near-me.css"
 
-import axios from 'axios'
+
 
 
 
@@ -11,12 +13,28 @@ class NearMe extends Component {
   
     state = {
         venues: [],
+        wehther:[],
+        lat: 0,
+        lon: 0
        
       }
       
       componentDidMount() {
         
-        this.getVenues()
+       
+
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.props.match.params.city},us&appid=da14f27ad149c662485c0327e1e4bcf8`).then(response =>{
+          this.setState({
+            wehther: [response.data],
+            lat: response.data.coord.lat,
+            lon: response.data.coord.lon 
+          }, () => {
+            
+            
+            this.getVenues()
+          })
+        })
+        
           
       }
     
@@ -31,11 +49,6 @@ class NearMe extends Component {
           client_id: "PMHC2WA1VCBHVYOPPSJ0QSBYTLRF4PNJ04OWVWV0PZJ0QFIR",
           client_secret: "CULSZZ44YAEBOWBFGPB4BF5ISRXXSNYR0EE3JV3CNE2ZWHV0",
           query: "auto repair",
-          // lat:32.776665,
-          // lng:-96.796989,
-          // radius:"1000",
-          // limit:"30",
-          // near: "dallas, TX",
           near:`${this.props.match.params.city},${this.props.match.params.state}`,
           v: "20182507"
         }
@@ -55,10 +68,13 @@ class NearMe extends Component {
       initMap = () => {
     
         // Create A Map
+
         
         var map = new window.google.maps.Map(document.getElementById('map'), {
-          center: {lat: 32.776665, lng: -96.796989},
-          zoom: 5
+          center: {lat:this.state.lat, lng: this.state.lon},
+          
+          // center:{lat:30.17, lng:-91.14},
+          zoom: 8
         })
     
         // Create An InfoWindow
@@ -95,12 +111,25 @@ class NearMe extends Component {
         
     
       }
-    
       render() {
-        console.log(this.props.match.params.city);
-        console.log(this.props.match.params.state);
+        
+        console.log(this.state.wehther)
         return (
           <main>
+            {!this.state.wehther ? <h1>loading..</h1> : this.state.wehther.map(weatherdata =>{
+              return <Card  key={weatherdata.main.temp} style={{height:"20vh", textAlign:"center", paddingTop:"20px"}}>
+                        <Typography style={{fontSize:"25px"}}>
+                          {this.props.match.params.city.toUpperCase()},{" "}
+                          {this.props.match.params.state.toUpperCase()}
+                        </Typography>
+                        <Typography style={{fontSize:"40px"}} >
+                          {Math.round(weatherdata.main.temp*9/5-459.67)}{""}	&#8457;
+                        </Typography>
+                        <Typography style={{fontSize:"20px"}}>
+                        {weatherdata.weather[0].description}
+                        </Typography>
+                     </Card>
+            })}
             <div id="map"></div>
           </main>
         )

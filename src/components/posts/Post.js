@@ -120,27 +120,7 @@ const displayComments = responseComments.map(comment => {
             </Card>
   ) 
 })
-//    const displayComments2 = responseComments2.map(comment => {
-//         return   (
-//       <Card style={{marginLeft:"150px"}}>
-//             <CardHeader
-//               avatar={
-//                 <Avatar aria-label="Recipe">
-//                   <img src="https://popingservers.com/images/1.png" />
-//                 </Avatar>
-//                     }
-              
-//             title="Commenter"
-//             subheader="September 14, 2016"
-//           />
-//           <CardContent>
-//           <Typography variant="body2" color="textSecondary" component="p">
-//               {comment.comment} 
-//             </Typography>
-//           </CardContent>
-//             </Card>
-//   ) 
-// })
+
     return (
         <Card style={{ margin: "20px", border: "2px black solid" }}>
         <CardHeader
