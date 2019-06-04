@@ -99,7 +99,7 @@ const useStyles = makeStyles(theme => ({
     console.log(responseComments)
     const displayComments = responseComments.map(comment => {
       return   (
-        <Card style={{margin:" 20px 200px 10px 200px" , border:"1px white solid"}}>
+        <Card style={{margin:" 20px auto 10px auto" , border:"1px white solid", width:"70vw"}}>
             <CardHeader
               avatar={
                 <Avatar aria-label="Recipe">
