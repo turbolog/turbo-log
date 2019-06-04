@@ -48,7 +48,7 @@ function ServiceForm(props) {
 
   const handleSubmit = () => {
     props.submitDIYRecord(
-      props.vehicle_id,
+      props.id,
       props.shop,
       props.date,
       props.miles,

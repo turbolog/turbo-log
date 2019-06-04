@@ -81,7 +81,7 @@ export default function formReducer(state = initialState, action) {
     case `${SUBMIT_DIY_RECORD}_FULFILLED`:
       return {
         ...state,
-        vehicle_id: action.payload,
+        vehicle_id: state.vehicle_id,
         shop: false,
         date: "",
         miles: "",
@@ -91,8 +91,8 @@ export default function formReducer(state = initialState, action) {
     case `${SUBMIT_SHOP_RECORD}_FULFILLED`:
       return {
         ...state,
-        vehicle_id: action.payload,
-        shop: false,
+        vehicle_id: state.vehicle_id,
+        shop: state.shop,
         date: "",
         miles: "",
         summary: "",

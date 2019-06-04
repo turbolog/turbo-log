@@ -50,7 +50,14 @@ function ServiceForm(props) {
   };
 
   const handleShopSubmit = () => {
-    props.submitShopRecord();
+    props.submitShopRecord(
+      props.id,
+      props.shop,
+      props.date,
+      props.miles,
+      props.summary,
+      props.shop_name
+      );;
   };
   if (selectedValue === "b") {
     return <Shop />;
@@ -139,7 +146,7 @@ function ServiceForm(props) {
           className={classes.file}
           style={{ marginRight: "50px" }}
         />
-        <Button onClick={handleShopSubmit} />
+        <Button onClick={handleShopSubmit}>Submit</Button>
       </form>
     </div>
   );
