@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUserSession } from "../../ducks/authReducer";
@@ -14,7 +14,6 @@ import BottomNav from "../bottomnav/BottomNav";
 import Avatar from "@material-ui/core/Avatar";
 import Side from "../side/side";
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -26,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   routes: {
-    [theme.breakpoints.between('xs', "sm")]: {
+    [theme.breakpoints.between("xs", "sm")]: {
       display: "none"
     }
   },
@@ -37,10 +36,10 @@ const useStyles = makeStyles(theme => ({
 
 const NavBar = props => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  function toggleSide () {
-      setOpen(!open)
+  function toggleSide() {
+    setOpen(!open);
   }
 
   return (
@@ -54,50 +53,49 @@ const NavBar = props => {
                 TurboLog
               </Link>
             </Typography>
-            {!props.user_id ? 
-            
-            <Button color="inherit">
-              <Link
-                to="/login"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                Login
-              </Link>
-            </Button>
-            :
-            <>
-            <Avatar className={classes.avatar}>
-              <img src="https://popingservers.com/images/1.png" />
-            </Avatar>
-            <Button className={classes.routes} color="inherit">
-            <Link
-              to="/forum"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Forum
-            </Link>
-          </Button>
-            <Button className={classes.routes} color="inherit">
-            <Link
-              to="/garage"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              Garage
-            </Link>
-          </Button>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="Menu"
-              onClick={toggleSide}
-            >
-              <MenuIcon />
-            </IconButton>
-          </>
-            }
+            {!props.user_id ? (
+              <Button color="inherit">
+                <Link
+                  to="/login"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Login
+                </Link>
+              </Button>
+            ) : (
+              <>
+                <Avatar className={classes.avatar}>
+                  <img src="https://popingservers.com/images/1.png" />
+                </Avatar>
+                <Button className={classes.routes} color="inherit">
+                  <Link
+                    to="/forum"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    Forum
+                  </Link>
+                </Button>
+                <Button className={classes.routes} color="inherit">
+                  <Link
+                    to="/garage"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    Garage
+                  </Link>
+                </Button>
+                <IconButton
+                  edge="start"
+                  className={classes.menuButton}
+                  color="inherit"
+                  aria-label="Menu"
+                  onClick={toggleSide}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </>
+            )}
           </Toolbar>
-          <BottomNav/>
+          <BottomNav />
         </AppBar>
       </div>
     </div>
@@ -107,7 +105,7 @@ const NavBar = props => {
 const mapStateToProps = reduxState => {
   return {
     user_id: reduxState.auth.user_id
-  }
+  };
 };
 
 export default connect(
