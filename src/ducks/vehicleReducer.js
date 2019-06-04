@@ -18,7 +18,7 @@ const DELETE_CAR = "DELETE_CAR";
 const UPDATE_MILES = "UPDATE_MILES";
 const GET_CARS = "GET_CARS";
 
-export function update(name, value) {
+export function updateVehicle(name, value) {
   return {
     type: UPDATE_VEHICLE,
     payload: { name, value }

@@ -11,7 +11,9 @@ const initialState = {
 //action types
 const UPDATE_FORM = "UPDATE_FORM";
 const SUBMIT_DIY_RECORD = "SUBMIT_DIY_RECORD";
+const SUBMIT_SHOP_RECORD = "SUBMIT_SHOP_RECORD";
 const GET_ID = "GET_ID";
+const TOGGLE_SHOP = "TOGGLE_SHOP";
 //action creators
 export function updateForm(name, value) {
   return {
@@ -19,7 +21,21 @@ export function updateForm(name, value) {
     payload: { name, value }
   };
 }
-export function submitDIYRecord(
+
+export function submitDIYRecord(vehicle_id, shop, date, miles, summary) {
+  return {
+    type: SUBMIT_DIY_RECORD,
+    payload: axios.post("/api/records", {
+      vehicle_id,
+      shop,
+      date,
+      miles,
+      summary
+    })
+  };
+}
+
+export function submitShopRecord(
   vehicle_id,
   shop,
   date,
@@ -28,7 +44,7 @@ export function submitDIYRecord(
   shop_name
 ) {
   return {
-    type: SUBMIT_DIY_RECORD,
+    type: SUBMIT_SHOP_RECORD,
     payload: axios.post("/api/records", {
       vehicle_id,
       shop,
@@ -47,6 +63,13 @@ export function getID(vehicle_id) {
   };
 }
 
+export function toggleShop(shop) {
+  return {
+    type: TOGGLE_SHOP,
+    payload: shop
+  };
+}
+
 //reducer
 export default function formReducer(state = initialState, action) {
   switch (action.type) {
@@ -58,8 +81,18 @@ export default function formReducer(state = initialState, action) {
     case `${SUBMIT_DIY_RECORD}_FULFILLED`:
       return {
         ...state,
-        vehicle_id: console.log(action.payload),
+        vehicle_id: state.vehicle_id,
         shop: false,
+        date: "",
+        miles: "",
+        summary: "",
+        shop_name: null
+      };
+    case `${SUBMIT_SHOP_RECORD}_FULFILLED`:
+      return {
+        ...state,
+        vehicle_id: state.vehicle_id,
+        shop: state.shop,
         date: "",
         miles: "",
         summary: "",
@@ -69,6 +102,11 @@ export default function formReducer(state = initialState, action) {
       return {
         ...state,
         vehicle_id: action.payload
+      };
+    case TOGGLE_SHOP:
+      return {
+        ...state,
+        shop: action.payload
       };
     default:
       return state;

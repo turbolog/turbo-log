@@ -43,8 +43,6 @@ const NavBar = props => {
       setOpen(!open)
   }
 
-  
-
   return (
     <div>
       <div className={classes.root}>

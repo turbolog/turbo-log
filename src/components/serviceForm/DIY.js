@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { updateForm, submitDIYRecord, getID } from "../../ducks/formReducer";
+import {
+  updateForm,
+  submitDIYRecord,
+  getID,
+  toggleShop
+} from "../../ducks/formReducer";
 import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
 import DIY from "./DIY";
@@ -33,7 +38,9 @@ function ServiceForm(props) {
   const classes = styles();
   const [selectedValue, setSelectedValue] = useState("");
 
-  
+  useEffect(() => {
+    props.toggleShop(false);
+  }, []);
 
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
@@ -41,7 +48,7 @@ function ServiceForm(props) {
 
   const handleSubmit = () => {
     props.submitDIYRecord(
-      props.vehicle_id,
+      props.id,
       props.shop,
       props.date,
       props.miles,
@@ -140,5 +147,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { updateForm, submitDIYRecord, getID }
+  { updateForm, submitDIYRecord, getID, toggleShop }
 )(ServiceForm);

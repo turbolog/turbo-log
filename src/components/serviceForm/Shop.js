@@ -1,26 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { updateForm } from "../../ducks/formReducer";
+import {
+  updateForm,
+  submitShopRecord,
+  toggleShop
+} from "../../ducks/formReducer";
 import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
 import DIY from "./DIY";
 import Shop from "./Shop";
 
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import {
-  Typography,
-  Radio,
-  Fab,
-  MenuItem,
-  Select,
-  OutlinedInput,
-  Button
-} from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-import PartsForm from "./PartsForm";
+import { Typography, Radio, Button } from "@material-ui/core";
 
 const styles = makeStyles(theme => ({
   container: {
@@ -47,24 +40,30 @@ const styles = makeStyles(theme => ({
 function ServiceForm(props) {
   const classes = styles();
   const [selectedValue, setSelectedValue] = useState("");
-  // const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    props.toggleShop(true);
+  }, []);
 
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
   };
 
+  const handleShopSubmit = () => {
+    props.submitShopRecord(
+      props.id,
+      props.shop,
+      props.date,
+      props.miles,
+      props.summary,
+      props.shop_name
+      );;
+  };
   if (selectedValue === "b") {
     return <Shop />;
   } else if (selectedValue === "a") {
     return <DIY />;
   }
-  // const increment = e => {
-  //   setCount([...parts, <PartsForm />]);
-  // };
-
-  // const decrement = e => {
-  //   setCount(countMinus);
-  // };
 
   return (
     <div>
@@ -147,6 +146,7 @@ function ServiceForm(props) {
           className={classes.file}
           style={{ marginRight: "50px" }}
         />
+        <Button onClick={handleShopSubmit}>Submit</Button>
       </form>
     </div>
   );
@@ -164,5 +164,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { updateForm }
+  { updateForm, submitShopRecord, toggleShop }
 )(ServiceForm);
