@@ -3,12 +3,19 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
+import {Link} from "react-router-dom"
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import Lock from '@material-ui/icons/LockOutlined';
+import LocationOn from '@material-ui/icons/LocationOn';
+import Notes from '@material-ui/icons/NotesOutlined';
+import ForumIcon from '@material-ui/icons/ForumOutlined';
+import Directions_car from '@material-ui/icons/DirectionsCar';
+import {connect} from "react-redux"
+import {logout} from "../../ducks/authReducer"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -42,6 +49,10 @@ const useStyles = makeStyles(theme => ({
 function Side (props) {
   const classes = useStyles()
 
+  function handleClick() {
+    props.logout()
+  }
+
     return(
         <>
         <Hidden mdUp implementation="css">
@@ -59,11 +70,30 @@ function Side (props) {
           onClose={props.toggleSide}
         >
           <List>
-            <ListItem button className={classes.logout} onClick={props.logout} >
-              <ListItemIcon> <Lock /> </ListItemIcon>
-              <ListItemText primary="Logout" />
+            <ListItem button>
+              <ListItemIcon> <Notes /> </ListItemIcon>
+              <ListItemText primary="Car Log" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <Directions_car /> </ListItemIcon>
+              <ListItemText primary="Garage"/>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <LocationOn /> </ListItemIcon>
+              <ListItemText primary="Find Shop" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <ForumIcon /> </ListItemIcon>
+              <ListItemText primary="Forum" />
             </ListItem>
           </List>
+            <Divider />
+            <List>
+              <ListItem className={classes.logout} onClick={handleClick}>
+                <ListItemIcon> <Lock /> </ListItemIcon>
+                <ListItemText primary="Logout" />
+              </ListItem>
+            </List>
         </Drawer>
       </Hidden>
       </>
@@ -75,4 +105,4 @@ const mapStatetoProps = state => {
     user_id: state.auth.user_id
   }
 }
-export default Side
+export default connect(mapStatetoProps,{logout})(Side)

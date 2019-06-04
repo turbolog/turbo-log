@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUserSession } from "../../ducks/authReducer";
 
@@ -36,8 +36,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
+  useEffect(() => {
+    props.getUserSession()
+  },[])
   const classes = useStyles();
   const [open, setOpen] = useState(false)
+
 
   function toggleSide () {
       setOpen(!open)
