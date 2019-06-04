@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-
+import PictureUploader from "../picture-uploader/PictureUploader"
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import { Typography, Fab } from "@material-ui/core";
+import { Typography, Fab, Grid } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 
 const styles = makeStyles(theme => ({
@@ -60,7 +60,10 @@ function PartsForm(props) {
       <Typography variant="h5" style={{ marginRight: "20px" }}>
         Add Parts Invoice:
       </Typography>
-      <Input type="file" style={{ marginRight: "50px" }} />
+        <Grid>
+          <PictureUploader uploadtitle="add"/>
+        </Grid>
+      {/* <Input type="file" style={{ marginRight: "50px" }} />
       <Fab
         size="small"
         color="secondary"
@@ -68,7 +71,7 @@ function PartsForm(props) {
         className={classes.margin}
       >
         <AddIcon />
-      </Fab>
+      </Fab> */}
     </form>
   );
 }
