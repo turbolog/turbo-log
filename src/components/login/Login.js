@@ -61,7 +61,6 @@ const Login = props => {
   if (redirect) {
     return <Redirect to="/" />;
   }
-  console.log(props)
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -74,7 +73,7 @@ const Login = props => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate autoComplete="off">
             <TextField
               variant="outlined"
               margin="normal"
@@ -83,7 +82,7 @@ const Login = props => {
               id="username"
               label="Username"
               name="username"
-              autoComplete="username"
+              autoComplete="off"
               autoFocus
               onChange={handleInputChange}
             />
@@ -96,7 +95,7 @@ const Login = props => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="off"
               onChange={handleInputChange}
             />
             <FormControlLabel
@@ -136,8 +135,8 @@ const Login = props => {
 const mapStateToProps = state => {
   return {
     username: state.auth.username,
-    password: state.auth.password,
-  }
+    password: state.auth.password
+  };
 };
 
 export default connect(
