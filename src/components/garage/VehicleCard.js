@@ -90,7 +90,7 @@ function VehicleCard(props) {
                 style={{ cursor: "pointer" }}
               >
                 <Link
-                  to={`/addRecordForm/${props.car.vehicle_id}`}
+                  to={`/addrecord/${props.car.vehicle_id}`}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   Add Record
