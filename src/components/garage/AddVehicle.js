@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import { Typography, Fab } from "@material-ui/core";
+import { Typography, Fab, Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import NavBar from "../navbar/NavBar";
-import { updateVehicle } from "../../ducks/vehicleReducer";
+import { updateVehicle, addCar } from "../../ducks/vehicleReducer";
 import { connect } from "react-redux";
 
 const styles = makeStyles(theme => ({
@@ -39,6 +40,19 @@ function AddVehicle(props) {
 
   const handleChange = e => {
     props.updateVehicle(e.target.name, e.target.value);
+  };
+
+  const addVehicle = () => {
+    props.addCar(
+      props.year,
+      props.make,
+      props.model,
+      props.trim,
+      props.color,
+      props.miles,
+      props.vin,
+      props.image
+    );
   };
 
   return (
@@ -116,11 +130,11 @@ function AddVehicle(props) {
           name="vin"
         />
         <div className={classes.upload}>
-          <Typography>Add Vehicle Image:</Typography>
+          <Typography>Add Image:</Typography>
           <Input type="file" />
           <Fab
             size="small"
-            color="secondary"
+            color="primary"
             aria-label="Add"
             className={classes.margin}
           >
@@ -128,13 +142,29 @@ function AddVehicle(props) {
           </Fab>
         </div>
       </form>
+      <Link to="/garage">
+        <Button color="primary" onClick={addVehicle}>
+          Submit
+        </Button>
+      </Link>
     </div>
   );
 }
 
-const mapStateToProps = state => state;
+const mapStateToProps = state => {
+  return {
+    year: state.vehicle.year,
+    make: state.vehicle.make,
+    model: state.vehicle.model,
+    trim: state.vehicle.trim,
+    color: state.vehicle.color,
+    miles: state.vehicle.miles,
+    vin: state.vehicle.vin,
+    image: state.vehicle.image
+  };
+};
 
 export default connect(
   mapStateToProps,
-  updateVehicle
+  { updateVehicle, addCar }
 )(AddVehicle);

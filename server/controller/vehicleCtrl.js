@@ -27,6 +27,7 @@ const deleteVehicle = async (request, response) => {
 const addVehicle = async (request, response) => {
     const db = request.app.get("db")
     const { year,make,model,trim,color,miles,vin,image } = request.body
+    console.log(request.body)
     const { user_id } = request.session.user 
     const garage = await db.add_vehicle([user_id,year,make,model,trim,color,miles,vin,image])
     

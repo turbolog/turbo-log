@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { deleteCar } from "../../ducks/vehicleReducer";
+import { connect } from "react-redux";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -53,6 +55,11 @@ function VehicleCard(props) {
   };
 
   const closeDeleteAlert = () => {
+    setOpen(false);
+  };
+
+  const deleteVehicle = () => {
+    props.deleteCar(props.car.vehicle_id);
     setOpen(false);
   };
 
@@ -126,7 +133,7 @@ function VehicleCard(props) {
                   <Button onClick={closeDeleteAlert} color="primary">
                     Go back
                   </Button>
-                  <Button onClick={closeDeleteAlert} color="primary" autoFocus>
+                  <Button onClick={deleteVehicle} color="primary" autoFocus>
                     Delete Vehicle
                   </Button>
                 </DialogActions>
@@ -139,4 +146,13 @@ function VehicleCard(props) {
   );
 }
 
-export default withStyles(styles)(VehicleCard);
+const mapStateToProps = state => {
+  return {
+    vehicle_id: state.vehicle.vehicle_id
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { deleteCar }
+)(withStyles(styles)(VehicleCard));
