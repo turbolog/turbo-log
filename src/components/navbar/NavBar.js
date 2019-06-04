@@ -47,8 +47,6 @@ const NavBar = props => {
       setOpen(!open)
   }
 
-  // if (!props.user_id) return <Redirect to="/" />
-
   return (
     <div>
       <div className={classes.root}>

@@ -3,10 +3,11 @@ import NavBar from "../navbar/NavBar";
 import {Redirect} from "react-router-dom"
 import { connect } from "react-redux";
 import { getCars } from "../../ducks/vehicleReducer";
+import { Link } from "react-router-dom";
 
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { Typography, Button } from "@material-ui/core/";
 import VehicleCard from "./VehicleCard";
 
 const styles = theme => ({
@@ -35,6 +36,10 @@ const styles = theme => ({
   },
   vehicleInfo: {
     maxWidth: 500
+  },
+  button: {
+    margin: "auto",
+    width: "auto"
   }
 });
 
@@ -43,6 +48,8 @@ function MultiCarGarage(props) {
   useEffect(() => {
     props.getCars();
   }, []);
+
+  const handleAddVehicle = () => {};
 
   let cars = props.garage.map(vehicle => {
     return <VehicleCard car={vehicle} />;
@@ -53,15 +60,31 @@ function MultiCarGarage(props) {
   return (
     <div className={classes.root}>
       <NavBar />
-      <Typography
-        className={classes.header}
-        gutterBottom
-        variant="h3"
-        style={{ textAlign: "center" }}
-      >
-        My Garage
-      </Typography>
+      <div>
+        <Typography
+          className={classes.header}
+          gutterBottom
+          variant="h3"
+          style={{ textAlign: "center" }}
+        >
+          My Garage
+        </Typography>
+      </div>
       {cars}
+      <div className={classes.button}>
+        <Link
+          to="/addvehicle"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleAddVehicle}
+          >
+            Add Vehicle
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

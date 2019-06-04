@@ -82,7 +82,7 @@ const Login = props => {
               id="username"
               label="Username"
               name="username"
-              autoComplete="username"
+              autoComplete="off"
               autoFocus
               onChange={handleInputChange}
             />
@@ -95,7 +95,7 @@ const Login = props => {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="off"
               onChange={handleInputChange}
             />
             <FormControlLabel

@@ -18,6 +18,7 @@ const app = express()
 app.use(express.json())
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET,ACCESS_ID,SECRET_KEY,BUCKET_S3} = process.env
 
+app.use( express.static( `${__dirname}/../build` ) );
 
 // uploading pic to aws
 

@@ -45,7 +45,12 @@ function ServiceForm(props) {
   };
 
   if (selectedValue === "b") {
-    return <Shop handleRadioButton={handleRadioButton} />;
+    return (
+      <Shop
+        handleRadioButton={handleRadioButton}
+        id={+props.match.params.vehicle_id}
+      />
+    );
   } else if (selectedValue === "a") {
     return (
       <DIY

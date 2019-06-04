@@ -1,26 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import PictureUplodar from "../picture-uploader/PictureUploader"
+
 import { connect } from "react-redux";
-import { updateForm } from "../../ducks/formReducer";
+import {
+  updateForm,
+  submitShopRecord,
+  toggleShop
+} from "../../ducks/formReducer";
 import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
 import DIY from "./DIY";
 import Shop from "./Shop";
 
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import {
-  Typography,
-  Radio,
-  Fab,
-  MenuItem,
-  Select,
-  OutlinedInput,
-  Button
-} from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
-import PartsForm from "./PartsForm";
+import { Typography, Radio, Button, Grid} from "@material-ui/core";
 
 const styles = makeStyles(theme => ({
   container: {
@@ -41,30 +36,40 @@ const styles = makeStyles(theme => ({
   file: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(4)
-  }
+  },
+  button: {
+    margin: theme.spacing(1),
+    width:"14vw"
+  },
 }));
 
 function ServiceForm(props) {
   const classes = styles();
   const [selectedValue, setSelectedValue] = useState("");
-  // const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    props.toggleShop(true);
+  }, []);
 
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
   };
 
+  const handleShopSubmit = () => {
+    props.submitShopRecord(
+      props.id,
+      props.shop,
+      props.date,
+      props.miles,
+      props.summary,
+      props.shop_name
+      );;
+  };
   if (selectedValue === "b") {
     return <Shop />;
   } else if (selectedValue === "a") {
     return <DIY />;
   }
-  // const increment = e => {
-  //   setCount([...parts, <PartsForm />]);
-  // };
-
-  // const decrement = e => {
-  //   setCount(countMinus);
-  // };
 
   return (
     <div>
@@ -142,11 +147,16 @@ function ServiceForm(props) {
           variant="outlined"
         />
 
-        <Input
+        {/* <Input
           type="file"
           className={classes.file}
           style={{ marginRight: "50px" }}
-        />
+        /> */}
+        <Grid style={{textAlign:"center",}}>
+            <PictureUplodar uploadtitle="Invice Picture" />
+        <Button color="primary" variant="contained" className={classes.button} onClick={handleShopSubmit}>Submit</Button>
+        </Grid>
+        
       </form>
     </div>
   );
@@ -164,5 +174,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { updateForm }
+  { updateForm, submitShopRecord, toggleShop }
 )(ServiceForm);

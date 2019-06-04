@@ -10,10 +10,12 @@ import Account from "./components/account/Account";
 import ServiceForm from "./components/serviceForm/ServiceForm";
 import NearMe from "./components/near-me/Near-me";
 import GettingLocation from "./components/getting-location/GettingLocation";
+import AddVehicle from "./components/garage/AddVehicle";
 
 export default (
   <Switch>
-    <Route path="/addRecordForm/:vehicle_id" component={ServiceForm} />
+    <Route path="/addvehicle" component={AddVehicle} />
+    <Route path="/addrecord/:vehicle_id" component={ServiceForm} />
     {/* <Route path="/addRecordForm" component={ServiceForm} /> */}
     <Route path="/garage/:vehicle_id" component={SingleCarGarage} />
     <Route path="/garage/" component={MultiCarGarage} />
