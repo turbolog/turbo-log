@@ -16,11 +16,18 @@ const UPDATE = "UPDATE";
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
 const GET_USER_SESSION = "GET_USER_SESSION";
+const LOGOUT = "LOGOUT"
 //action creators
 export function update(name, value) {
   return {
     type: UPDATE,
     payload: { name, value }
+  };
+}
+export function logout(id) {
+  return {
+    type: LOGOUT,
+    payload: axios.get(`/auth/logout/${id}`)
   };
 }
 
@@ -80,6 +87,13 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         sessionUser: action.payload.data
+      };
+    case `${LOGOUT}_FULFILLED`:
+      return {
+        ...state,
+        sessionUser: {},
+        user_id: null,
+        username: ""
       };
     default:
       return state;

@@ -4,7 +4,11 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import List from '@material-ui/core/List';
+import Lock from '@material-ui/icons/LockOutlined';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -30,6 +34,9 @@ const useStyles = makeStyles(theme => ({
       flexGrow: 1,
       padding: theme.spacing(3),
     },
+    logout: {
+      bottom:0
+    }
   }));
 
 function Side (props) {
@@ -51,9 +58,21 @@ function Side (props) {
           onOpen={props.toggleSide}
           onClose={props.toggleSide}
         >
+          <List>
+            <ListItem button className={classes.logout} onClick={props.logout} >
+              <ListItemIcon> <Lock /> </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </List>
         </Drawer>
       </Hidden>
       </>
     )
+}
+
+const mapStatetoProps = state => {
+  return {
+    user_id: state.auth.user_id
+  }
 }
 export default Side
