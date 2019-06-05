@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Grid from "@material-ui/core/Grid"
 import { connect } from "react-redux";
 import {
   updateForm,
@@ -133,7 +134,10 @@ function ServiceForm(props) {
           autoComplete="off"
         />
       </form>
-      <Button onClick={handleSubmit}>Submit</Button>
+      <Grid style={{textAlign:"center"}}>
+
+      <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
+      </Grid>
     </div>
   );
 }

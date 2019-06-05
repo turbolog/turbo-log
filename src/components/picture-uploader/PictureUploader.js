@@ -39,6 +39,7 @@ const PictureUploader = (props) =>{
           'Content-Type': 'multipart/form-data'
         }
       }).then(response => {
+        console.log('response: ', response);
     
         props.updateImage(response.data.Location)
       }).catch(error => {
@@ -49,9 +50,8 @@ const PictureUploader = (props) =>{
 
 
     return (
-        <Grid>
-          <form onSubmit={submitFile}>
-                <input
+        <Grid >
+          <input
                  accept="image/*"
                   className={classes.input}
                   id="contained-button-file"
@@ -66,10 +66,10 @@ const PictureUploader = (props) =>{
                  {props.uploadtitle}
                </Button>
              </label>
-                 <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                 <Button onClick={submitFile} type="submit" variant="contained" color="primary" className={classes.button}>
                      Upload
                   </Button>      
-          </form>
+       
         </Grid>
     )
 }

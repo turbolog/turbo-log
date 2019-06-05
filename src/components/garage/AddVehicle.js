@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import PictureUploader from "../picture-uploader/PictureUploader"
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import { Typography, Fab, Button } from "@material-ui/core";
+import { Typography, Fab, Button, Grid } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import NavBar from "../navbar/NavBar";
 import { updateVehicle, addCar } from "../../ducks/vehicleReducer";
@@ -136,24 +137,20 @@ function AddVehicle(props) {
           name="vin"
           autoComplete="off"
         />
-        <div className={classes.upload}>
-          <Typography>Add Image:</Typography>
-          <Input type="file" />
-          <Fab
-            size="small"
-            color="primary"
-            aria-label="Add"
-            className={classes.margin}
-          >
-            <AddIcon />
-          </Fab>
+        <div >
+          <Typography>Add  Car Image:</Typography>
+          <PictureUploader uploadtitle="add"/>
+
+          
         </div>
       </form>
-      <Link to="/garage">
-        <Button color="primary" onClick={addVehicle}>
+      <Grid style={{textAlign:"center"}}>
+        <Link to="/garage" style={{textDecoration:"none"}}>
+        <Button variant="contained" color="primary" onClick={addVehicle}>
           Submit
         </Button>
       </Link>
+      </Grid>
     </div>
   );
 }

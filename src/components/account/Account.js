@@ -50,22 +50,9 @@ const Account =(props) => {
                         <Uploader uploadtitle="Change Picture"/>
                     </Grid> 
                     <div className="account-bottom-col">
-                      <Link style={{textDecoration:"none"}} to="/log">
-                        <Card style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
-                           <CardMedia
-                                className={classes.media}
-                                image="http://www.xappsoftware.com/wordpress/wp-content/uploads/2018/02/twitter-list.jpg"
-                                title="Paella dish"
-                            />
-                            <CardContent>
-                                <Typography variant="h4" color="textSecondary" component="p">
-                                  Car logs
-                                </Typography>
-                            </CardContent>
-                         </Card> 
-                      </Link>
+                     
 
-                      <Link style={{textDecoration:"none"}} to="/log">
+                      <Link style={{textDecoration:"none"}} to="/garage">
                         <Card style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
                            <CardMedia
                                 className={classes.media}
@@ -95,22 +82,9 @@ const Account =(props) => {
                          </Card> 
                       </Link> 
 
-                      <Link style={{textDecoration:"none"}} to="/log">
-                        <Card style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
-                           <CardMedia
-                                className={classes.media}
-                                image="https://d2ekdq2ws22nn1.cloudfront.net/wp-content/uploads/2018/03/Help.jpg"
-                                title="Paella dish"
-                            />
-                            <CardContent>
-                                <Typography variant="h4" color="textSecondary" component="p">
-                                  SOS
-                                </Typography>
-                            </CardContent>
-                         </Card> 
-                      </Link>
+                      
 
-                      <Link style={{textDecoration:"none"}} to="/log">
+                      <Link style={{textDecoration:"none"}} to="/forum">
                         <Card style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
                            <CardMedia
                                 className={classes.media}
