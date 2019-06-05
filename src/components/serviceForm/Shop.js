@@ -90,7 +90,7 @@ function ServiceForm(props) {
       >
         <Typography>DIY</Typography>
         <Radio
-          checked={selectedValue === "a"}
+          checked={props.selectedValue === "a"}
           onChange={props.handleRadioButton}
           value="a"
           name="radio-button-demo"
@@ -99,7 +99,7 @@ function ServiceForm(props) {
         />
         <Typography>Shop</Typography>
         <Radio
-          checked={selectedValue === "b"}
+          checked={props.selectedValue === "b"}
           onChange={props.handleRadioButton}
           value="b"
           name="radio-button-demo"

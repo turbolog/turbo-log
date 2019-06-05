@@ -1,11 +1,11 @@
-import React,{useEffect, useState} from "react";
+import React,{ useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid"
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Camera from "@material-ui/icons/CameraAlt"
 import axios from "axios"
-import {updateImage} from "../../ducks/formReducer"
-import {connect} from "react-redux"
+import { updateImage } from "../../ducks/formReducer"
+import { connect } from "react-redux"
 
 
 
@@ -39,10 +39,11 @@ const PictureUploader = (props) =>{
           'Content-Type': 'multipart/form-data'
         }
       }).then(response => {
-    
+        console.log(response.data.Location)
         props.updateImage(response.data.Location)
       }).catch(error => {
         // handle your error
+        console.log(error)
       });
     }
   
@@ -66,7 +67,7 @@ const PictureUploader = (props) =>{
                  {props.uploadtitle}
                </Button>
              </label>
-                 <Button type="submit" variant="contained" color="primary" className={classes.button}>
+                 <Button type="submit" variant="contained" color="primary" className={classes.button} onClick={submitFile}>
                      Upload
                   </Button>      
           </form>

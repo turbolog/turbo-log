@@ -30,7 +30,7 @@ export function updateImage(image) {
   };
 }
 
-export function submitDIYRecord(vehicle_id, shop, date, miles, summary) {
+export function submitDIYRecord(vehicle_id, shop, date, miles, summary, image) {
   return {
     type: SUBMIT_DIY_RECORD,
     payload: axios.post("/api/records", {
@@ -38,7 +38,8 @@ export function submitDIYRecord(vehicle_id, shop, date, miles, summary) {
       shop,
       date,
       miles,
-      summary
+      summary,
+      image
     })
   };
 }
@@ -82,6 +83,7 @@ export function toggleShop(shop) {
 
 //reducer
 export default function formReducer(state = initialState, action) {
+  console.log(action)
   switch (action.type) {
     case UPDATE_FORM:
       return {
