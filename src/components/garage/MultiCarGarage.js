@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import NavBar from "../navbar/NavBar";
+import {Redirect} from "react-router-dom"
 import { connect } from "react-redux";
 import { getCars } from "../../ducks/vehicleReducer";
 import { Link } from "react-router-dom";
@@ -55,6 +56,8 @@ function MultiCarGarage(props) {
     return <VehicleCard car={vehicle} />;
   });
 
+  if (!props.user_id) return <Redirect to="/" />
+  
   return (
     <div className={classes.root}>
       <NavBar />
@@ -93,7 +96,8 @@ MultiCarGarage.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    garage: state.vehicle.garage
+    garage: state.vehicle.garage,
+    user_id: state.auth.user_id
   };
 };
 

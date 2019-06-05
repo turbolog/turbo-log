@@ -63,10 +63,6 @@ app.post('/test-upload', (request, response) => {
       });
   });
 
-
-
-
-
 massive(CONNECTION_STRING).then(dbInstance => {
     app.set("db",dbInstance)
     console.log("Database Connected")
