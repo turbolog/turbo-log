@@ -70,9 +70,11 @@ const NavBar = props => {
             </Button>
             :
             <>
-            <Avatar className={classes.avatar}>
+            <Link to="/account" style={{ textDecoration: "none", color: "inherit" }}>
+              <Avatar className={classes.avatar}>
               <img src="https://popingservers.com/images/1.png" />
-            </Avatar>
+              </Avatar>
+            </Link>
             <Button className={classes.routes} color="inherit">
             <Link
               to="/forum"

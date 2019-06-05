@@ -32,12 +32,8 @@ function PartsForm(props) {
   };
 
   return (
-    <form
-      style={{
-        display: "flex",
-        alignItems: "center"
-      }}
-    >
+    
+    <Grid container alignItems="center">
       <TextField
         id="outlined-name"
         label="Part Number"
@@ -46,7 +42,7 @@ function PartsForm(props) {
         onChange={handleChange}
         margin="normal"
         variant="outlined"
-        style={{ width: "10vw" }}
+        style={{ width: "30vw" }}
       />
       <TextField
         id="outlined-name"
@@ -57,22 +53,15 @@ function PartsForm(props) {
         variant="outlined"
         style={{ width: "30vw" }}
       />
+        <Grid style={{marginLeft:"30px"}}>
       <Typography variant="h5" style={{ marginRight: "20px" }}>
         Add Parts Invoice:
       </Typography>
-        <Grid>
           <PictureUploader uploadtitle="add"/>
         </Grid>
-      {/* <Input type="file" style={{ marginRight: "50px" }} />
-      <Fab
-        size="small"
-        color="secondary"
-        aria-label="Add"
-        className={classes.margin}
-      >
-        <AddIcon />
-      </Fab> */}
-    </form>
+      
+    
+    </Grid>
   );
 }
 

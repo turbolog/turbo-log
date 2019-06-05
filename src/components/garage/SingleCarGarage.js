@@ -80,7 +80,7 @@ const handleModal = () =>{
 
   const displayLogs = logs.map(log =>{
    
-     return (<ExpansionPanel>
+     return (<ExpansionPanel key={log.report_id}>
      <ExpansionPanelSummary
        expandIcon={<ExpandMoreIcon />}
        aria-controls="panel1a-content"
@@ -108,17 +108,21 @@ const handleModal = () =>{
                open={open}
                onClose={handleClose}
                >
-           <div style={{ height:"600px", width:"600px",margin:"20px auto 0 auto",textAlign:"center",}}>
-           <Typography variant="h6" id="modal-title">
-            title
-           </Typography>
-           <Typography variant="subtitle1" id="simple-modal-description">
-           <img style={{maxHeight:"800px", }} src="https://images.invoicehome.com/templates/receipt-template-us-neat-750px.png"/>
-           </Typography>
-           <Button onClick={handleModal} variant="contained" color="primary" >
-               Close
-              </Button>
-           </div>
+                 <Grid container justify="center" >
+                     <Grid item>
+                        <Typography variant="h6" id="modal-title">
+                              title
+                          </Typography>
+                          <Typography variant="subtitle1" id="simple-modal-description">
+                          <img style={{maxHeight:"800px", }} src="https://images.invoicehome.com/templates/receipt-template-us-neat-750px.png"/>
+                          </Typography>
+                          <Typography style={{textAlign:"center"}}>
+                            <Button onClick={handleModal} variant="contained" color="primary" >
+                              Close
+                            </Button>
+                          </Typography>
+                      </Grid>   
+                 </Grid>
         </Modal>
        </Grid>
        <Typography />
