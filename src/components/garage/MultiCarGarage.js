@@ -38,8 +38,9 @@ const styles = theme => ({
     maxWidth: 500
   },
   button: {
-    margin: "auto",
-    width: "auto"
+    marginBottom:"10px",
+    marginTop:"10px",
+    textAlign:"center"
   }
 });
 
@@ -70,7 +71,6 @@ function MultiCarGarage(props) {
           My Garage
         </Typography>
       </div>
-      {cars}
       <div className={classes.button}>
         <Link
           to="/addvehicle"
@@ -80,11 +80,13 @@ function MultiCarGarage(props) {
             variant="contained"
             color="primary"
             onClick={handleAddVehicle}
+            style={{ marginBottom: "10vh" }}
           >
             Add Vehicle
           </Button>
         </Link>
       </div>
+      {cars}
     </div>
   );
 }

@@ -14,7 +14,6 @@ import BottomNav from "../bottomnav/BottomNav";
 import Avatar from "@material-ui/core/Avatar";
 import Side from "../side/side";
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -26,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   routes: {
-    [theme.breakpoints.between('xs', "sm")]: {
+    [theme.breakpoints.between("xs", "sm")]: {
       display: "none"
     }
   },
@@ -37,14 +36,13 @@ const useStyles = makeStyles(theme => ({
 
 const NavBar = props => {
   useEffect(() => {
-    props.getUserSession()
-  },[])
+    props.getUserSession();
+  }, []);
   const classes = useStyles();
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-
-  function toggleSide () {
-      setOpen(!open)
+  function toggleSide() {
+    setOpen(!open);
   }
 
   return (
@@ -70,9 +68,11 @@ const NavBar = props => {
             </Button>
             :
             <>
-            <Avatar className={classes.avatar}>
+            <Link to="/account" style={{ textDecoration: "none", color: "inherit" }}>
+              <Avatar className={classes.avatar}>
               <img src="https://popingservers.com/images/1.png" />
-            </Avatar>
+              </Avatar>
+            </Link>
             <Button className={classes.routes} color="inherit">
             <Link
               to="/forum"
@@ -101,7 +101,7 @@ const NavBar = props => {
           </>
             }
           </Toolbar>
-          <BottomNav/>
+          <BottomNav />
         </AppBar>
       </div>
     </div>
@@ -111,7 +111,7 @@ const NavBar = props => {
 const mapStateToProps = reduxState => {
   return {
     user_id: reduxState.auth.user_id
-  }
+  };
 };
 
 export default connect(

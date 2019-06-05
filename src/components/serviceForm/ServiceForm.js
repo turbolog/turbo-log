@@ -107,6 +107,7 @@ function ServiceForm(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -115,6 +116,7 @@ function ServiceForm(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <PartsForm />
         <TextField
@@ -125,6 +127,7 @@ function ServiceForm(props) {
           className={classes.textField}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
       </form>
     </div>

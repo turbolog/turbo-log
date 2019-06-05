@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Grid from "@material-ui/core/Grid"
 import { connect } from "react-redux";
 import {
   updateForm,
@@ -123,6 +124,7 @@ function ServiceForm(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           name="miles"
@@ -132,6 +134,7 @@ function ServiceForm(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <PartsForm handleChange={handleChange}/>
         <TextField
@@ -143,9 +146,14 @@ function ServiceForm(props) {
           className={classes.textField}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
       </div>
       <Button onClick={handleSubmit}>Submit</Button>
+      <Grid style={{textAlign:"center"}}>
+
+      <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
+      </Grid>
     </div>
   );
 }
