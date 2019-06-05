@@ -10,8 +10,9 @@ const updateMiles = async (request, response) => {
     const db = request.app.get("db")
     const { miles } = request.body
     const { vehicle_id } = request.params
+    const { user_id } = request.session.user
     
-    const updated = await db.update_miles([miles,vehicle_id])
+    const updated = await db.update_miles([miles,vehicle_id, user_id])
 
     response.json(updated)
 }

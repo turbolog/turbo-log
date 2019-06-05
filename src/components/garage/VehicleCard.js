@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { deleteCar } from "../../ducks/vehicleReducer";
+import {
+  deleteCar,
+  updateMiles,
+  updateVehicle
+} from "../../ducks/vehicleReducer";
 import { connect } from "react-redux";
 
 import Grid from "@material-ui/core/Grid";
@@ -9,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
+import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
@@ -43,14 +48,19 @@ const styles = theme => ({
   },
   vehicleInfo: {
     maxWidth: 500
+  },
+  dialogActions: {
+    display: "flex",
+    justifyContent: "space-evenly"
   }
 });
 
 function VehicleCard(props) {
   const [open, setOpen] = useState(false);
+  const [mileageOpen, setMileageOpen] = useState(false);
   const { classes } = props;
 
-  const handleCarDelete = () => {
+  const openDeleteAlert = () => {
     setOpen(true);
   };
 
@@ -61,6 +71,23 @@ function VehicleCard(props) {
   const deleteVehicle = () => {
     props.deleteCar(props.car.vehicle_id);
     setOpen(false);
+  };
+
+  const openMileageUpdate = () => {
+    setMileageOpen(true);
+  };
+
+  const closeMileageUpdate = () => {
+    setMileageOpen(false);
+  };
+
+  const updateMileage = () => {
+    props.updateMiles(props.miles, props.car.vehicle_id);
+    setMileageOpen(false);
+  };
+
+  const updateMilesField = e => {
+    props.updateVehicle(e.target.name, e.target.value);
   };
 
   return (
@@ -90,11 +117,22 @@ function VehicleCard(props) {
                 Mileage: {props.car.miles}
               </Typography>
             </Grid>
-            <Grid item>
+            <Grid
+              item
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <Button
+                onClick={openMileageUpdate}
+                variant="body2"
+                size="small"
+                style={{ cursor: "pointer", border: "solid 1px blue" }}
+              >
+                Update Mileage
+              </Button>
               <Button
                 variant="body2"
                 size="small"
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", border: "solid 1px green" }}
               >
                 <Link
                   to={`/addrecord/${props.car.vehicle_id}`}
@@ -103,16 +141,16 @@ function VehicleCard(props) {
                   Add Record
                 </Link>
               </Button>
-            </Grid>
-            <Grid item>
               <Button
                 variant="body2"
                 size="small"
-                style={{ cursor: "pointer" }}
-                onClick={handleCarDelete}
+                style={{ cursor: "pointer", border: "solid 1px red" }}
+                onClick={openDeleteAlert}
               >
                 Delete
               </Button>
+            </Grid>
+            <Grid item>
               <Dialog
                 open={open}
                 onClose={closeDeleteAlert}
@@ -139,6 +177,36 @@ function VehicleCard(props) {
                 </DialogActions>
               </Dialog>
             </Grid>
+            <Grid item>
+              <Dialog
+                open={mileageOpen}
+                onClose={closeMileageUpdate}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle
+                  id="alert-dialog-title"
+                  style={{ marginLeft: "30px", marginRight: "30px" }}
+                >
+                  {"Update Mileage"}
+                </DialogTitle>
+                <TextField
+                  placeholder="New Mileage"
+                  onChange={updateMilesField}
+                  type="number"
+                  style={{ width: "80%", marginLeft: "30px" }}
+                  name="miles"
+                />
+                <DialogActions className={classes.dialogActions}>
+                  <Button onClick={closeMileageUpdate} color="primary">
+                    Go back
+                  </Button>
+                  <Button onClick={updateMileage} color="primary" autoFocus>
+                    Update
+                  </Button>
+                </DialogActions>
+              </Dialog>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
@@ -148,11 +216,12 @@ function VehicleCard(props) {
 
 const mapStateToProps = state => {
   return {
-    vehicle_id: state.vehicle.vehicle_id
+    vehicle_id: state.vehicle.vehicle_id,
+    miles: state.vehicle.miles
   };
 };
 
 export default connect(
   mapStateToProps,
-  { deleteCar }
+  { deleteCar, updateMiles, updateVehicle }
 )(withStyles(styles)(VehicleCard));

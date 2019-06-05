@@ -20,10 +20,16 @@ const Home = props => {
   return (
     <div
       style={{
-        background: `url("https://images.unsplash.com/photo-1457332253637-21d324d25df9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80") no-repeat center center`,
+        background: `url("https://images.unsplash.com/photo-1504575797-2f83688754b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80") no-repeat center center`,
+        backgroundSize: "cover",
         height: "100vh"
       }}
     >
+      {/* background: url(images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */}
       <NavBar />
       <div
         style={{
@@ -31,12 +37,12 @@ const Home = props => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          marginLeft: "5vw",
-          width: "50vw"
+          marginLeft: "50vw",
+          width: "40vw"
         }}
       >
         <p style={{ fontSize: "7vh", textAlign: "center" }}>
-          Maintenance starts with you!
+          Give your glovebox a break!
         </p>
         <p
           style={{
@@ -46,8 +52,8 @@ const Home = props => {
             marginTop: "0vh"
           }}
         >
-          Get the most out of your investment by logging your service records.
-          Your future self will be thanking you!
+          No more dirty receipts. No more hassle. Simple.
+          Just TurboLog it!
         </p>
 
         <Fab
