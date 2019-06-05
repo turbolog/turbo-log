@@ -76,7 +76,7 @@ const Register = props => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
+                autoComplete="off"
                 name="firstName"
                 variant="outlined"
                 required
@@ -95,7 +95,7 @@ const Register = props => {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                autoComplete="lname"
+                autoComplete="off"
                 onChange={handleInputChange}
               />
             </Grid>
@@ -107,7 +107,7 @@ const Register = props => {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
+                autoComplete="off"
                 onChange={handleInputChange}
               />
             </Grid>
@@ -119,7 +119,7 @@ const Register = props => {
                 name="username"
                 label="Username"
                 id="username"
-                autoComplete="username"
+                autoComplete="off"
                 onChange={handleInputChange}
               />
             </Grid>
@@ -132,7 +132,7 @@ const Register = props => {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                autoComplete="off"
                 onChange={handleInputChange}
               />
             </Grid>

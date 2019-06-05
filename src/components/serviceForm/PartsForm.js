@@ -47,6 +47,7 @@ function PartsForm(props) {
         margin="normal"
         variant="outlined"
         style={{ width: "10vw" }}
+        autoComplete="off"
       />
       <TextField
         id="outlined-name"
@@ -56,6 +57,7 @@ function PartsForm(props) {
         margin="normal"
         variant="outlined"
         style={{ width: "30vw" }}
+        autoComplete="off"
       />
       <Typography variant="h5" style={{ marginRight: "20px" }}>
         Add Parts Invoice:

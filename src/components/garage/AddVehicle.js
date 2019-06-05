@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -74,6 +74,7 @@ function AddVehicle(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -83,6 +84,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="make"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -92,6 +94,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="model"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -101,6 +104,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="trim"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -110,6 +114,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="color"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -119,6 +124,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="miles"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -128,6 +134,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="vin"
+          autoComplete="off"
         />
         <div className={classes.upload}>
           <Typography>Add Image:</Typography>
@@ -164,9 +171,7 @@ const mapStateToProps = state => {
   };
 };
 
-
 export default connect(
   mapStateToProps,
   { updateVehicle, addCar }
 )(AddVehicle);
-
