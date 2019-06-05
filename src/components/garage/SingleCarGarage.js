@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../navbar/NavBar";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -9,8 +9,10 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import VehicleCard from "./VehicleCard";
+import Modal from "@material-ui/core/Modal"
+import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
-
+import axios from "axios"
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -37,27 +39,95 @@ const styles = theme => ({
   },
   vehicleInfo: {
     maxWidth: 500
+  },
+  span: {
+    fontSize:"20px"
   }
 });
 
 function SingleCarGarage(props) {
   const [open, setOpen] = useState(false);
+  const [logs, setLogs] = React.useState([]);
   const { classes } = props;
 
-  const handleCarDelete = () => {
+  useEffect(() => {
+    axios.get(`/api/vehicles/records/${props.match.params.vehicle_id}`).then(data =>{
+      console.log('data: ', data);
+      
+      setLogs(data.data)
+    })
+    
+    
+  },[]);
+  
+  const handleOpen = () => {
     setOpen(true);
   };
 
-  const closeDeleteAlert = () => {
+  const handleClose = () => {
     setOpen(false);
   };
+
+const handleModal = () =>{
+      handleClose()
+}
 
   let singleCar = props.garage.find(vehicle => {
     if (vehicle.vehicle_id === +props.match.params.vehicle_id) {
       return vehicle;
     }
   });
+
+  const displayLogs = logs.map(log =>{
+   
+     return (<ExpansionPanel>
+     <ExpansionPanelSummary
+       expandIcon={<ExpandMoreIcon />}
+       aria-controls="panel1a-content"
+       id="panel1a-header"
+     >
+       <Typography className={classes.heading}>
+         {"Brakes Changed"}
+       </Typography>
+     </ExpansionPanelSummary>
+     <ExpansionPanelDetails>
+       <Grid
+         container
+         direction="column"
+         justify="flex-start"
+         alignItems="flex-start"
+       >
+         <Grid item><span className={classes.span} >Shop Name: </span>{log.shop_name}</Grid>
+         <Grid item><span className={classes.span} >Millage: </span>{log.miles}</Grid>
+         
+         
+         <Button variant="contained" color="primary" onClick={handleOpen}>View Receipt</Button>
+         <Modal
+               aria-labelledby="simple-modal-title"
+               aria-describedby="simple-modal-description"
+               open={open}
+               onClose={handleClose}
+               >
+           <div style={{ height:"600px", width:"600px",margin:"20px auto 0 auto",textAlign:"center",}}>
+           <Typography variant="h6" id="modal-title">
+            title
+           </Typography>
+           <Typography variant="subtitle1" id="simple-modal-description">
+           <img style={{maxHeight:"800px", }} src="https://images.invoicehome.com/templates/receipt-template-us-neat-750px.png"/>
+           </Typography>
+           <Button onClick={handleModal} variant="contained" color="primary" >
+               Close
+              </Button>
+           </div>
+        </Modal>
+       </Grid>
+       <Typography />
+     </ExpansionPanelDetails>
+   </ExpansionPanel>)
+  })
+  
   return (
+    
     <div className={classes.root}>
       <NavBar />
       <Typography
@@ -77,82 +147,8 @@ function SingleCarGarage(props) {
       >
         Service Logs
       </Typography>
-      <div>
-        <ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading}>
-              {"Brakes Changed"}
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Grid
-              container
-              direction="column"
-              justify="flex-start"
-              alignItems="flex-start"
-            >
-              <Grid item>Date:{""}</Grid>
-              <Grid item>Mileage:{""}</Grid>
-              <Grid item>Parts List:{""}</Grid>
-              <Grid item>Warrantied Parts:{""}</Grid>
-              <Grid item>Summary:{""}</Grid>
-            </Grid>
-            <Typography />
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography>{"Tires Rotated"}</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Grid
-              container
-              direction="column"
-              justify="flex-start"
-              alignItems="flex-start"
-            >
-              <Grid item>Date:{""}</Grid>
-              <Grid item>Mileage:{""}</Grid>
-              <Grid item>Parts List:{""}</Grid>
-              <Grid item>Warrantied Parts:{""}</Grid>
-              <Grid item>Summary:{""}</Grid>
-            </Grid>
-            <Typography />
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel style={{ marginBottom: "5vh" }}>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3a-content"
-            id="panel3a-header"
-          >
-            <Typography className={classes.heading}>{"Oil Change"}</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Grid
-              container
-              direction="column"
-              justify="flex-start"
-              alignItems="flex-start"
-            >
-              <Grid item>Date:{""}</Grid>
-              <Grid item>Mileage:{""}</Grid>
-              <Grid item>Parts List:{""}</Grid>
-              <Grid item>Warrantied Parts:{""}</Grid>
-              <Grid item>Summary:{""}</Grid>
-            </Grid>
-            <Typography />
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-      </div>
+      {displayLogs}
+      
     </div>
   );
 }
