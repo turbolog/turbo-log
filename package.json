@@ -49,5 +49,8 @@
     ]
   },
   "main": "server",
-  "proxy": "http://localhost:5050"
+  "proxy": "http://localhost:5050",
+  "devDependencies": {
+    "cypress": "^3.3.1"
+  }
 }

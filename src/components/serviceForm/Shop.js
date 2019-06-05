@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PictureUplodar from "../picture-uploader/PictureUploader"
+import PictureUplodar from "../picture-uploader/PictureUploader";
 
 import { connect } from "react-redux";
 import {
@@ -15,7 +15,7 @@ import Shop from "./Shop";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import { Typography, Radio, Button, Grid} from "@material-ui/core";
+import { Typography, Radio, Button, Grid } from "@material-ui/core";
 
 const styles = makeStyles(theme => ({
   container: {
@@ -39,8 +39,8 @@ const styles = makeStyles(theme => ({
   },
   button: {
     margin: theme.spacing(1),
-    width:"14vw"
-  },
+    width: "14vw"
+  }
 }));
 
 function ServiceForm(props) {
@@ -63,7 +63,7 @@ function ServiceForm(props) {
       props.miles,
       props.summary,
       props.shop_name
-      );;
+    );
   };
   if (selectedValue === "b") {
     return <Shop />;
@@ -117,6 +117,7 @@ function ServiceForm(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           name="miles"
@@ -126,6 +127,7 @@ function ServiceForm(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           name="shop_name"
@@ -135,6 +137,7 @@ function ServiceForm(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           name="summary"
@@ -145,6 +148,7 @@ function ServiceForm(props) {
           className={classes.textField}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
 
         {/* <Input
@@ -152,11 +156,17 @@ function ServiceForm(props) {
           className={classes.file}
           style={{ marginRight: "50px" }}
         /> */}
-        <Grid style={{textAlign:"center",}}>
-            <PictureUplodar uploadtitle="Invice Picture" />
-        <Button color="primary" variant="contained" className={classes.button} onClick={handleShopSubmit}>Submit</Button>
+        <Grid style={{ textAlign: "center" }}>
+          <PictureUplodar uploadtitle="Invice Picture" />
+          <Button
+            color="primary"
+            variant="contained"
+            className={classes.button}
+            onClick={handleShopSubmit}
+          >
+            Submit
+          </Button>
         </Grid>
-        
       </form>
     </div>
   );

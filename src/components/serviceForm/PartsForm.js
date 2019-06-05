@@ -52,6 +52,7 @@ function PartsForm(props) {
         margin="normal"
         variant="outlined"
         style={{ width: "30vw" }}
+        autoComplete="off"
       />
         <Grid style={{marginLeft:"30px"}}>
       <Typography variant="h5" style={{ marginRight: "20px" }}>

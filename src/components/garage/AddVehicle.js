@@ -75,6 +75,7 @@ function AddVehicle(props) {
           onChange={handleChange}
           margin="normal"
           variant="outlined"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -84,6 +85,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="make"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -93,6 +95,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="model"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -102,6 +105,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="trim"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -111,6 +115,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="color"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -120,6 +125,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="miles"
+          autoComplete="off"
         />
         <TextField
           id="outlined-name"
@@ -129,6 +135,7 @@ function AddVehicle(props) {
           margin="normal"
           variant="outlined"
           name="vin"
+          autoComplete="off"
         />
         <div >
           <Typography>Add  Car Image:</Typography>
