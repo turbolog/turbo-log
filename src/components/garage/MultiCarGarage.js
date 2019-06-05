@@ -77,6 +77,7 @@ function MultiCarGarage(props) {
             variant="contained"
             color="primary"
             onClick={handleAddVehicle}
+            style={{ marginBottom: "10vh" }}
           >
             Add Vehicle
           </Button>
