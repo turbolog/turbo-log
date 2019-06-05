@@ -6,12 +6,14 @@ const initialState = {
   date: "",
   miles: "",
   summary: "",
+  image: "",
   shop_name: null
 };
 //action types
 const UPDATE_FORM = "UPDATE_FORM";
 const SUBMIT_DIY_RECORD = "SUBMIT_DIY_RECORD";
 const SUBMIT_SHOP_RECORD = "SUBMIT_SHOP_RECORD";
+const UPDATE_IMAGE = "UPDATE_IMAGE";
 const GET_ID = "GET_ID";
 const TOGGLE_SHOP = "TOGGLE_SHOP";
 //action creators
@@ -19,6 +21,12 @@ export function updateForm(name, value) {
   return {
     type: UPDATE_FORM,
     payload: { name, value }
+  };
+}
+export function updateImage(image) {
+  return {
+    type: UPDATE_FORM,
+    payload: image
   };
 }
 
@@ -41,6 +49,7 @@ export function submitShopRecord(
   date,
   miles,
   summary,
+  image,
   shop_name
 ) {
   return {
@@ -51,6 +60,7 @@ export function submitShopRecord(
       date,
       miles,
       summary,
+      image,
       shop_name
     })
   };
@@ -97,6 +107,11 @@ export default function formReducer(state = initialState, action) {
         miles: "",
         summary: "",
         shop_name: null
+      };
+    case UPDATE_IMAGE:
+      return {
+        ...state,
+        image: action.payload
       };
     case GET_ID:
       return {

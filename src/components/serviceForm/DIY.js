@@ -52,6 +52,7 @@ function ServiceForm(props) {
       props.shop,
       props.date,
       props.miles,
+      props.image,
       props.summary
       );
     };
@@ -141,7 +142,8 @@ const mapStateToProps = (state, ownProps) => {
     date: state.form.date,
     miles: state.form.miles,
     summary: state.form.summary,
-    shop_name: state.form.shop_name
+    shop_name: state.form.shop_name,
+    image: state.form.image
   };
 };
 

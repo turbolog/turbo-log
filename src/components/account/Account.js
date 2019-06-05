@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     
   
 
-const Account =() => {
+const Account =(props) => {
     
     const classes = useStyles()
     return (
@@ -47,7 +47,7 @@ const Account =() => {
                     <img className="user-pic" src="https://popingservers.com/images/1.png"/>
                 </Grid>
                     <Grid style={{textAlign:"center"}}>
-                        <Uploader/>
+                        <Uploader uploadtitle="Change Picture"/>
                     </Grid> 
                     <div className="account-bottom-col">
                       <Link style={{textDecoration:"none"}} to="/log">

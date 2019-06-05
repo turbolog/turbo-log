@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import PictureUplodar from "../picture-uploader/PictureUploader"
+
 import { connect } from "react-redux";
 import {
   updateForm,
@@ -13,7 +15,7 @@ import Shop from "./Shop";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
-import { Typography, Radio, Button } from "@material-ui/core";
+import { Typography, Radio, Button, Grid} from "@material-ui/core";
 
 const styles = makeStyles(theme => ({
   container: {
@@ -34,7 +36,11 @@ const styles = makeStyles(theme => ({
   file: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(4)
-  }
+  },
+  button: {
+    margin: theme.spacing(1),
+    width:"14vw"
+  },
 }));
 
 function ServiceForm(props) {
@@ -141,12 +147,16 @@ function ServiceForm(props) {
           variant="outlined"
         />
 
-        <Input
+        {/* <Input
           type="file"
           className={classes.file}
           style={{ marginRight: "50px" }}
-        />
-        <Button onClick={handleShopSubmit}>Submit</Button>
+        /> */}
+        <Grid style={{textAlign:"center",}}>
+            <PictureUplodar uploadtitle="Invice Picture" />
+        <Button color="primary" variant="contained" className={classes.button} onClick={handleShopSubmit}>Submit</Button>
+        </Grid>
+        
       </form>
     </div>
   );
