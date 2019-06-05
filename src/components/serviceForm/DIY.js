@@ -47,14 +47,27 @@ function ServiceForm(props) {
   };
 
   const handleSubmit = () => {
-    // props.submitDIYRecord(
-      console.log(
+    console.log(
       props.id,
       props.shop,
       props.date,
       props.miles,
+      props.description,
       props.summary,
-      props.image
+      props.image,
+      props.part_number,
+      props.part_description,
+    )
+    props.submitDIYRecord(
+      props.id,
+      props.shop,
+      props.date,
+      props.miles,
+      props.description,
+      props.summary,
+      props.image,
+      props.part_number,
+      props.part_description,
       );
     };
     
@@ -100,7 +113,7 @@ function ServiceForm(props) {
         />
       </div>
       <DatePicker />
-      <form className={classes.container} noValidate autoComplete="off">
+      <div className={classes.container} noValidate autoComplete="off">
         <TextField
           name="description"
           id="outlined-name"
@@ -119,7 +132,7 @@ function ServiceForm(props) {
           margin="normal"
           variant="outlined"
         />
-        <PartsForm />
+        <PartsForm handleChange={handleChange}/>
         <TextField
           name="summary"
           id="outlined-multiline-flexible"
@@ -130,7 +143,7 @@ function ServiceForm(props) {
           margin="normal"
           variant="outlined"
         />
-      </form>
+      </div>
       <Button onClick={handleSubmit}>Submit</Button>
     </div>
   );
@@ -144,7 +157,10 @@ const mapStateToProps = (state, ownProps) => {
     miles: state.form.miles,
     summary: state.form.summary,
     shop_name: state.form.shop_name,
-    image: state.form.image
+    image: state.form.image,
+    part_number: state.form.part_number,
+    part_description: state.form.part_description,
+    description: state.form.description
   };
 };
 

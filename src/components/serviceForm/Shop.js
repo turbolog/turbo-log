@@ -61,8 +61,11 @@ function ServiceForm(props) {
       props.shop,
       props.date,
       props.miles,
+      props.description,
       props.summary,
-      props.shop_name
+      props.image,
+      props.part_number,
+      props.part_description,
       );;
   };
   if (selectedValue === "b") {
@@ -168,7 +171,9 @@ const mapStateToProps = state => {
     date: state.form.date,
     miles: state.form.miles,
     summary: state.form.summary,
-    shop_name: state.form.shop_name
+    shop_name: state.form.shop_name,
+    part_number: state.form.part_number,
+    part_description: state.form.part_description
   };
 };
 

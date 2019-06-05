@@ -7,7 +7,9 @@ const initialState = {
   miles: "",
   summary: "",
   image: "",
-  shop_name: null
+  shop_name: null,
+  part_number: null,
+  part_description: null,
 };
 //action types
 const UPDATE_FORM = "UPDATE_FORM";
@@ -25,12 +27,21 @@ export function updateForm(name, value) {
 }
 export function updateImage(image) {
   return {
-    type: UPDATE_FORM,
+    type: UPDATE_IMAGE,
     payload: image
   };
 }
 
-export function submitDIYRecord(vehicle_id, shop, date, miles, summary, image) {
+export function submitDIYRecord(vehicle_id, shop, date,miles, description, summary, image, part_number, part_description) {
+  console.log(      vehicle_id,
+    shop,
+    date,
+    miles,
+    description,
+    summary,
+    image,
+    part_number,
+    part_description,)
   return {
     type: SUBMIT_DIY_RECORD,
     payload: axios.post("/api/records", {
@@ -38,8 +49,11 @@ export function submitDIYRecord(vehicle_id, shop, date, miles, summary, image) {
       shop,
       date,
       miles,
+      description,
       summary,
-      image
+      image,
+      part_number,
+      part_description,
     })
   };
 }

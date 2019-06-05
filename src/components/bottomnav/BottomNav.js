@@ -1,10 +1,12 @@
 import React from 'react';
+import { Redirect } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Car from '@material-ui/icons/DirectionsCar';
+import ForumIcon from '@material-ui/icons/ForumOutlined';
+import Account from '@material-ui/icons/AccountCircle';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,19 +20,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function BottomNav() {
+function BottomNav(props) {
     const classes = useStyles();
-    const [value, setValue] = React.useState('recents');
+    const [value, setValue] = React.useState('garage');
     
     function handleChange(event, newValue) {
         setValue(newValue);
     }
-
+    
   return (
     <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
+      <BottomNavigationAction label="Forum" value="forum" icon={<ForumIcon />} onClick={<Redirect to="/forum" />}/>
+      <BottomNavigationAction label="Garage" value="garage" icon={<Car />} onClick={<Redirect to="/garage" />}/>
+      <BottomNavigationAction label="Account" value="account" icon={<Account />} onClick={<Redirect to="/account" />}/>
     </BottomNavigation>
   );
 }
