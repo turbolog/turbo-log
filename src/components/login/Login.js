@@ -81,6 +81,7 @@ const Login = props => {
               fullWidth
               id="username"
               label="Username"
+              className="username"
               name="username"
               autoComplete="off"
               autoFocus
@@ -94,6 +95,7 @@ const Login = props => {
               name="password"
               label="Password"
               type="password"
+              className="password"
               id="password"
               autoComplete="off"
               onChange={handleInputChange}
