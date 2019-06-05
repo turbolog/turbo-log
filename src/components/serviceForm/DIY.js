@@ -61,6 +61,7 @@ function ServiceForm(props) {
     props.submitDIYRecord(
       props.id,
       props.shop,
+      props.shop_name,
       props.date,
       props.miles,
       props.description,

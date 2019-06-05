@@ -59,6 +59,7 @@ function ServiceForm(props) {
     props.submitShopRecord(
       props.id,
       props.shop,
+      props.shop_name,
       props.date,
       props.miles,
       props.description,
@@ -156,7 +157,7 @@ function ServiceForm(props) {
           style={{ marginRight: "50px" }}
         /> */}
         <Grid style={{textAlign:"center",}}>
-            <PictureUplodar uploadtitle="Invice Picture" />
+            <PictureUplodar uploadtitle="Invoice Picture" />
         <Button color="primary" variant="contained" className={classes.button} onClick={handleShopSubmit}>Submit</Button>
         </Grid>
         
@@ -165,15 +166,18 @@ function ServiceForm(props) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
+    vehicle_id: ownProps.vehicle_id,
     shop: state.form.shop,
     date: state.form.date,
     miles: state.form.miles,
     summary: state.form.summary,
     shop_name: state.form.shop_name,
+    image: state.form.image,
     part_number: state.form.part_number,
-    part_description: state.form.part_description
+    part_description: state.form.part_description,
+    description: state.form.description
   };
 };
 

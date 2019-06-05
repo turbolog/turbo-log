@@ -32,9 +32,11 @@ export function updateImage(image) {
   };
 }
 
-export function submitDIYRecord(vehicle_id, shop, date,miles, description, summary, image, part_number, part_description) {
-  console.log(      vehicle_id,
+export function submitDIYRecord(vehicle_id, shop, shop_name, date,miles, description, summary, image, part_number, part_description ) {
+  console.log(      
+    vehicle_id,
     shop,
+    shop_name,
     date,
     miles,
     description,
@@ -47,6 +49,7 @@ export function submitDIYRecord(vehicle_id, shop, date,miles, description, summa
     payload: axios.post("/api/records", {
       vehicle_id,
       shop,
+      shop_name,
       date,
       miles,
       description,
@@ -61,22 +64,28 @@ export function submitDIYRecord(vehicle_id, shop, date,miles, description, summa
 export function submitShopRecord(
   vehicle_id,
   shop,
+  shop_name,
   date,
   miles,
+  description,
   summary,
   image,
-  shop_name
+  part_number,
+  part_description,
 ) {
   return {
     type: SUBMIT_SHOP_RECORD,
     payload: axios.post("/api/records", {
       vehicle_id,
       shop,
+      shop_name,
       date,
       miles,
+      description,
       summary,
       image,
-      shop_name
+      part_number,
+      part_description,
     })
   };
 }
