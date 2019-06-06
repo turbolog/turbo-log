@@ -4,10 +4,11 @@ import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import { connect } from "react-redux";
+import "./Home.css";
 
 const useStyles = makeStyles(theme => ({
   button: {
-    width: "25%"
+    width: "37%"
   }
 }));
 
@@ -19,6 +20,7 @@ const Home = props => {
   }
   return (
     <div
+      className="home-background"
       style={{
         background: `url("https://images.unsplash.com/photo-1504575797-2f83688754b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80") no-repeat center center`,
         backgroundSize: "cover",
@@ -31,17 +33,11 @@ const Home = props => {
   -o-background-size: cover;
   background-size: cover; */}
       <NavBar />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          marginLeft: "50vw",
-          width: "40vw"
-        }}
-      >
-        <p style={{ fontSize: "7vh", textAlign: "center" }}>
+      <div className="text-box">
+        <p
+          className="glove-box"
+          style={{ fontSize: "7vh", textAlign: "center" }}
+        >
           Give your glovebox a break!
         </p>
         <p
@@ -52,8 +48,7 @@ const Home = props => {
             marginTop: "0vh"
           }}
         >
-          No more dirty receipts. No more hassle. Simple.
-          Just TurboLog it!
+          No more dirty receipts. No more hassle. Simple. Just TurboLog it!
         </p>
 
         <Fab

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PictureUploader from "../picture-uploader/PictureUploader"
+import PictureUploader from "../picture-uploader/PictureUploader";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -136,19 +136,22 @@ function AddVehicle(props) {
           name="vin"
           autoComplete="off"
         />
-        <div >
-          <Typography>Add  Car Image:</Typography>
-          <PictureUploader uploadtitle="add"/>
-
-          
+        <div>
+          <Typography>Add Car Image:</Typography>
+          <PictureUploader uploadtitle="add" />
         </div>
       </form>
-      <Grid style={{textAlign:"center"}}>
-        <Link to="/garage" style={{textDecoration:"none"}}>
-        <Button variant="contained" color="primary" onClick={addVehicle}>
-          Submit
-        </Button>
-      </Link>
+      <Grid style={{ textAlign: "center" }}>
+        <Link to="/garage" style={{ textDecoration: "none" }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={addVehicle}
+            style={{ marginBottom: "10vh" }}
+          >
+            Submit
+          </Button>
+        </Link>
       </Grid>
     </div>
   );
