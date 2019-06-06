@@ -1,5 +1,4 @@
 import React from "react" 
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
@@ -43,6 +42,10 @@ const useStyles = makeStyles(theme => ({
     },
     logout: {
       bottom:0
+    },
+    links: {
+      textDecoration: "none",
+      color: "inherit"
     }
   }));
 
@@ -66,26 +69,33 @@ function Side (props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           open={props.open}
-          onOpen={props.toggleSide}
           onClose={props.toggleSide}
         >
           <List>
+          <Link className={classes.links} to="/log" >
             <ListItem button>
               <ListItemIcon> <Notes /> </ListItemIcon>
               <ListItemText primary="Car Log" />
             </ListItem>
+          </Link>
+          <Link className={classes.links} to="/garage">
             <ListItem button>
               <ListItemIcon> <Directions_car /> </ListItemIcon>
               <ListItemText primary="Garage"/>
             </ListItem>
+          </Link>
+          <Link className={classes.links} to="/near-me">
             <ListItem button>
               <ListItemIcon> <LocationOn /> </ListItemIcon>
               <ListItemText primary="Find Shop" />
             </ListItem>
+          </Link>
+          <Link className={classes.links} to="/forum">
             <ListItem button>
               <ListItemIcon> <ForumIcon /> </ListItemIcon>
               <ListItemText primary="Forum" />
             </ListItem>
+          </Link>
           </List>
             <Divider />
             <List>

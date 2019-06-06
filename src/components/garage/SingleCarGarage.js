@@ -12,7 +12,10 @@ import VehicleCard from "./VehicleCard";
 import Modal from "@material-ui/core/Modal";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
-import axios from "axios";
+import axios from "axios"
+import ShopPanel from "../logpanels/ShopPanel";
+import DIYPanel from "../logpanels/DIYPanel";
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -46,29 +49,18 @@ const styles = theme => ({
 });
 
 function SingleCarGarage(props) {
-  const [open, setOpen] = useState(false);
   const [logs, setLogs] = React.useState([]);
   const { classes } = props;
 
   useEffect(() => {
-    axios
-      .get(`/api/vehicles/records/${props.match.params.vehicle_id}`)
-      .then(data => {
-        setLogs(data.data);
-      });
-  }, []);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleModal = () => {
-    handleClose();
-  };
+    axios.get(`/api/vehicles/records/${props.match.params.vehicle_id}`).then(data =>{
+      console.log('data: ', data);
+      
+      setLogs(data.data)
+    })
+    
+    
+  },[]);
 
   let singleCar = props.garage.find(vehicle => {
     if (vehicle.vehicle_id === +props.match.params.vehicle_id) {
@@ -152,6 +144,11 @@ function SingleCarGarage(props) {
     );
   });
 
+  const displayLogs = logs.map(log => {
+       return log.shop ? <ShopPanel log={log} classes={classes}/> : <DIYPanel log={log} classes={classes}/>
+
+  })
+  
   return (
     <div className={classes.root}>
       <NavBar />

@@ -49,22 +49,36 @@ function ServiceForm(props) {
   };
 
   const handleSubmit = () => {
+    console.log(
+      props.id,
+      props.shop,
+      props.date,
+      props.miles,
+      props.description,
+      props.summary,
+      props.image,
+      props.part_number,
+      props.part_description,
+    )
     props.submitDIYRecord(
       props.id,
       props.shop,
-      props.description,
+      props.shop_name,
       props.date,
       props.miles,
-      props.summary
-      
-    );
-  };
-
-  if (selectedValue === "b") {
-    return <Shop />;
-  } else if (selectedValue === "a") {
-    return <DIY />;
-  }
+      props.description,
+      props.summary,
+      props.image,
+      props.part_number,
+      props.part_description,
+      );
+    };
+    
+    if (selectedValue === "b") {
+      return <Shop />;
+    } else if (selectedValue === "a") {
+      return <DIY />;
+    }
   return (
     <div>
       <NavBar />
@@ -84,7 +98,7 @@ function ServiceForm(props) {
       >
         <Typography>DIY</Typography>
         <Radio
-          checked={selectedValue === "a"}
+          checked={props.selectedValue === "a"}
           onChange={props.handleRadioButton}
           value="a"
           name="radio-button-demo"
@@ -93,7 +107,7 @@ function ServiceForm(props) {
         />
         <Typography>Shop</Typography>
         <Radio
-          checked={selectedValue === "b"}
+          checked={props.selectedValue === "b"}
           onChange={props.handleRadioButton}
           value="b"
           name="radio-button-demo"
@@ -102,7 +116,7 @@ function ServiceForm(props) {
         />
       </div>
       <DatePicker />
-      <form className={classes.container} noValidate autoComplete="off">
+      <div className={classes.container} noValidate autoComplete="off">
         <TextField
           name="description"
           id="outlined-name"
@@ -123,7 +137,7 @@ function ServiceForm(props) {
           variant="outlined"
           autoComplete="off"
         />
-        <PartsForm />
+        <PartsForm handleChange={handleChange}/>
         <TextField
           name="summary"
           id="outlined-multiline-flexible"
@@ -135,18 +149,11 @@ function ServiceForm(props) {
           variant="outlined"
           autoComplete="off"
         />
-      </form>
-      <Grid style={{ textAlign: "center" }}>
-        <Link to="/garage">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSubmit}
-            style={{ marginBottom: "10vh" }}
-          >
-            Submit
-          </Button>
-        </Link>
+      </div>
+      <Button onClick={handleSubmit}>Submit</Button>
+      <Grid style={{textAlign:"center"}}>
+
+      <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
       </Grid>
     </div>
   );
@@ -160,7 +167,10 @@ const mapStateToProps = (state, ownProps) => {
     miles: state.form.miles,
     summary: state.form.summary,
     shop_name: state.form.shop_name,
-    image: state.form.image
+    image: state.form.image,
+    part_number: state.form.part_number,
+    part_description: state.form.part_description,
+    description: state.form.description
   };
 };
 
