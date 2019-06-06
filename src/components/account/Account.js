@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Grid from "@material-ui/core/Grid"
 import Card from "@material-ui/core/Card"
 import CardContent from '@material-ui/core/CardContent';
@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
 import NavBar from '../navbar/NavBar';
 import {Link} from "react-router-dom"
+import axios from "axios"
 import "./Account.css"
 import Uploader from "../picture-uploader/PictureUploader"
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,6 +37,11 @@ const useStyles = makeStyles(theme => ({
   
 
 const Account =(props) => {
+
+  useEffect(() => {
+    
+    
+  },[]);
     
     const classes = useStyles()
     return (
@@ -67,7 +73,7 @@ const Account =(props) => {
                          </Card> 
                       </Link> 
 
-                      <Link style={{textDecoration:"none"}} to="/getting-location">
+                      <Link style={{textDecoration:"none"}} to="/near-me">
                         <Card style={{height:"200px", width:"200px",marginTop:"30px", color:"#009688"}}>
                            <CardMedia
                                 className={classes.media}

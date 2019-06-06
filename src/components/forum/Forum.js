@@ -74,7 +74,12 @@ const Forum = (props) => {
   
   
    const posts = props.posts.filter(searching(term)).map(post =>{
-     return <Post post ={post}/>
+     
+    const year = post.date.slice(0,4)
+    const mounth = post.date.slice(5,8)
+    const day = post.date.slice(8,10)
+    const date = `${mounth}${day}-${year}`
+     return <Post date={date} post ={post}/>
      
    })
    const handleInput = e => {

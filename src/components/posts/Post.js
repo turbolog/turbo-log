@@ -99,18 +99,22 @@ const useStyles = makeStyles(theme => ({
     
     
     const displayComments = responseComments.map(comment => {
+      const year = comment.date.slice(0,4)
+    const mounth = comment.date.slice(5,8)
+    const day = comment.date.slice(8,10)
+    const date = `${mounth}${day}-${year}`
       return   (
         <Card style={{width: "50vw", margin: " 20px auto", border:"1px white solid", width:"70vw"}}>
             <CardHeader
               avatar={
                   <Avatar aria-label="Recipe">
-                    <img src={comment.image} />
+                    <img  className="post-pic" src={comment.image} />
                   </Avatar>
                 }
         
               
             title={comment.username}
-            subheader={comment.date}
+            subheader={date}
           />
           <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -126,11 +130,11 @@ const useStyles = makeStyles(theme => ({
         
           avatar={
             <Avatar>
-              <img className="post-pic" src="https://popingservers.com/images/1.png" />
+              <img className="post-pic" src={props.post.image} />
             </Avatar>
           }
           title={props.post.username}
-          subheader={props.post.date}
+          subheader={props.date}
           
         />
 
