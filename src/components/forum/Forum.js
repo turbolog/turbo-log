@@ -148,7 +148,7 @@ const Forum = (props) => {
       <NavBar />
       <Grid style={{marginTop:"20px", textAlign:"center"}}>
 
-       <Fab onClick={handleOpen} color="secondary" aria-label="Add" style={{margin:" 0px 5px 5px 5px"}}>
+       <Fab onClick={handleOpen} color="secondary" aria-label="Add" style={{margin:" 0px 5px 5px 5px", }}>
           <AddIcon  />
          </Fab>
       
@@ -162,9 +162,7 @@ const Forum = (props) => {
           onChange={(e) =>{setTerm(e.target.value)}}
          />
       
-         <Button variant="contained" color="primary" style={{ margin: "10px",}} >
-          Search
-          </Button>
+         
       </Grid>
     
     

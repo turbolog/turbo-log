@@ -56,47 +56,50 @@ const NavBar = props => {
                 TurboLog
               </Link>
             </Typography>
-            {!props.user_id ? (
-              <Button color="inherit">
-                <Link
-                  to="/login"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  Login
-                </Link>
-              </Button>
-            ) : (
-              <>
-                <Avatar className={classes.avatar}>
-                  <img src="https://popingservers.com/images/1.png" />
-                </Avatar>
-                <Button className={classes.routes} color="inherit">
-                  <Link
-                    to="/forum"
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    Forum
-                  </Link>
-                </Button>
-                <Button className={classes.routes} color="inherit">
-                  <Link
-                    to="/garage"
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    Garage
-                  </Link>
-                </Button>
-                <IconButton
-                  edge="start"
-                  className={classes.menuButton}
-                  color="inherit"
-                  aria-label="Menu"
-                  onClick={toggleSide}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </>
-            )}
+            {!props.user_id ? 
+            
+            <Button color="inherit">
+              <Link
+                to="/login"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                Login
+              </Link>
+            </Button>
+            :
+            <>
+            <Link to="/account" style={{ textDecoration: "none", color: "inherit" }}>
+              <Avatar className={classes.avatar}>
+              <img src="https://popingservers.com/images/1.png" />
+              </Avatar>
+            </Link>
+            <Button className={classes.routes} color="inherit">
+            <Link
+              to="/forum"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Forum
+            </Link>
+          </Button>
+            <Button className={classes.routes} color="inherit">
+            <Link
+              to="/garage"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Garage
+            </Link>
+          </Button>
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+              onClick={toggleSide}
+            >
+              <MenuIcon />
+            </IconButton>
+          </>
+            }
           </Toolbar>
           <BottomNav />
         </AppBar>
