@@ -10,7 +10,6 @@ const addRecord = async (request, response) => {
   const db = request.app.get("db");
   const { vehicle_id, shop, shop_name, description, date, miles, summary, part_number, part_description, image } = request.body;
   const { user_id } = request.session.user;
-  console.log(request.body);
   const records = await db.add_record([ vehicle_id,shop,shop_name,date,miles,summary,part_number, part_description, description, image,user_id]);
   response.json(records);
 };

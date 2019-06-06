@@ -106,8 +106,7 @@ const featuredPosts = [
     title: "How to Change Your Oil",
     date: "Jun 2, 2019",
     description: "This is an Edmunds article on changing your engine oil.",
-    image:
-      "https://media.ed.edmunds-media.com/non-make/howto/howto_416151_717.jpg",
+    image: "https://oilchangers.com/wp-content/uploads/2019/02/oil-thumb-1.jpg",
     href:
       "https://www.edmunds.com/how-to/how-to-change-your-oil-the-real-down-and-dirty.html"
   },
@@ -115,8 +114,7 @@ const featuredPosts = [
     title: "How to Change a Flat Tire",
     date: "Nov 11",
     description: "How to Change a Flat Tire",
-    image:
-      "https://www.bridgestonetire.com/content/dam/bridgestone/consumer/bst/research/changing-tire-items-included.png",
+    image: "http://qcostarica.com/wp-content/uploads/2016/02/llanta.jpg",
     href:
       "https://www.bridgestonetire.com/tread-and-trend/drivers-ed/how-to-change-a-flat-tire"
   }
@@ -207,7 +205,7 @@ export default function Blog() {
           <Grid container spacing={4} className={classes.cardGrid}>
             {featuredPosts.map(post => (
               <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" href="#">
+                <CardActionArea component="a" href={post.href} target="_blank">
                   <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                       <CardContent>
