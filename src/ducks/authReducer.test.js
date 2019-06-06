@@ -26,4 +26,4 @@ describe("authReducer functions return corresponding action type", () => {
   });
 });
 
-//David's E2E Tests
+

@@ -27,7 +27,6 @@ const styles = makeStyles(theme => ({
     width: 200
   },
   upload: {
-    border: "solid 1px red",
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
@@ -150,7 +149,11 @@ function AddVehicle(props) {
         </div>
       </form>
       <Link to="/garage">
-        <Button color="primary" onClick={addVehicle}>
+        <Button
+          color="primary"
+          onClick={addVehicle}
+          style={{ marginBottom: "10vh" }}
+        >
           Submit
         </Button>
       </Link>

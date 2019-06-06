@@ -128,7 +128,7 @@ function SingleCarGarage(props) {
             <Typography />
           </ExpansionPanelDetails>
         </ExpansionPanel>
-        <ExpansionPanel style={{ marginBottom: "5vh" }}>
+        <ExpansionPanel style={{ marginBottom: "10vh" }}>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel3a-content"

@@ -54,14 +54,14 @@ function ServiceForm(props) {
       props.miles,
       props.image,
       props.summary
-      );
-    };
-    
-    if (selectedValue === "b") {
-      return <Shop />;
-    } else if (selectedValue === "a") {
-      return <DIY />;
-    }
+    );
+  };
+
+  if (selectedValue === "b") {
+    return <Shop />;
+  } else if (selectedValue === "a") {
+    return <DIY />;
+  }
   return (
     <div>
       <NavBar />
@@ -133,7 +133,9 @@ function ServiceForm(props) {
           autoComplete="off"
         />
       </form>
-      <Button onClick={handleSubmit}>Submit</Button>
+      <Button onClick={handleSubmit} style={{ marginBottom: "10vh" }}>
+        Submit
+      </Button>
     </div>
   );
 }
