@@ -75,7 +75,6 @@ function SingleCarGarage(props) {
       return vehicle;
     }
   });
-  console.log(logs);
   const displayLogs = logs.map(log => {
     let date = log.date.slice(0, 10);
     return (

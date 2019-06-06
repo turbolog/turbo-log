@@ -14,8 +14,10 @@ import LocationOn from '@material-ui/icons/LocationOn';
 import Notes from '@material-ui/icons/NotesOutlined';
 import ForumIcon from '@material-ui/icons/ForumOutlined';
 import Directions_car from '@material-ui/icons/DirectionsCar';
+import ViewCompact from '@material-ui/icons/ViewCompact';
 import {connect} from "react-redux"
 import {logout} from "../../ducks/authReducer"
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -86,6 +88,12 @@ function Side (props) {
               <ListItemIcon> <ForumIcon /> </ListItemIcon>
               <ListItemText primary="Forum" />
             </ListItem>
+            <Link to='/bestpractices' style={{ textDecoration: "none", color: "inherit" }}>
+              <ListItem button>
+                <ListItemIcon> <ViewCompact /> </ListItemIcon>
+                <ListItemText primary="Best Practices" />
+              </ListItem>
+            </Link>
           </List>
             <Divider />
             <List>
