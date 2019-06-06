@@ -12,9 +12,11 @@ import NearMe from "./components/near-me/Near-me";
 import GettingLocation from "./components/getting-location/GettingLocation";
 import AddVehicle from "./components/garage/AddVehicle";
 import AllLogs from "./components/allLogs/AllLogs";
+import BestPractices from "./components/bestPractices/BestPractices";
 
 export default (
   <Switch>
+    <Route path="/bestpractices" component={BestPractices} />
     <Route path="/addvehicle" component={AddVehicle} />
     <Route path="/addrecord/:vehicle_id" component={ServiceForm} />
     {/* <Route path="/addRecordForm" component={ServiceForm} /> */}

@@ -67,7 +67,6 @@ function SingleCarGarage(props) {
       return vehicle;
     }
   });
-  console.log(logs);
   const displayLogs = logs.map(log => {
        return log.shop ? <ShopPanel log={log} classes={classes}/> : <DIYPanel log={log} classes={classes}/>
 
