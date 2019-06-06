@@ -10,7 +10,7 @@ const initialState = {
   image: "",
   shop_name: null,
   part_number: null,
-  part_description: null,
+  part_description: null
 };
 //action types
 const UPDATE_FORM = "UPDATE_FORM";
@@ -33,8 +33,19 @@ export function updateImage(image) {
   };
 }
 
-export function submitDIYRecord(vehicle_id, shop, shop_name, date,miles, description, summary, image, part_number, part_description ) {
-  console.log(      
+export function submitDIYRecord(
+  vehicle_id,
+  shop,
+  shop_name,
+  date,
+  miles,
+  description,
+  summary,
+  image,
+  part_number,
+  part_description
+) {
+  console.log(
     vehicle_id,
     shop,
     shop_name,
@@ -44,7 +55,8 @@ export function submitDIYRecord(vehicle_id, shop, shop_name, date,miles, descrip
     summary,
     image,
     part_number,
-    part_description,)
+    part_description
+  );
   return {
     type: SUBMIT_DIY_RECORD,
     payload: axios.post("/api/records", {
@@ -57,7 +69,7 @@ export function submitDIYRecord(vehicle_id, shop, shop_name, date,miles, descrip
       summary,
       image,
       part_number,
-      part_description,
+      part_description
     })
   };
 }
@@ -72,7 +84,7 @@ export function submitShopRecord(
   summary,
   image,
   part_number,
-  part_description,
+  part_description
 ) {
   return {
     type: SUBMIT_SHOP_RECORD,
@@ -86,7 +98,7 @@ export function submitShopRecord(
       summary,
       image,
       part_number,
-      part_description,
+      part_description
     })
   };
 }
@@ -107,7 +119,6 @@ export function toggleShop(shop) {
 
 //reducer
 export default function formReducer(state = initialState, action) {
-  console.log(action)
   switch (action.type) {
     case UPDATE_FORM:
       return {

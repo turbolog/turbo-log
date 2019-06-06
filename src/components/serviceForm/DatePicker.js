@@ -1,5 +1,5 @@
 import "date-fns";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import DateFnsUtils from "@date-io/date-fns";
@@ -18,7 +18,12 @@ const useStyles = makeStyles({
 });
 
 function DatePicker(props) {
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    console.log(new Date());
+    props.updateForm("date", new Date());
+  }, []);
 
   const classes = useStyles();
 
