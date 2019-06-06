@@ -9,10 +9,13 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import VehicleCard from "./VehicleCard";
-import Modal from "@material-ui/core/Modal"
-import Button from '@material-ui/core/Button';
+import Modal from "@material-ui/core/Modal";
+import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import axios from "axios"
+import ShopPanel from "../logpanels/ShopPanel";
+import DIYPanel from "../logpanels/DIYPanel";
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -41,12 +44,11 @@ const styles = theme => ({
     maxWidth: 500
   },
   span: {
-    fontSize:"20px"
+    fontSize: "20px"
   }
 });
 
 function SingleCarGarage(props) {
-  const [open, setOpen] = useState(false);
   const [logs, setLogs] = React.useState([]);
   const { classes } = props;
 
@@ -59,81 +61,19 @@ function SingleCarGarage(props) {
     
     
   },[]);
-  
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-const handleModal = () =>{
-      handleClose()
-}
 
   let singleCar = props.garage.find(vehicle => {
     if (vehicle.vehicle_id === +props.match.params.vehicle_id) {
       return vehicle;
     }
   });
+  console.log(logs);
+  const displayLogs = logs.map(log => {
+       return log.shop ? <ShopPanel log={log} classes={classes}/> : <DIYPanel log={log} classes={classes}/>
 
-  const displayLogs = logs.map(log =>{
-   
-     return (<ExpansionPanel key={log.report_id}>
-     <ExpansionPanelSummary
-       expandIcon={<ExpandMoreIcon />}
-       aria-controls="panel1a-content"
-       id="panel1a-header"
-     >
-       <Typography className={classes.heading}>
-         {"Brakes Changed"}
-       </Typography>
-     </ExpansionPanelSummary>
-     <ExpansionPanelDetails>
-       <Grid
-         container
-         direction="column"
-         justify="flex-start"
-         alignItems="flex-start"
-       >
-         <Grid item><span className={classes.span} >Shop Name: </span>{log.shop_name}</Grid>
-         <Grid item><span className={classes.span} >Millage: </span>{log.miles}</Grid>
-         
-         
-         <Button variant="contained" color="primary" onClick={handleOpen}>View Receipt</Button>
-         <Modal
-               aria-labelledby="simple-modal-title"
-               aria-describedby="simple-modal-description"
-               open={open}
-               onClose={handleClose}
-               style={{height:"40vh", width:"40vw", margin:"10px auto 0px auto"}}
-               sm={2} md={2} lg={8} xl={8}
-               >
-                 <Grid container justify="center" height="60vh" width="60vw">
-                     <Grid item>
-                        <Typography variant="h6" id="modal-title">
-                              title
-                          </Typography>
-                          <Typography variant="subtitle1" id="simple-modal-description">
-                          <img style={{maxHeight:"400px", }} src="https://images.invoicehome.com/templates/receipt-template-us-neat-750px.png"/>
-                          </Typography>
-                          <Typography style={{textAlign:"center"}}>
-                            <Button onClick={handleModal} variant="contained" color="primary" >
-                              Close
-                            </Button>
-                          </Typography>
-                      </Grid>   
-                 </Grid>
-        </Modal>
-       </Grid>
-       <Typography />
-     </ExpansionPanelDetails>
-   </ExpansionPanel>)
   })
   
   return (
-    
     <div className={classes.root}>
       <NavBar />
       <Typography
@@ -153,8 +93,8 @@ const handleModal = () =>{
       >
         Service Logs
       </Typography>
+
       {displayLogs}
-      
     </div>
   );
 }

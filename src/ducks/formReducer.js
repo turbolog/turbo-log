@@ -3,11 +3,14 @@ import axios from "axios";
 const initialState = {
   vehicle_id: null,
   shop: false,
+  description: "",
   date: "",
   miles: "",
   summary: "",
   image: "",
-  shop_name: null
+  shop_name: null,
+  part_number: null,
+  part_description: null,
 };
 //action types
 const UPDATE_FORM = "UPDATE_FORM";
@@ -25,20 +28,36 @@ export function updateForm(name, value) {
 }
 export function updateImage(image) {
   return {
-    type: UPDATE_FORM,
+    type: UPDATE_IMAGE,
     payload: image
   };
 }
 
-export function submitDIYRecord(vehicle_id, shop, date, miles, summary) {
+export function submitDIYRecord(vehicle_id, shop, shop_name, date,miles, description, summary, image, part_number, part_description ) {
+  console.log(      
+    vehicle_id,
+    shop,
+    shop_name,
+    date,
+    miles,
+    description,
+    summary,
+    image,
+    part_number,
+    part_description,)
   return {
     type: SUBMIT_DIY_RECORD,
     payload: axios.post("/api/records", {
       vehicle_id,
       shop,
+      shop_name,
       date,
       miles,
-      summary
+      description,
+      summary,
+      image,
+      part_number,
+      part_description,
     })
   };
 }
@@ -46,22 +65,28 @@ export function submitDIYRecord(vehicle_id, shop, date, miles, summary) {
 export function submitShopRecord(
   vehicle_id,
   shop,
+  shop_name,
   date,
   miles,
+  description,
   summary,
   image,
-  shop_name
+  part_number,
+  part_description,
 ) {
   return {
     type: SUBMIT_SHOP_RECORD,
     payload: axios.post("/api/records", {
       vehicle_id,
       shop,
+      shop_name,
       date,
       miles,
+      description,
       summary,
       image,
-      shop_name
+      part_number,
+      part_description,
     })
   };
 }
@@ -82,6 +107,7 @@ export function toggleShop(shop) {
 
 //reducer
 export default function formReducer(state = initialState, action) {
+  console.log(action)
   switch (action.type) {
     case UPDATE_FORM:
       return {

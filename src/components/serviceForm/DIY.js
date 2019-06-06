@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Grid from "@material-ui/core/Grid"
+import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import {
   updateForm,
@@ -11,6 +11,7 @@ import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
 import DIY from "./DIY";
 import Shop from "./Shop";
+import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -48,13 +49,28 @@ function ServiceForm(props) {
   };
 
   const handleSubmit = () => {
-    props.submitDIYRecord(
+    console.log(
       props.id,
       props.shop,
       props.date,
       props.miles,
+      props.description,
+      props.summary,
       props.image,
-      props.summary
+      props.part_number,
+      props.part_description,
+    )
+    props.submitDIYRecord(
+      props.id,
+      props.shop,
+      props.shop_name,
+      props.date,
+      props.miles,
+      props.description,
+      props.summary,
+      props.image,
+      props.part_number,
+      props.part_description,
       );
     };
     
@@ -82,7 +98,7 @@ function ServiceForm(props) {
       >
         <Typography>DIY</Typography>
         <Radio
-          checked={selectedValue === "a"}
+          checked={props.selectedValue === "a"}
           onChange={props.handleRadioButton}
           value="a"
           name="radio-button-demo"
@@ -91,7 +107,7 @@ function ServiceForm(props) {
         />
         <Typography>Shop</Typography>
         <Radio
-          checked={selectedValue === "b"}
+          checked={props.selectedValue === "b"}
           onChange={props.handleRadioButton}
           value="b"
           name="radio-button-demo"
@@ -100,7 +116,7 @@ function ServiceForm(props) {
         />
       </div>
       <DatePicker />
-      <form className={classes.container} noValidate autoComplete="off">
+      <div className={classes.container} noValidate autoComplete="off">
         <TextField
           name="description"
           id="outlined-name"
@@ -121,7 +137,7 @@ function ServiceForm(props) {
           variant="outlined"
           autoComplete="off"
         />
-        <PartsForm />
+        <PartsForm handleChange={handleChange}/>
         <TextField
           name="summary"
           id="outlined-multiline-flexible"
@@ -133,7 +149,8 @@ function ServiceForm(props) {
           variant="outlined"
           autoComplete="off"
         />
-      </form>
+      </div>
+      <Button onClick={handleSubmit}>Submit</Button>
       <Grid style={{textAlign:"center"}}>
 
       <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
@@ -150,7 +167,10 @@ const mapStateToProps = (state, ownProps) => {
     miles: state.form.miles,
     summary: state.form.summary,
     shop_name: state.form.shop_name,
-    image: state.form.image
+    image: state.form.image,
+    part_number: state.form.part_number,
+    part_description: state.form.part_description,
+    description: state.form.description
   };
 };
 

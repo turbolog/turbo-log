@@ -100,16 +100,17 @@ const useStyles = makeStyles(theme => ({
     
     const displayComments = responseComments.map(comment => {
       return   (
-        <Card style={{margin:" 20px auto 10px auto" , border:"1px white solid", width:"70vw"}}>
+        <Card style={{width: "50vw", margin: " 20px auto", border:"1px white solid", width:"70vw"}}>
             <CardHeader
               avatar={
-                <Avatar aria-label="Recipe">
-                  <img className="post-pic" src="https://popingservers.com/images/1.png" />
-                </Avatar>
-                    }
+                  <Avatar aria-label="Recipe">
+                    <img src={comment.image} />
+                  </Avatar>
+                }
+        
               
-            title="Commenter"
-            subheader="September 14, 2016"
+            title={comment.username}
+            subheader={comment.date}
           />
           <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">

@@ -1,0 +1,27 @@
+.home-background {
+  background: url("https://images.unsplash.com/photo-1504575797-2f83688754b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80")
+    no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+}
+.text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50vw;
+  width: 40vw;
+}
+@media only screen and (max-width: 600px) {
+  .text-box {
+    margin-left: 30vw;
+    width: 70vw;
+  }
+  .text-box p {
+    margin-top: 1vh;
+    font-size: 1vh;
+  }
+  .text-box .glove-box {
+    font-size: 3vh;
+  }
+}

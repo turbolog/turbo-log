@@ -8,16 +8,21 @@ const getRecords = async (request, response) => {
 };
 const addRecord = async (request, response) => {
   const db = request.app.get("db");
-  const { vehicle_id, shop, shop_name, date, miles, summary } = request.body;
+  const { vehicle_id, shop, shop_name, description, date, miles, summary, part_number, part_description, image } = request.body;
   const { user_id } = request.session.user;
   console.log(request.body);
   const records = await db.add_record([
     vehicle_id,
     shop,
     shop_name,
+    description,
     date,
     miles,
     summary,
+    part_number,
+    part_description,
+    description,
+    image,
     user_id
   ]);
   response.json(records);
@@ -53,6 +58,7 @@ const getVehicleRecord = async (request, response) => {
   const { vehicle_id } = request.params;
   console.log("hit");
   const records = await db.get_vehicle_log(vehicle_id);
+  console.log(records);
 
   response.json(records);
 };

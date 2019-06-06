@@ -53,7 +53,7 @@ function MultiCarGarage(props) {
   const handleAddVehicle = () => {};
 
   let cars = props.garage.map(vehicle => {
-    return <VehicleCard car={vehicle} />;
+    return <VehicleCard car={vehicle} key={vehicle.vehicle_id}/>;
   });
 
   if (!props.user_id) return <Redirect to="/" />
