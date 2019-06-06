@@ -3,6 +3,7 @@ import axios from "axios";
 const initialState = {
   vehicle_id: null,
   shop: false,
+  description: "",
   date: "",
   miles: "",
   summary: "",
@@ -30,12 +31,20 @@ export function updateImage(image) {
   };
 }
 
-export function submitDIYRecord(vehicle_id, shop, date, miles, summary) {
+export function submitDIYRecord(
+  vehicle_id,
+  shop,
+  description,
+  date,
+  miles,
+  summary
+) {
   return {
     type: SUBMIT_DIY_RECORD,
     payload: axios.post("/api/records", {
       vehicle_id,
       shop,
+      description,
       date,
       miles,
       summary
@@ -50,7 +59,8 @@ export function submitShopRecord(
   miles,
   summary,
   image,
-  shop_name
+  shop_name,
+  description
 ) {
   return {
     type: SUBMIT_SHOP_RECORD,
@@ -61,7 +71,8 @@ export function submitShopRecord(
       miles,
       summary,
       image,
-      shop_name
+      shop_name,
+      description
     })
   };
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Grid from "@material-ui/core/Grid"
+import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import {
   updateForm,
@@ -11,6 +11,7 @@ import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
 import DIY from "./DIY";
 import Shop from "./Shop";
+import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -51,18 +52,19 @@ function ServiceForm(props) {
     props.submitDIYRecord(
       props.id,
       props.shop,
+      props.description,
       props.date,
       props.miles,
-      props.image,
       props.summary
-      );
-    };
-    
-    if (selectedValue === "b") {
-      return <Shop />;
-    } else if (selectedValue === "a") {
-      return <DIY />;
-    }
+      
+    );
+  };
+
+  if (selectedValue === "b") {
+    return <Shop />;
+  } else if (selectedValue === "a") {
+    return <DIY />;
+  }
   return (
     <div>
       <NavBar />
@@ -134,9 +136,17 @@ function ServiceForm(props) {
           autoComplete="off"
         />
       </form>
-      <Grid style={{textAlign:"center"}}>
-
-      <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
+      <Grid style={{ textAlign: "center" }}>
+        <Link to="/garage">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit}
+            style={{ marginBottom: "10vh" }}
+          >
+            Submit
+          </Button>
+        </Link>
       </Grid>
     </div>
   );

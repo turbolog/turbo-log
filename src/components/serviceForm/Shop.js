@@ -157,12 +157,13 @@ function ServiceForm(props) {
           style={{ marginRight: "50px" }}
         /> */}
         <Grid style={{ textAlign: "center" }}>
-          <PictureUplodar uploadtitle="Invice Picture" />
+          <PictureUplodar uploadtitle="Invoice Picture" />
           <Button
             color="primary"
             variant="contained"
             className={classes.button}
             onClick={handleShopSubmit}
+            style={{ marginBottom: "10vh" }}
           >
             Submit
           </Button>
