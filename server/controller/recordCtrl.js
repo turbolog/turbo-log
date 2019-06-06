@@ -15,6 +15,7 @@ const addRecord = async (request, response) => {
     vehicle_id,
     shop,
     shop_name,
+    description,
     date,
     miles,
     summary,
@@ -57,6 +58,7 @@ const getVehicleRecord = async (request, response) => {
   const { vehicle_id } = request.params;
   console.log("hit");
   const records = await db.get_vehicle_log(vehicle_id);
+  console.log(records);
 
   response.json(records);
 };

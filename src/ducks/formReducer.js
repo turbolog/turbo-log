@@ -3,6 +3,7 @@ import axios from "axios";
 const initialState = {
   vehicle_id: null,
   shop: false,
+  description: "",
   date: "",
   miles: "",
   summary: "",
