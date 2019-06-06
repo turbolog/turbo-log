@@ -87,7 +87,8 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         user_id: action.payload.data.user_id,
-        username: action.payload.data.username
+        username: action.payload.data.username,
+        image: action.payload.data.image
       };
     case `${LOGOUT}_FULFILLED`:
       return {
