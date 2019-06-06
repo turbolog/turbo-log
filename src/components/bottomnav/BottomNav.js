@@ -30,9 +30,9 @@ function BottomNav(props) {
     
   return (
     <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-      <Link style={{display: "none"}} to="/forum"><BottomNavigationAction label="Forum" value="forum" icon={<ForumIcon />}/></Link>
-      <Link style={{display: "none"}} to="/garage"><BottomNavigationAction label="Garage" value="garage" icon={<Car />} /></Link>
-      <Link style={{display: "none"}} to="/account"><BottomNavigationAction label="Account" value="account" icon={<Account />}/></Link>
+      <Link to="/forum"><BottomNavigationAction label="Forum" value="forum" icon={<ForumIcon />}/></Link>
+      <Link to="/garage"><BottomNavigationAction label="Garage" value="garage" icon={<Car />} /></Link>
+      <Link to="/account"><BottomNavigationAction label="Account" value="account" icon={<Account />}/></Link>
     </BottomNavigation>
   );
 }
