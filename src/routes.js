@@ -11,6 +11,7 @@ import ServiceForm from "./components/serviceForm/ServiceForm";
 import NearMe from "./components/near-me/Near-me";
 import GettingLocation from "./components/getting-location/GettingLocation";
 import AddVehicle from "./components/garage/AddVehicle";
+import AllLogs from "./components/allLogs/AllLogs";
 
 export default (
   <Switch>
@@ -22,6 +23,7 @@ export default (
     <Route path="/near-me/:city/:state" component={NearMe} />
     <Route path="/near-me" component={GettingLocation} />
     <Route path="/account" component={Account} />
+    <Route path="/log" component={AllLogs} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/forum" component={Forum} />

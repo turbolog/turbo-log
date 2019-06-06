@@ -36,7 +36,8 @@ const login = async (request, response) => {
     } else {
       request.session.user = {
         user_id: user[0].user_id,
-        username: username
+        username: username,
+        image: user[0].image
       };
       response.json(request.session.user);
     }
