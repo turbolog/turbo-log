@@ -14,7 +14,7 @@ function AllLogs (props)  {
     console.log(logs)
     let displayLogs = logs.map(log => {
         return(
-            <Grid item xs={12} sm={6} lg={4} xl={3}>
+            <Grid key={log.report_id} item xs={12} sm={6} lg={4} xl={3}>
                 <LogCard log={log}/>
             </Grid>
         )
