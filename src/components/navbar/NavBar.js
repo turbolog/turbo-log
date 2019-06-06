@@ -70,7 +70,7 @@ const NavBar = props => {
             <>
             <Link to="/account" style={{ textDecoration: "none", color: "inherit" }}>
               <Avatar className={classes.avatar}>
-              <img src="https://popingservers.com/images/1.png" />
+              <img src={props.image} />
               </Avatar>
             </Link>
             <Button className={classes.routes} color="inherit">
@@ -110,7 +110,8 @@ const NavBar = props => {
 
 const mapStateToProps = reduxState => {
   return {
-    user_id: reduxState.auth.user_id
+    user_id: reduxState.auth.user_id,
+    image: reduxState.auth.image
   };
 };
 
