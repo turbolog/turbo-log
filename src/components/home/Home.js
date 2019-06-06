@@ -57,6 +57,7 @@ const Home = props => {
           color="primary"
           aria-label="Add"
           className={classes.button}
+          id="register"
         >
           <Link
             to="/register"

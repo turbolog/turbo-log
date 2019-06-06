@@ -27,10 +27,6 @@ const styles = makeStyles(theme => ({
 function PartsForm(props) {
   const classes = styles();
 
-  const handleChange = e => {
-    props.updateForm(e.target.name, e.target.value);
-  };
-
   return (
     
     <Grid container alignItems="center">
@@ -38,8 +34,8 @@ function PartsForm(props) {
         id="outlined-name"
         label="Part Number"
         className={classes.textField}
-        name=""
-        onChange={handleChange}
+        name="part_number"
+        onChange={props.handleChange}
         margin="normal"
         variant="outlined"
         style={{ width: "30vw" }}
@@ -48,7 +44,8 @@ function PartsForm(props) {
         id="outlined-name"
         label="Part Description"
         className={classes.textField}
-        onChange={handleChange}
+        onChange={props.handleChange}
+        name="part_description"
         margin="normal"
         variant="outlined"
         style={{ width: "30vw" }}

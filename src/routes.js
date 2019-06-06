@@ -22,7 +22,7 @@ export default (
     <Route path="/garage/:vehicle_id" component={SingleCarGarage} />
     <Route path="/garage/" component={MultiCarGarage} />
     <Route path="/near-me/:city/:state" component={NearMe} />
-    <Route path="/getting-location" component={GettingLocation} />
+    <Route path="/near-me" component={GettingLocation} />
     <Route path="/account" component={Account} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
