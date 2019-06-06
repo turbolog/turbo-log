@@ -44,6 +44,8 @@ function ServiceForm(props) {
     props.toggleShop(false);
   }, []);
 
+  
+
   const handleChange = e => {
     props.updateForm(e.target.name, e.target.value);
   };

@@ -20,7 +20,6 @@ const addRecord = async (request, response) => {
     summary,
     part_number,
     part_description,
-    description,
     image,
     user_id
   ]);
