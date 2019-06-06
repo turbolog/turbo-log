@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react" 
 import { Grid } from "@material-ui/core";
-import LogCard from "./LogCard"
+import LogCard from "./logCard"
 import axios from "axios"
 import NavBar from "../navbar/NavBar";
 
