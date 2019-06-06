@@ -16,16 +16,16 @@ import BestPractices from "./components/bestPractices/BestPractices";
 
 export default (
   <Switch>
+    <Route path="/log" component={AllLogs} />
     <Route path="/bestpractices" component={BestPractices} />
     <Route path="/addvehicle" component={AddVehicle} />
     <Route path="/addrecord/:vehicle_id" component={ServiceForm} />
     {/* <Route path="/addRecordForm" component={ServiceForm} /> */}
     <Route path="/garage/:vehicle_id" component={SingleCarGarage} />
-    <Route path="/garage/" component={MultiCarGarage} />
+    <Route path="/garage" component={MultiCarGarage} />
     <Route path="/near-me/:city/:state" component={NearMe} />
     <Route path="/near-me" component={GettingLocation} />
     <Route path="/account" component={Account} />
-    <Route path="/log" component={AllLogs} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/forum" component={Forum} />

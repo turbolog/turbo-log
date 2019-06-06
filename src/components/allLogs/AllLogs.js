@@ -1,15 +1,14 @@
 import React,{useState, useEffect} from "react" 
 import { Grid } from "@material-ui/core";
-import LogCard from "./logCard"
+import LogCard from "./LogCard"
 import axios from "axios"
 import NavBar from "../navbar/NavBar";
 
 
 function AllLogs (props)  {
     let [logs, setLogs] = useState([])
-    useEffect(async () => {
-        let result = await axios.get("/api/records")
-        setLogs(result.data)
+    useEffect(() => {
+        axios.get("/api/records").then(result => setLogs(result.data))
     },[]) 
 
     console.log(logs)
