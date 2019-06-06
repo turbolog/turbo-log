@@ -69,7 +69,6 @@ function Side (props) {
             keepMounted: true, // Better open performance on mobile.
           }}
           open={props.open}
-          onOpen={props.toggleSide}
           onClose={props.toggleSide}
         >
           <List>

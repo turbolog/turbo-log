@@ -39,12 +39,8 @@ const PictureUploader = (props) =>{
           'Content-Type': 'multipart/form-data'
         }
       }).then(response => {
-<<<<<<< HEAD
-        console.log(response.data.Location)
-=======
         console.log('response: ', response);
     
->>>>>>> master
         props.updateImage(response.data.Location)
       }).catch(error => {
         // handle your error
@@ -71,11 +67,7 @@ const PictureUploader = (props) =>{
                  {props.uploadtitle}
                </Button>
              </label>
-<<<<<<< HEAD
-                 <Button type="submit" variant="contained" color="primary" className={classes.button} onClick={submitFile}>
-=======
                  <Button onClick={submitFile} type="submit" variant="contained" color="primary" className={classes.button}>
->>>>>>> master
                      Upload
                   </Button>      
        
