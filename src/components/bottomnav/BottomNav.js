@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -30,9 +30,9 @@ function BottomNav(props) {
     
   return (
     <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction label="Forum" value="forum" icon={<ForumIcon />} onClick={<Redirect to="/forum" />}/>
-      <BottomNavigationAction label="Garage" value="garage" icon={<Car />} onClick={<Redirect to="/garage" />}/>
-      <BottomNavigationAction label="Account" value="account" icon={<Account />} onClick={<Redirect to="/account" />}/>
+      <Link to="/forum"><BottomNavigationAction label="Forum" value="forum" icon={<ForumIcon />}/></Link>
+      <Link to="/garage"><BottomNavigationAction label="Garage" value="garage" icon={<Car />} /></Link>
+      <Link to="/account"><BottomNavigationAction label="Account" value="account" icon={<Account />}/></Link>
     </BottomNavigation>
   );
 }

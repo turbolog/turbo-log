@@ -1,10 +1,10 @@
 import React from "react";
-import NavBar from "../navbar/NavBar";
 import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
 import { connect } from "react-redux";
 import "./Home.css";
+import HomeNav from "../navbar/HomeNav";
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -33,7 +33,7 @@ const Home = props => {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover; */}
-      <NavBar />
+      <HomeNav/>
       <div className="text-box">
         <p
           className="glove-box"

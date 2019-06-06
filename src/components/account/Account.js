@@ -10,6 +10,7 @@ import axios from "axios"
 import "./Account.css"
 import Uploader from "../picture-uploader/PictureUploader"
 import { makeStyles } from '@material-ui/core/styles';
+import {connect} from "react-redux"
 
 
 
@@ -50,7 +51,7 @@ const Account =(props) => {
 
                  <Grid>
                     <Grid container className="acc-top-col" >
-                    <img className="user-pic" src="https://popingservers.com/images/1.png"/>
+                    <img className="user-pic" src={props.image}/>
                 </Grid>
                     <Grid style={{textAlign:"center"}}>
                         <Uploader uploadtitle="Change Picture"/>
@@ -112,5 +113,11 @@ const Account =(props) => {
     )
 }
 
-export default Account
+function mapStatetoProps(state) {
+  return {
+    image: state.auth.image
+  }
+}
+
+export default connect(mapStatetoProps)(Account)
 

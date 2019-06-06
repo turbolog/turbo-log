@@ -103,6 +103,10 @@ const useStyles = makeStyles(theme => ({
     const mounth = comment.date.slice(5,8)
     const day = comment.date.slice(8,10)
     const date = `${mounth}${day}-${year}`
+    
+    console.log(responseComments)
+    const displayComments = responseComments.map(comment => {
+      
       return   (
         <Card style={{width: "50vw", margin: " 20px auto", border:"1px white solid", width:"70vw"}}>
             <CardHeader
@@ -148,7 +152,7 @@ const useStyles = makeStyles(theme => ({
         </CardContent>
         <CardActions disableSpacing>
             <FormControlLabel
-        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" style={{marginLeft: 10}} /> }
         
       />
 

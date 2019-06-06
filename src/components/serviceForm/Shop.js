@@ -66,8 +66,8 @@ function ServiceForm(props) {
       props.summary,
       props.image,
       props.part_number,
-      props.part_description,
-      );;
+      props.part_description
+    );
   };
   if (selectedValue === "b") {
     return <Shop />;

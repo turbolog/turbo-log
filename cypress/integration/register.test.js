@@ -1,3 +1,5 @@
+//Edson's Test
+
 describe("Website setup", () => {
     it("Should load the page", () => {
         cy.visit("http://localhost:3000")
@@ -14,20 +16,30 @@ describe("Get to new user page", () => {
     })
 })
 
-describe("Deletes item from List", () => {
-    it("Can Click on the delete button", () => {
-        cy.get("button[name='world-domination-delete']")
-        .click()
-    })
-    it("deleted 'World Domination' is deleted from the page", () => {
-        cy.contains("World Domination").should("not.exist")
-    })
-})
-
-describe("Navagation", () => {
-    it("Should navigate to checked", () => {
-        cy.contains("Checked").click
-        cy.url().should("include","./checked")
-    })
-
+describe("Can type in information", () => {
+    describe("Add first name into input field", () => {
+        it("Should be able to type into input field", () => {
+            cy.get("#firstName")
+            .type("testing")
+        })})
+    describe("Add first name into input field", () => {
+        it("Should be able to type into input field", () => {
+            cy.get("#lastName")
+            .type("the")
+        })})
+    describe("Add first name into input field", () => {
+        it("Should be able to type into input field", () => {
+            cy.get("#email")
+            .type("thing@here.co")
+        })})
+    describe("Add first name into input field", () => {
+        it("Should be able to type into input field", () => {
+            cy.get("#username")
+            .type("user")
+        })})
+    describe("Add first name into input field", () => {
+        it("Should be able to type into input field", () => {
+            cy.get("#password")
+            .type("pass")
+        })})
 })
