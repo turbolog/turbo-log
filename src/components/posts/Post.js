@@ -95,9 +95,10 @@ const useStyles = makeStyles(theme => ({
       })
     }
     
-    
+    let date = props.post.date.slice(0, 10)
     console.log(responseComments)
     const displayComments = responseComments.map(comment => {
+      let date = comment.date.slice(0, 10)
       return   (
         <Card style={{width: "50vw", margin: " 20px auto", border:"1px white solid", width:"70vw"}}>
             <CardHeader
@@ -109,7 +110,7 @@ const useStyles = makeStyles(theme => ({
         
               
             title={comment.username}
-            subheader={comment.date}
+            subheader={date}
           />
           <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
@@ -129,7 +130,7 @@ const useStyles = makeStyles(theme => ({
             </Avatar>
           }
           title={props.post.username}
-          subheader={props.post.date}
+          subheader={date}
           
         />
 
@@ -143,7 +144,7 @@ const useStyles = makeStyles(theme => ({
         </CardContent>
         <CardActions disableSpacing>
             <FormControlLabel
-        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" style={{marginLeft: 10}} /> }
         
       />
 
