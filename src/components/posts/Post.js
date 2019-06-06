@@ -93,17 +93,18 @@ const useStyles = makeStyles(theme => ({
       axios.post("/api/comments", {post_id,comment}).then(result => {
         setResponseComments(result.data)
       })
+      
     }
     
     
-    console.log(responseComments)
+    
     const displayComments = responseComments.map(comment => {
       return   (
         <Card style={{margin:" 20px auto 10px auto" , border:"1px white solid", width:"70vw"}}>
             <CardHeader
               avatar={
                 <Avatar aria-label="Recipe">
-                  <img src="https://popingservers.com/images/1.png" />
+                  <img className="post-pic" src="https://popingservers.com/images/1.png" />
                 </Avatar>
                     }
               

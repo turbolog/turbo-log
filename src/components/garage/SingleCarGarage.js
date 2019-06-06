@@ -52,7 +52,7 @@ function SingleCarGarage(props) {
 
   useEffect(() => {
     axios.get(`/api/vehicles/records/${props.match.params.vehicle_id}`).then(data =>{
-      console.log('data: ', data);
+      
       
       setLogs(data.data)
     })
@@ -107,14 +107,16 @@ const handleModal = () =>{
                aria-describedby="simple-modal-description"
                open={open}
                onClose={handleClose}
+               style={{height:"40vh", width:"40vw", margin:"10px auto 0px auto"}}
+               sm={2} md={2} lg={8} xl={8}
                >
-                 <Grid container justify="center" >
+                 <Grid container justify="center" height="60vh" width="60vw">
                      <Grid item>
                         <Typography variant="h6" id="modal-title">
                               title
                           </Typography>
                           <Typography variant="subtitle1" id="simple-modal-description">
-                          <img style={{maxHeight:"800px", }} src="https://images.invoicehome.com/templates/receipt-template-us-neat-750px.png"/>
+                          <img style={{maxHeight:"400px", }} src="https://images.invoicehome.com/templates/receipt-template-us-neat-750px.png"/>
                           </Typography>
                           <Typography style={{textAlign:"center"}}>
                             <Button onClick={handleModal} variant="contained" color="primary" >

@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import NavBar from "../navbar/NavBar"
 import {Link} from "react-router-dom"
 
 
@@ -43,6 +44,7 @@ function GettingLocation() {
 
     return (
         <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20%"}}>
+          
             <TextField
         id="filled-email-input"
         label="City"
@@ -63,7 +65,7 @@ function GettingLocation() {
       <Link style={{textDecoration:"none"}} to={`/near-me/${city}/${state}`}>
 
       <Button color="primary" variant="contained" >
-        Primary
+        find
       </Button>
       </Link>
         </div>

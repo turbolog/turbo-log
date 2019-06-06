@@ -153,6 +153,7 @@ const Forum = (props) => {
          </Fab>
       
          <TextField 
+         autoFocus
           id="outlined-search"
           label="Search...."
           type="search"

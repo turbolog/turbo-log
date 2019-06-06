@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card"
+import NavBar from "../navbar/NavBar"
 import axios from "axios"
 import "./Near-me.css"
 
@@ -48,7 +49,7 @@ class NearMe extends Component {
         const parameters = {
           client_id: "PMHC2WA1VCBHVYOPPSJ0QSBYTLRF4PNJ04OWVWV0PZJ0QFIR",
           client_secret: "CULSZZ44YAEBOWBFGPB4BF5ISRXXSNYR0EE3JV3CNE2ZWHV0",
-          query: "auto repair",
+          query: "car maintenance",
           near:`${this.props.match.params.city},${this.props.match.params.state}`,
           v: "20182507"
         }
@@ -74,7 +75,7 @@ class NearMe extends Component {
           center: {lat:this.state.lat, lng: this.state.lon},
           
           // center:{lat:30.17, lng:-91.14},
-          zoom: 8
+          zoom: 9
         })
     
         // Create An InfoWindow
@@ -82,8 +83,14 @@ class NearMe extends Component {
     
         // Display Dynamic Markers
         this.state.venues.map(myVenue => {
+          
+            
+
+            
                 
-          var contentString = `${myVenue.venue.name}`
+          var contentString = `${myVenue.venue.name}  
+           ${myVenue.venue.location.address} ${myVenue.venue.location.city} ${myVenue.venue.location.state}`
+          
 
         
 
@@ -110,12 +117,13 @@ class NearMe extends Component {
     
         
     
-      }
+          }
       render() {
         
-        console.log(this.state.wehther)
+        
         return (
           <main>
+            <NavBar/>
             {!this.state.wehther ? <h1>loading..</h1> : this.state.wehther.map(weatherdata =>{
               return <Card  key={weatherdata.main.temp} style={{height:"20vh", textAlign:"center", paddingTop:"20px"}}>
                         <Typography style={{fontSize:"25px"}}>
