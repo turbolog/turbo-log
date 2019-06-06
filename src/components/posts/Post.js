@@ -144,7 +144,7 @@ const useStyles = makeStyles(theme => ({
         </CardContent>
         <CardActions disableSpacing>
             <FormControlLabel
-        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" style={{marginLeft: 10}} /> }
         
       />
 
