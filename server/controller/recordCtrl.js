@@ -10,7 +10,8 @@ const addRecord = async (request, response) => {
   const db = request.app.get("db");
   const { vehicle_id, shop, shop_name, description, date, miles, summary, part_number, part_description, image } = request.body;
   const { user_id } = request.session.user;
-  const records = await db.add_record([ vehicle_id,shop,shop_name,date,miles,summary,part_number, part_description, description, image,user_id]);
+  db.update_miles([miles,vehicle_id, user_id])
+  const records = await db.add_record([ vehicle_id, shop, shop_name, description, date, miles, summary, part_number, part_description, image,user_id]);
   response.json(records);
 };
 const updateRecord = async (request, response) => {
@@ -42,9 +43,9 @@ const deleteRecord = async (request, response) => {
 const getVehicleRecord = async (request, response) => {
   const db = request.app.get("db");
   const { vehicle_id } = request.params;
-  console.log("hit");
+
   const records = await db.get_vehicle_log(vehicle_id);
-  console.log(records);
+
 
   response.json(records);
 };

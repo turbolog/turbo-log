@@ -1,5 +1,4 @@
 import React,{useEffect} from "react";
-import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -11,18 +10,14 @@ import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import red from "@material-ui/core/colors/red";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddComment from "@material-ui/icons/AddComment";
 import TextField from "@material-ui/core/TextField";
 import Button from '@material-ui/core/Button';
-import Paper from "@material-ui/core/Paper"
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import "../forum/Forum.css";
-import NavBar from "../navbar/NavBar";
 import axios from "axios"
 
 const useStyles = makeStyles(theme => ({
@@ -94,42 +89,42 @@ const useStyles = makeStyles(theme => ({
         setResponseComments(result.data)
       })
     }
-    
-    
-    console.log(responseComments)
-    const displayComments = responseComments.map(comment => {
-      return   (
-        <Card style={{width: "50vw", margin: " 20px auto", border:"1px white solid", width:"70vw"}}>
-            <CardHeader
-              avatar={
-                  <Avatar aria-label="Recipe">
-                    <img src={comment.image} />
-                  </Avatar>
-                }
-        
-              
-            title={comment.username}
-            subheader={comment.date}
-          />
-          <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-              {comment.comment} 
-            </Typography>
-          </CardContent>
-            </Card>
-  ) 
-})
+      // console.log(responseComments)
+      const displayComments = responseComments.map(comment => {
+        const year = comment.date.slice(0,4)
+        const mounth = comment.date.slice(5,8)
+        const day = comment.date.slice(8,10)
+        const date = `${mounth}${day}-${year}`
+        return   (
+          <Card style={{width: "50vw", margin: " 20px auto", border:"1px white solid", width:"70vw"}}>
+              <CardHeader
+                avatar={
+                    <Avatar aria-label="Recipe">
+                      <img  className="post-pic" src={comment.image} />
+                    </Avatar>
+                  }
+              title={comment.username}
+              subheader={date}
+            />
+            <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+                {comment.comment} 
+              </Typography>
+            </CardContent>
+              </Card>
+    ) 
+  })
     return (
         <Card style={{ margin: "20px", border: "2px black solid" }}>
         <CardHeader
         
           avatar={
             <Avatar>
-              <img className="post-pic" src="https://popingservers.com/images/1.png" />
+              <img className="post-pic" src={props.post.image} />
             </Avatar>
           }
           title={props.post.username}
-          subheader={props.post.date}
+          subheader={props.date}
           
         />
 
@@ -143,7 +138,7 @@ const useStyles = makeStyles(theme => ({
         </CardContent>
         <CardActions disableSpacing>
             <FormControlLabel
-        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" />}
+        control={<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} value="checkedH" style={{marginLeft: 10}} /> }
         
       />
 

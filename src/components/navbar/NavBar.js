@@ -35,8 +35,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
+  
   useEffect(() => {
     props.getUserSession();
+   
+    
   }, []);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -44,8 +47,9 @@ const NavBar = props => {
   function toggleSide() {
     setOpen(!open);
   }
-
+  
   return (
+    
     <div>
       <div className={classes.root}>
         <Side open={open} toggleSide={toggleSide} />
@@ -70,7 +74,7 @@ const NavBar = props => {
             <>
             <Link to="/account" style={{ textDecoration: "none", color: "inherit" }}>
               <Avatar className={classes.avatar}>
-              <img src="https://popingservers.com/images/1.png" />
+              <img src={props.image} />
               </Avatar>
             </Link>
             <Button className={classes.routes} color="inherit">
@@ -101,7 +105,7 @@ const NavBar = props => {
           </>
             }
           </Toolbar>
-          <BottomNav />
+       <BottomNav />
         </AppBar>
       </div>
     </div>
@@ -110,7 +114,8 @@ const NavBar = props => {
 
 const mapStateToProps = reduxState => {
   return {
-    user_id: reduxState.auth.user_id
+    user_id: reduxState.auth.user_id,
+    image: reduxState.auth.image
   };
 };
 

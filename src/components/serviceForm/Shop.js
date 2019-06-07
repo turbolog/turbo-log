@@ -11,10 +11,9 @@ import NavBar from "../navbar/NavBar";
 import DatePicker from "./DatePicker";
 import DIY from "./DIY";
 import Shop from "./Shop";
-
+import {Link} from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
 import { Typography, Radio, Button, Grid } from "@material-ui/core";
 
 const styles = makeStyles(theme => ({
@@ -162,7 +161,7 @@ function ServiceForm(props) {
         /> */}
         <Grid style={{ textAlign: "center" }}>
           <PictureUplodar uploadtitle="Invoice Picture" />
-          <Link to="/garage">
+          <Link to="/garage" >
             <Button
               color="primary"
               variant="contained"

@@ -51,17 +51,6 @@ function ServiceForm(props) {
   };
 
   const handleSubmit = () => {
-    console.log(
-      props.id,
-      props.shop,
-      props.date,
-      props.miles,
-      props.description,
-      props.summary,
-      props.image,
-      props.part_number,
-      props.part_description,
-    )
     props.submitDIYRecord(
       props.id,
       props.shop,
@@ -152,10 +141,8 @@ function ServiceForm(props) {
           autoComplete="off"
         />
       </div>
-      <Button onClick={handleSubmit}>Submit</Button>
       <Grid style={{textAlign:"center"}}>
-
-      <Link to='/garage'><Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button></Link>
+      <Link to="/garage" ><Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button></Link>
       </Grid>
     </div>
   );

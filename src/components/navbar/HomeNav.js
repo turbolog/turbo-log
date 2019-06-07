@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUserSession } from "../../ducks/authReducer";
 
@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const HomeNav = props => {
+
   useEffect(() => {
     props.getUserSession();
   }, []);

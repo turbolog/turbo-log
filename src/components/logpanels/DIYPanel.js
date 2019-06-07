@@ -101,7 +101,7 @@ function DIYPanel(props) {
                                  title
                                 </Typography> */}
                 {/* <Typography variant="subtitle1" id="simple-modal-description"> */}
-                <img style={{ maxHeight: "75vh" }} src={props.log.image} />
+                <img style={{ maxHeight: "75vh" }} src={props.log.image} alt={props.log.summary}/>
                 {/* </Typography> */}
                 {/* <Typography style={{textAlign:"center"}}> */}
                 {/* </Typography> */}

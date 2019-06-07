@@ -12,7 +12,6 @@ const register = async (request, response) => {
     const results = await db
       .add_user([username, hash, email, firstName, lastName])
       .catch(error => console.log(error));
-    console.log(results);
     request.session.user = {
       username,
       user_id: results[0].user_id

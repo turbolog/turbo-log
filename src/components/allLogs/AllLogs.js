@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react" 
 import { Grid } from "@material-ui/core";
-import LogCard from "./LogCard"
+import LogCard from "./logCard"
 import axios from "axios"
 import NavBar from "../navbar/NavBar";
 
@@ -11,10 +11,9 @@ function AllLogs (props)  {
         axios.get("/api/records").then(result => setLogs(result.data))
     },[]) 
 
-    console.log(logs)
     let displayLogs = logs.map(log => {
         return(
-            <Grid item xs={12} sm={6} lg={4} xl={3}>
+            <Grid key={log.report_id} item xs={12} sm={6} lg={4} xl={3}>
                 <LogCard log={log}/>
             </Grid>
         )

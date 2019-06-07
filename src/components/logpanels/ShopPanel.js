@@ -57,43 +57,56 @@ function ShopPanel(props) {
       <ExpansionPanelDetails>
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item>
-            <span className={classes.span}>Shop Name: </span>
-            {props.log.shop_name}
+            <span className={classes.span}>Shop Name: {props.log.shop_name}</span>
+            
           </Grid>
           <Grid item>
-            <span className={classes.span}>Millage: </span>
-            {props.log.miles}
+            <span className={classes.span}>Summary:</span>
+          </Grid>
+          <Grid item>
+            <span className={classes.span}>{props.log.summary}</span>
+          </Grid>
+          <Grid item>
+            <span className={classes.span}>Millage: {props.log.miles}</span>
+            
           </Grid>
 
-          <Button variant="contained" color="primary" onClick={handleOpen}>
-            View Receipt
-          </Button>
+          {props.log.image && (
+            <Button variant="contained" color="primary" onClick={handleOpen}>
+              View Receipt
+            </Button>
+          )}
           <Modal
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             open={open}
             onClose={handleClose}
           >
-            <Grid container justify="center">
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              direction="column"
+              style={{ margin: `10vh auto`, left: `50%`, width: "50vw" }}
+            >
+              <Grid item style={{ display: "block" }}>
+                {/* <Typography variant="h6" id="modal-title">
+                                 title
+                                </Typography> */}
+                {/* <Typography variant="subtitle1" id="simple-modal-description"> */}
+                <img style={{ maxHeight: "75vh" }} src={props.log.image} />
+                {/* </Typography> */}
+                {/* <Typography style={{textAlign:"center"}}> */}
+                {/* </Typography> */}
+              </Grid>
               <Grid item>
-                <Typography variant="h6" id="modal-title">
-                  title
-                </Typography>
-                <Typography variant="subtitle1" id="simple-modal-description">
-                  <img
-                    style={{ maxHeight: "800px" }}
-                    src="https://images.invoicehome.com/templates/receipt-template-us-neat-750px.png"
-                  />
-                </Typography>
-                <Typography style={{ textAlign: "center" }}>
-                  <Button
-                    onClick={handleModal}
-                    variant="contained"
-                    color="primary"
-                  >
-                    Close
-                  </Button>
-                </Typography>
+                <Button
+                  onClick={handleModal}
+                  variant="contained"
+                  color="primary"
+                >
+                  Close
+                </Button>
               </Grid>
             </Grid>
           </Modal>
