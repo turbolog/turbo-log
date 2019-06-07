@@ -1,4 +1,4 @@
-import React,{ useEffect, useState } from "react";
+import React,{ useState } from "react";
 import Grid from "@material-ui/core/Grid"
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -39,7 +39,7 @@ const PictureUploader = (props) =>{
           'Content-Type': 'multipart/form-data'
         }
       }).then(response => {
-        console.log('response: ', response);
+        // console.log('response: ', response);
     
         props.updateImage(response.data.Location)
       }).catch(error => {

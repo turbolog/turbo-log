@@ -68,7 +68,6 @@ export function updateMiles(miles, vehicle_id) {
 
 function reducer(state = initialState, action) {
   const { type, payload } = action;
-  console.log(action)
   switch (type) {
     case UPDATE_VEHICLE:
       return {

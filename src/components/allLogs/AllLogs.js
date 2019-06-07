@@ -11,7 +11,6 @@ function AllLogs (props)  {
         axios.get("/api/records").then(result => setLogs(result.data))
     },[]) 
 
-    console.log(logs)
     let displayLogs = logs.map(log => {
         return(
             <Grid key={log.report_id} item xs={12} sm={6} lg={4} xl={3}>

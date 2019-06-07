@@ -14,11 +14,10 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Hidden from "@material-ui/core/Hidden";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
-import post1 from "./blog-post.1.md";
-import post2 from "./blog-post.2.md";
-import post3 from "./blog-post.3.md";
+// import post1 from "./blog-post.1.md";
+// import post2 from "./blog-post.2.md";
+// import post3 from "./blog-post.3.md";
 import NavBar from "../navbar/NavBar";
-import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
@@ -120,7 +119,7 @@ const featuredPosts = [
   }
 ];
 
-const posts = [post1, post2, post3];
+// const posts = [post1, post2, post3];
 
 export default function Blog() {
   const classes = useStyles();

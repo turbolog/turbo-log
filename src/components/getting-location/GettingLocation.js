@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -33,11 +33,11 @@ function GettingLocation() {
 
  const handleCity =(e) =>{
      setCity(e.target.value)
-     console.log('e.target.value: ', e.target.value);
+    //  console.log('e.target.value: ', e.target.value);
    }
    const handleState =(e) =>{
     setState(e.target.value)
-    console.log('(e.target.value: ', e.target.value);
+    // console.log('(e.target.value: ', e.target.value);
 
   }
 

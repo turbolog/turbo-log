@@ -43,9 +43,9 @@ const deleteRecord = async (request, response) => {
 const getVehicleRecord = async (request, response) => {
   const db = request.app.get("db");
   const { vehicle_id } = request.params;
-  console.log("hit");
+
   const records = await db.get_vehicle_log(vehicle_id);
-  console.log(records);
+
 
   response.json(records);
 };

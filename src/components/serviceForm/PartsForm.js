@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import PictureUploader from "../picture-uploader/PictureUploader"
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
-import { Typography, Fab, Grid } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Typography, Grid } from "@material-ui/core";
 
 const styles = makeStyles(theme => ({
   container: {

@@ -11,11 +11,9 @@ import "./Forum.css";
 import NavBar from "../navbar/NavBar";
 import Post from "../posts/Post";
 import Modal from '@material-ui/core/Modal';
-import {Link} from "react-router-dom"
 import { connect } from "react-redux";
 import {addPost,getPosts,update} from "../../ducks/forumReduce"
 import Card from "@material-ui/core/Card"
-import Axios from "axios";
 
 function searching(term) {
   return function (x) {
@@ -73,13 +71,13 @@ const Forum = (props) => {
   const classes = useStyles();
   
   
-   const posts = props.posts.filter(searching(term)).map(post =>{
+   const posts = props.posts.filter(searching(term)).map((post, i) =>{
      
     const year = post.date.slice(0,4)
     const mounth = post.date.slice(5,8)
     const day = post.date.slice(8,10)
     const date = `${mounth}${day}-${year}`
-     return <Post date={date} post ={post}/>
+     return <Post date={date} post ={post} key={i}/>
      
    })
    const handleInput = e => {

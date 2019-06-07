@@ -45,18 +45,6 @@ export function submitDIYRecord(
   part_number,
   part_description
 ) {
-  console.log(
-    vehicle_id,
-    shop,
-    shop_name,
-    date,
-    miles,
-    description,
-    summary,
-    image,
-    part_number,
-    part_description
-  );
   return {
     type: SUBMIT_DIY_RECORD,
     payload: axios.post("/api/records", {
