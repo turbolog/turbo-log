@@ -155,7 +155,7 @@ function ServiceForm(props) {
       <Button onClick={handleSubmit}>Submit</Button>
       <Grid style={{textAlign:"center"}}>
 
-      <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
+      <Link to='/garage'><Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button></Link>
       </Grid>
     </div>
   );

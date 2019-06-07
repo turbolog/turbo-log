@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PictureUplodar from "../picture-uploader/PictureUploader";
-
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
   updateForm,
@@ -162,15 +162,17 @@ function ServiceForm(props) {
         /> */}
         <Grid style={{ textAlign: "center" }}>
           <PictureUplodar uploadtitle="Invoice Picture" />
-          <Button
-            color="primary"
-            variant="contained"
-            className={classes.button}
-            onClick={handleShopSubmit}
-            style={{ marginBottom: "10vh" }}
-          >
-            Submit
-          </Button>
+          <Link to="/garage">
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.button}
+              onClick={handleShopSubmit}
+              style={{ marginBottom: "10vh" }}
+            >
+              Submit
+            </Button>
+          </Link>
         </Grid>
       </form>
     </div>
