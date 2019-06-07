@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Camera from "@material-ui/icons/CameraAlt"
 import axios from "axios"
-import { updateImage } from "../../ducks/formReducer"
+import { updateVehicleImage } from "../../ducks/vehicleReducer"
 import { connect } from "react-redux"
 
 
@@ -41,7 +41,7 @@ const PictureUploader = (props) =>{
       }).then(response => {
         // console.log('response: ', response);
     
-        props.updateImage(response.data.Location)
+        props.updateVehicleImage(response.data.Location)
       }).catch(error => {
         // handle your error
         console.log(error)
@@ -80,4 +80,4 @@ function mapStateToProps (state) {
     image: state.form.image
   }
 }
-export default connect(mapStateToProps, {updateImage})(PictureUploader)
+export default connect(mapStateToProps, {updateVehicleImage})(PictureUploader)

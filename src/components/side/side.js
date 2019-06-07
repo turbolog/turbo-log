@@ -43,7 +43,8 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(3),
     },
     logout: {
-      bottom:0
+      bottom:0,
+      cursor: "pointer"
     },
     links: {
       textDecoration: "none",
@@ -76,31 +77,31 @@ function Side (props) {
           <List>
           <Link className={classes.links} to="/log" >
             <ListItem button>
-              <ListItemIcon> <Notes /> </ListItemIcon>
+              <ListItemIcon><Notes /></ListItemIcon>
               <ListItemText primary="Car Log" />
             </ListItem>
           </Link>
           <Link className={classes.links} to="/garage">
             <ListItem button>
-              <ListItemIcon> <Directions_car /> </ListItemIcon>
+              <ListItemIcon><Directions_car /></ListItemIcon>
               <ListItemText primary="Garage"/>
             </ListItem>
           </Link>
           <Link className={classes.links} to="/near-me">
             <ListItem button>
-              <ListItemIcon> <LocationOn /> </ListItemIcon>
+              <ListItemIcon><LocationOn /></ListItemIcon>
               <ListItemText primary="Find Shop" />
             </ListItem>
           </Link>
           <Link className={classes.links} to="/forum">
             <ListItem button>
-              <ListItemIcon> <ForumIcon /> </ListItemIcon>
+              <ListItemIcon><ForumIcon /></ListItemIcon>
               <ListItemText primary="Forum" />
             </ListItem>
           </Link>
-          <Link to='/bestpractices' style={{ textDecoration: "none", color: "inherit" }}>
+          <Link className={classes.links} to='/bestpractices'>
             <ListItem button>
-              <ListItemIcon> <ViewCompact /> </ListItemIcon>
+              <ListItemIcon><ViewCompact /></ListItemIcon>
               <ListItemText primary="Best Practices" />
             </ListItem>
           </Link>

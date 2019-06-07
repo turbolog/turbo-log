@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import NavBar from "../navbar/NavBar";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import VehicleCard from "./VehicleCard";
-import Modal from "@material-ui/core/Modal";
-import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import axios from "axios";
 import ShopPanel from "../logpanels/ShopPanel";
@@ -56,7 +49,7 @@ function SingleCarGarage(props) {
     axios
       .get(`/api/vehicles/records/${props.match.params.vehicle_id}`)
       .then(data => {
-        console.log("data: ", data);
+        // console.log("data: ", data);
 
         setLogs(data.data);
       });

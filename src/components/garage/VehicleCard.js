@@ -94,6 +94,7 @@ function VehicleCard(props) {
     <Paper className={classes.paper}>
       <Grid container spacing={2}>
         <Grid item>
+          
           <Link to={`/garage/${props.car.vehicle_id}`}>
             <ButtonBase className={classes.image}>
               <img

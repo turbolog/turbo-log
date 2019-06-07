@@ -24,7 +24,6 @@ export function update(name, value) {
   };
 }
 export function logout() {
-  console.log("hit")
   return {
     type: LOGOUT,
     payload: axios.get(`/auth/logout`)

@@ -7,7 +7,6 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from "@material-ui/pickers";
-import { datePickerDefaultProps } from "@material-ui/pickers/constants/prop-types";
 import { connect } from "react-redux";
 import { updateForm } from "../../ducks/formReducer";
 
@@ -21,7 +20,7 @@ function DatePicker(props) {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   useEffect(() => {
-    console.log(new Date());
+    // console.log(new Date());
     props.updateForm("date", new Date());
   }, []);
 

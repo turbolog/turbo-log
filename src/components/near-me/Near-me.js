@@ -130,7 +130,7 @@ class NearMe extends Component {
     });
   };
   render() {
-    console.log(this.state.wehther);
+    // console.log(this.state.wehther);
     return (
       <div>
         <NavBar />

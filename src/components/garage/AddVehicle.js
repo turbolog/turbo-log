@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-import PictureUploader from "../picture-uploader/PictureUploader";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import Input from "@material-ui/core/Input";
 import { Typography, Fab, Button, Grid } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
 import NavBar from "../navbar/NavBar";
 import { updateVehicle, addCar } from "../../ducks/vehicleReducer";
 import { connect } from "react-redux";
+import VehiclePictureUploader from "../vehiclePictureUploader/VehiclePictureUploader";
 
 const styles = makeStyles(theme => ({
   container: {
@@ -138,7 +136,7 @@ function AddVehicle(props) {
         />
         <div>
           <Typography>Add Car Image:</Typography>
-          <PictureUploader uploadtitle="add" />
+          <VehiclePictureUploader uploadtitle="add" />
         </div>
       </form>
       <Grid style={{ textAlign: "center" }}>
