@@ -13,6 +13,7 @@ const initialState = {
 };
 
 const UPDATE_VEHICLE = "UPDATE_VEHICLE";
+const UPDATE_VEHICLE_IMAGE = "UPDATE_VEHICLE_IMAGE";
 const ADD_CAR = "ADD_CAR";
 const DELETE_CAR = "DELETE_CAR";
 const UPDATE_MILES = "UPDATE_MILES";
@@ -22,6 +23,12 @@ export function updateVehicle(name, value) {
   return {
     type: UPDATE_VEHICLE,
     payload: { name, value }
+  };
+}
+export function updateVehicleImage(value) {
+  return {
+    type: UPDATE_VEHICLE_IMAGE,
+    payload: value 
   };
 }
 
@@ -61,6 +68,7 @@ export function updateMiles(miles, vehicle_id) {
 
 function reducer(state = initialState, action) {
   const { type, payload } = action;
+  console.log(action)
   switch (type) {
     case UPDATE_VEHICLE:
       return {
@@ -86,6 +94,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         garage: payload.data
+      };
+    case `${UPDATE_VEHICLE_IMAGE}`:
+      return {
+        ...state,
+        image: payload
       };
     default:
       return state;

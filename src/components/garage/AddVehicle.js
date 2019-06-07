@@ -10,6 +10,7 @@ import AddIcon from "@material-ui/icons/Add";
 import NavBar from "../navbar/NavBar";
 import { updateVehicle, addCar } from "../../ducks/vehicleReducer";
 import { connect } from "react-redux";
+import VehiclePictureUploader from "../vehiclePictureUploader/VehiclePictureUploader";
 
 const styles = makeStyles(theme => ({
   container: {
@@ -138,7 +139,7 @@ function AddVehicle(props) {
         />
         <div>
           <Typography>Add Car Image:</Typography>
-          <PictureUploader uploadtitle="add" />
+          <VehiclePictureUploader uploadtitle="add" />
         </div>
       </form>
       <Grid style={{ textAlign: "center" }}>

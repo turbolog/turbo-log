@@ -85,6 +85,7 @@ const Forum = (props) => {
        return
       }
       props.addPost(props.title, props.post)
+      window.location.reload()
       handleClose()
    }
 

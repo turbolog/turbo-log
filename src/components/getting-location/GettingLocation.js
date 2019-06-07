@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Link} from "react-router-dom"
+import NavBar from '../navbar/NavBar';
 
 
 const useStyles = makeStyles(theme => ({
@@ -42,6 +43,8 @@ function GettingLocation() {
 
 
     return (
+        <>
+        <NavBar />
         <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20%"}}>
             <TextField
         id="filled-email-input"
@@ -67,6 +70,7 @@ function GettingLocation() {
       </Button>
       </Link>
         </div>
+        </>
     )
 }
 
