@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Home = props => {
+  
   const classes = useStyles();
 
   if (props.user_id) {

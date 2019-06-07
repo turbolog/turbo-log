@@ -46,6 +46,7 @@ function GettingLocation() {
         <>
         <NavBar />
         <div style={{display:"flex", flexDirection:"column", alignItems:"center", marginTop:"20%"}}>
+          
             <TextField
         id="filled-email-input"
         label="City"
@@ -66,7 +67,7 @@ function GettingLocation() {
       <Link style={{textDecoration:"none"}} to={`/near-me/${city}/${state}`}>
 
       <Button color="primary" variant="contained" >
-        Primary
+        find
       </Button>
       </Link>
         </div>
