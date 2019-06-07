@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
-import axios from "axios";
-import "./Near-me.css";
-import NavBar from "../navbar/NavBar";
+import Card from "@material-ui/core/Card"
+import NavBar from "../navbar/NavBar"
+import axios from "axios"
+import "./Near-me.css"
 
 class NearMe extends Component {
   state = {
@@ -33,14 +33,12 @@ class NearMe extends Component {
         );
       });
   }
-
   renderMap = () => {
     loadScript(
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyD1DrDBUd6GNL2EIBCxK-K0OjkTny8kbuA&callback=initMap"
     );
     window.initMap = this.initMap;
   };
-
   getVenues = () => {
     const endPoint = "https://api.foursquare.com/v2/venues/explore?";
     const parameters = {
@@ -50,7 +48,6 @@ class NearMe extends Component {
       near: `${this.props.match.params.city},${this.props.match.params.state}`,
       v: "20182507"
     };
-
     axios
       .get(endPoint + new URLSearchParams(parameters))
       .then(response => {
@@ -65,24 +62,54 @@ class NearMe extends Component {
         console.log("ERROR!! " + error);
       });
   };
-
   initMap = () => {
     // Create A Map
-
-    var map = new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: this.state.lat, lng: this.state.lon },
-
-      // center:{lat:30.17, lng:-91.14},
-      zoom: 8
-    });
-
-    // Create An InfoWindow
-    var infowindow = new window.google.maps.InfoWindow();
-
-    // Display Dynamic Markers
-    this.state.venues.map(myVenue => {
-      var contentString = `${myVenue.venue.name}`;
-
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.props.match.params.city},us&appid=da14f27ad149c662485c0327e1e4bcf8`).then(response =>{
+          this.setState({
+            wehther: [response.data],
+            lat: response.data.coord.lat,
+            lon: response.data.coord.lon 
+          }, () => { 
+            this.getVenues()
+          })
+        })    
+      }
+      renderMap = () => {
+        loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyD1DrDBUd6GNL2EIBCxK-K0OjkTny8kbuA&callback=initMap")
+        window.initMap = this.initMap
+      }
+      getVenues = () => {
+        const endPoint = "https://api.foursquare.com/v2/venues/explore?"
+        const parameters = {
+          client_id: "PMHC2WA1VCBHVYOPPSJ0QSBYTLRF4PNJ04OWVWV0PZJ0QFIR",
+          client_secret: "CULSZZ44YAEBOWBFGPB4BF5ISRXXSNYR0EE3JV3CNE2ZWHV0",
+          query: "car maintenance",
+          near:`${this.props.match.params.city},${this.props.match.params.state}`,
+          v: "20182507"
+        }
+        axios.get(endPoint + new URLSearchParams(parameters))
+          .then(response => {
+            this.setState({
+              venues: response.data.response.groups[0].items
+            }, this.renderMap())
+          })
+          .catch(error => {
+            console.log("ERROR!! " + error)
+          })
+      }
+      initMap = () => {
+        // Create A Map
+        var map = new window.google.maps.Map(document.getElementById('map'), {
+          center: {lat:this.state.lat, lng: this.state.lon},
+          // center:{lat:30.17, lng:-91.14},
+          zoom: 9
+        })
+        // Create An InfoWindow
+        var infowindow = new window.google.maps.InfoWindow()
+        // Display Dynamic Markers
+        this.state.venues.map(myVenue => {     
+          var contentString = `${myVenue.venue.name}  
+           ${myVenue.venue.location.address} ${myVenue.venue.location.city} ${myVenue.venue.location.state}`         
       // Create A Marker
       var marker = new window.google.maps.Marker({
         position: {
@@ -92,7 +119,6 @@ class NearMe extends Component {
         map: map,
         title: myVenue.venue.name
       });
-
       // Click on A Marker!
       marker.addListener("click", function() {
         // Change the content
@@ -143,14 +169,13 @@ class NearMe extends Component {
     );
   }
 }
-
-function loadScript(url) {
-  var index = window.document.getElementsByTagName("script")[0];
-  var script = window.document.createElement("script");
-  script.src = url;
-  script.async = true;
-  script.defer = true;
-  index.parentNode.insertBefore(script, index);
-}
+    function loadScript(url) {
+      var index  = window.document.getElementsByTagName("script")[0]
+      var script = window.document.createElement("script")
+      script.src = url
+      script.async = true
+      script.defer = true
+      index.parentNode.insertBefore(script, index)
+    }
 
 export default NearMe;

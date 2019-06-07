@@ -120,9 +120,10 @@ const Login = props => {
                   Forgot password?
                 </Link>
               </Grid> */}
-              <Grid item>
-                <Link to="/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
+              <Grid item >
+                  {"Don't have an account? "}
+                <Link style={{color:"white"}} to="/register" variant="body2">
+                Sign Up
                 </Link>
               </Grid>
             </Grid>

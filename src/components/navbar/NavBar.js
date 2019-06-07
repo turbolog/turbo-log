@@ -35,8 +35,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
+  
   useEffect(() => {
     props.getUserSession();
+   
+    
   }, []);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -44,8 +47,9 @@ const NavBar = props => {
   function toggleSide() {
     setOpen(!open);
   }
-
+  
   return (
+    
     <div>
       <div className={classes.root}>
         <Side open={open} toggleSide={toggleSide} />
@@ -101,7 +105,7 @@ const NavBar = props => {
           </>
             }
           </Toolbar>
-          <BottomNav />
+       <BottomNav />
         </AppBar>
       </div>
     </div>

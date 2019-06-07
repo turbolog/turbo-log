@@ -61,7 +61,7 @@ const Register = props => {
   if (redirect) {
     return <Redirect to="/" />;
   }
-  console.log(props);
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -149,8 +149,9 @@ const Register = props => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link to="/login" variant="body2">
-                Already have an account? Sign in
+                Already have an account?{" "}
+              <Link style={{color:"white"}} to="/login" variant="body2">
+              Sign in
               </Link>
             </Grid>
           </Grid>
